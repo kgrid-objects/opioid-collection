@@ -1,4 +1,6 @@
+# CURRENTLY BEING WORKED ON
 # This code takes in patient medication information and outputs the medication regimen complexity index (MRCI) score.
+
 
 # Calculates Appendix II. Medication Regimen Complexity Index (MRCI): A
 def CalculateDosageForm(drugDict):
@@ -12,42 +14,30 @@ def CalculateDosageForm(drugDict):
             # Matches the route and form,
             # If the route and form don't match with the dosingFormScores, that prescription is skipped.
             for ADosageRoute in dosingFormScores[route]:
-                count +=1
                 if dosageForm == ADosageRoute:
                     total += dosingFormScores[route][ADosageRoute]
-                    break
-                elif dosageForm == "":
-                    break
-                elif (count == (len((dosingFormScores[route]).keys()))):
-                    print "** INVALID DOSAGE FORM **"
-                    print "This dosage form is invalid: " + str(dosageForm)
-                    print "For (oral) route, dosage form must be (capsules/tablets) (gargles/mouthwashes) (gums/lozenges) (liquids) (powders/granules) or (sublingual sprays/tabs)"
-                    print "For (topical) route, dosage form must be (creams/gels/ointments) (dressings) (paints/solutions) (pastes) (patches) or (sprays)"
-                    print "For (ear,eye,nose) route, dosage form must be (ear drops, ear creams, ear ointments) (eye drops) (eye gels, eye ointments) (nasal drops, nasal cream, nasal ointments) or (nasal spray)"
-                    print "For (inhalation) route, dosage form must be (accuhalers) (aerolizers) (metered dose inhalers) (nebuliser) (oxygen/concentrator) (turbuhalers) or (other DPIs)"
-                    print "For (others) route, dosage form must be (dialysate) (enemas) (injections prefilled) (injections ampoules/vials) (pessaries) (patient controlled analgesia) (suppositories) or (vaginal cream)"
-                    print "Skipping over prescription dosage form calculation. Will still cacluate dosing frequncy and additional administration instructions for this particular prescription." + "\n"
-                    break
+                elif (count == (len((dosingFormScores[route])))):
+                    return "cannot calculate"
                 else:
                     continue
+                count +=1
         else:
-            print "** INVALID ROUTE TYPE **"
-            print "This route is invalid: " + str(route)
-            print "Must be (oral) (topical) (ear,eye,nose) (inhalation) or (others)"
-            print "Skipping over prescription dosage form calculation. Will still cacluate dosing frequncy and additional administration instructions for this particular prescription." + "\n"
-            continue
+            return "cannot calculate"
     #print "Total = " + str(total)
     return total
 
 # Calculates Appendix II. Medication Regimen Complexity Index (MRCI): B
 def CalculateDosingFrequency(drugDict):
-    complexityScore = CalculateDosageForm(drugDict)
+    #complexityScore = CalculateDosageForm(drugDict)
+    #print complexityScore
 
     MedsPerDosingFreq = {"once daily":0, "once daily prn":0, "twice daily":0, "twice daily prn":0, "three times daily":0, "three times daily prn":0, "four times daily":0, "four times daily prn":0, "q 12h":0, "q 12h prn":0, "q 8h":0, "q 8h prm":0, "q 6h":0, "q 6h prn":0, "q 4h":0, "q 4h prn":0, "q 2h":0, "q 2h prn":0, "prn/sos":0, "on alternate days or less frequently":0, "oxygen prn":0, "oxygen<15hrs":0, "oxygen>15 hrs":0}
     DosingWeight = {"once daily":1, "once daily prn":0.5, "twice daily":2, "twice daily prn":1, "three times daily":3, "three times daily prn":1.5, "four times daily":4,"four times daily prn":2,"q 12h":2.5,"q 12h prn":1.5,"q 8h":3.5,"q 8h prm":2,"q 6h":4.5,"q 6h prn":2.5,"q 4h":6.5,"q 4h prn":3.5,"q 2h":12.5,"q 2h prn":6.5,"prn/sos":0.5,"on alternate days or less frequently": 2, "oxygen prn":1, "oxygen<15hrs":2, "oxygen>15 hrs":3}
 
     # tallying # of drugs per dosing frequency
     MedsPerDosingFreq = TallyDrugs(drugDict,"dosing frequency",MedsPerDosingFreq)
+    if MedsPerDosingFreq == "cannot calculate":
+        return MedsPerDosingFreq
 
     # Taking # of drugs per dosing frequency and multiplying by weight
     total = WeightDrugs(DosingWeight,MedsPerDosingFreq)
@@ -81,29 +71,55 @@ def TallyDrugs(drugDict,attribute,tallyDict):
                 break
             elif attributeValue == "":
                 break
-            elif (count == len(tallyDict.keys())):
-                print "*** INVALID " + str(attribute.upper()) + " TYPE ***"
-                print ("This " + str(attribute) + " is invalid: " + attributeValue)
-                print "For (dosing frequency), dosing frequency must be (once daily) (once daily prn) (twice daily) (twice daily prn) (three times daily) (three times daily prn) (four times daily) (four times daily prn) (q 12h) (q 12h prn) (q 8h) (q 8h prm) (q 6h) (q 6h prn) (q 4h) (q 4h prn) (q 2h) (q 2h prn) (prn/sos) (on alternate days or less frequently) (oxygen prn) (oxygen<15hrs) or (oxygen>15 hrs)"
-                print "For (additional directions), additional directions must be (break or crush tablet) (dissolve tablet/powder) (multiple units at one time) (variable dose) (take/use at specified time/s) (relation to food) (take with specific fluid) (take/use as directed) (tapering/increasing dose) or (alternating dose)"
-                print "Skipping over calculation." + "\n"
+            elif (count == len(tallyDict.keys())+1):
+                return "cannot calculate"
             else:
                 continue
+    #print tallyDict
     return tallyDict
 
 def WeightDrugs(weightDict,tallyDict):
     total = 0
-    for A in tallyDict:
-        if tallyDict[A] != 0:
-            for B in weightDict:
-                if A == B:
-                    multi = ((tallyDict[A])*(weightDict[B]))
+    for frequency in tallyDict:
+        if tallyDict[frequency] != 0:
+            for frequency_weight in weightDict:
+                if frequency == frequency_weight:
+                    multi = ((tallyDict[frequency])*(weightDict[frequency_weight]))
                     total += multi
                 else:
                     continue
         else:
             continue
     return total
+
+def MRCI(drugList):
+    drugDict = drugList["drugList"]
+    total1 = CalculateDosageForm(drugDict)
+    if total1 == "cannot calculate":
+        print "error with total 1"
+        return total1
+    total2 = CalculateDosingFrequency(drugDict)
+    if total2 == "cannot calculate":
+        print "error with total 2"
+        return total2
+    total3 = CalculateAddDirect(drugDict)
+    if total3 == "cannot calculate":
+        print "error with total 3"
+        return total3
+    complexityScore = total1 + total2 + total3
+    output = "MRCI Score = " + str(complexityScore)
+    json_output = {"MRCI Score":complexityScore}
+    return output
+
+
+print MRCI({"drugList":{"lisinopril 40 mg tablet":{"route":"oral","form":"capsules/tablets","dosing frequency":"twice daily","additional directions":""}}})
+print MRCI({"drugList":{"lisinopril 40 mg tablet":{"route":"oral","form":"c","dosing frequency":"twice daily","additional directions":""}}})
+
+
+
+
+
+
 
 
 # Use the test function to see if script is properly working.
@@ -137,23 +153,3 @@ def test():
         print ("ok.")
     else:
         print ("error.")
-
-def runFunction(drugList):
-    drugDict = drugList["drugList"]
-    total1 = CalculateDosageForm(drugDict)
-    total2 = CalculateDosingFrequency(drugDict)
-    total3 = CalculateAddDirect(drugDict)
-    complexityScore = total1 + total2 + total3
-    output = "MRCI Score = " + str(complexityScore)
-    json_output = {"MRCI Score":complexityScore}
-    return output
-
-
-test()
-'''
-drugList = {"Erythropoietin":
-{"route":"ear,eye,nose","form":"eye gels, eye ointments","dosing frequency":"not specficied","additional directions":""},
-"sitaGLIPtin 50 mg-metformin 1,000 mg tablet":{"route":"oral","form":"capsules/tablets","dosing frequency":"on alternate days or less frequently","additional directions":"take with specific fluid"}
-}
-runFunction(drugList)
-'''
