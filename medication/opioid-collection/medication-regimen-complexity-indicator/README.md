@@ -25,7 +25,7 @@ To run this object, use runFunction(). Input should be formatted as the followin
     }
 "drug name" and "X" can be altered to the corresponding information, but "drugList", "route", "form, "dosing frequency", and "additional directions" are key words the program searches for. Therefore, these coded strings should not be altered.
 
-The following options can be specified for each coded variable. The options are taken directly from Appendix II of the paper, "Medication Regiment Complexity Index (MRCI)". If the input entered is not one of the options, an error is printed and the score for that section (dosage form, dosing frequency, and additional administration instructions) will default to 0.
+The following options can be specified for each coded variable. The options are taken directly from Appendix II of the paper, "Medication Regiment Complexity Index (MRCI)". If the input entered is not one of the options, "cannot calculate" will be returned.
 
 1. route
     - oral
