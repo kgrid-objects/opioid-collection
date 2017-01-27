@@ -122,6 +122,7 @@ def test():
 
 def runFunction(drugList):
     drugDict = drugList["drugList"]
+    
     total1 = CalculateDosageForm(drugDict)
     if total1 == "cannot calculate":
         return total1
