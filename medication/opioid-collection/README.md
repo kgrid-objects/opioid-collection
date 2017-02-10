@@ -14,6 +14,6 @@ The collection currently consists of the following 3 knowledge objects:
   - ArkID - ark:/67034/k43k5p
 
 3. Morphine Milligram Equivalents (MME) Calculator
-  - Input: map of opioid prescriptions (drug name, dosage and frequency) (e.g. {"opiodPrescriptions":{"methadone":{"dosage":25.0,"frequency":"once daily"}}}
+  - Input: map of opioid prescriptions (drug name, dosage and frequency) (e.g. {"opiodPrescriptions":{"methadone":{"dosage":25.0,"frequency":"once daily"}}})
   - Output: MME (e.g. "Morphine Milligram Equivalents total = 200.0")
   - ArkID - ark:/99999/fk4c25559n
