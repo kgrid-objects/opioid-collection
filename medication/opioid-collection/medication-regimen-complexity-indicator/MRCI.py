@@ -36,12 +36,12 @@ def CalculateDosingFrequency(drugDict):
     MedsPerDosingFreq = {"once daily":0, "once daily prn":0, "twice daily":0, "twice daily prn":0, "three times daily":0, "three times daily prn":0, "four times daily":0, "four times daily prn":0, "q 12h":0, "q 12h prn":0, "q 8h":0, "q 8h prm":0, "q 6h":0, "q 6h prn":0, "q 4h":0, "q 4h prn":0, "q 2h":0, "q 2h prn":0, "prn/sos":0, "on alternate days or less frequently":0, "oxygen prn":0, "oxygen<15hrs":0, "oxygen>15 hrs":0}
     DosingWeight = {"once daily":1, "once daily prn":0.5, "twice daily":2, "twice daily prn":1, "three times daily":3, "three times daily prn":1.5, "four times daily":4,"four times daily prn":2,"q 12h":2.5,"q 12h prn":1.5,"q 8h":3.5,"q 8h prm":2,"q 6h":4.5,"q 6h prn":2.5,"q 4h":6.5,"q 4h prn":3.5,"q 2h":12.5,"q 2h prn":6.5,"prn/sos":0.5,"on alternate days or less frequently": 2, "oxygen prn":1, "oxygen<15hrs":2, "oxygen>15 hrs":3}
 
-    # tallying # of drugs per dosing frequency
-    MedsPerDosingFreq = TallyDrugs(drugDict,"dosing frequency",MedsPerDosingFreq)
+    # tallying # of drugs per dosingFrequency
+    MedsPerDosingFreq = TallyDrugs(drugDict,"dosingFrequency",MedsPerDosingFreq)
     if MedsPerDosingFreq == "cannot calculate":
         return MedsPerDosingFreq
 
-    # Taking # of drugs per dosing frequency and multiplying by weight
+    # Taking # of drugs per dosingFrequency and multiplying by weight
     total = WeightDrugs(DosingWeight,MedsPerDosingFreq)
 
     # Add dosing frequence total to complexity score
@@ -54,7 +54,7 @@ def CalculateAddDirect(drugDict):
     AddDirectWeight= {"break or crush tablet":1,"dissolve tablet/powder":1,"multiple units at one time":1,"variable dose":1,"take/use at specified time/s":1,"relation to food":1,"take with specific fluid":1,"take/use as directed":2,"tapering/increasing dose":2,"alternating dose":2}
 
     # Tallying # of drugs per addional direction
-    MedsPerAddDirect = TallyDrugs(drugDict,"additional directions",MedsPerAddDirect)
+    MedsPerAddDirect = TallyDrugs(drugDict,"additionalDirections",MedsPerAddDirect)
     if MedsPerAddDirect== "cannot calculate":
         return MedsPerAddDirect
 
@@ -100,29 +100,29 @@ def WeightDrugs(weightDict,tallyDict):
 
 # Use the test function to see if script is properly working.
 def test():
-    if runFunction({"drugList":{"lisinopril 40 mg tablet":{"route":"oral","form":"capsules/tablets","dosing frequency":"twice daily","additional directions":""},"metroprolol tartrate 100 mg tablet":{"route":"oral","form":"capsules/tablets", "dosing frequency":"twice daily","additional directions":"break or crush tablet"},"amLODIPine 10 mg tablet":{"route":"oral","form":"capsules/tablets","dosing frequency":"once daily","additional directions":""},"levothyroxine 75 mcg capsule":{"route":"oral","form":"capsules/tablets","dosing frequency":"once daily","additional directions":"alternating dose"}}}) != "MRCI Score = 13":
+    if execute({"drugList":{"lisinopril 40 mg tablet":{"route":"oral","form":"capsules/tablets","dosingFrequency":"twice daily","additionalDirections":""},"metroprolol tartrate 100 mg tablet":{"route":"oral","form":"capsules/tablets", "dosingFrequency":"twice daily","additionalDirections":"break or crush tablet"},"amLODIPine 10 mg tablet":{"route":"oral","form":"capsules/tablets","dosingFrequency":"once daily","additionalDirections":""},"levothyroxine 75 mcg capsule":{"route":"oral","form":"capsules/tablets","dosingFrequency":"once daily","additionalDirections":"alternating dose"}}}) != "MRCI Score = 13":
         return "error."
 
-    if runFunction({"drugList":{"colchicine 0.l6mg tablet":{"route":"oral","form":"capsules/tablets","dosing frequency":"twice daily","additional directions":""},"ferrous sulfate 324 mg":{"route":"oral","form":"capsules/tablets","dosing frequency":"on alternate days or less frequently","additional directions":"relation to food"}}}) != "MRCI Score = 7":
+    if execute({"drugList":{"colchicine 0.l6mg tablet":{"route":"oral","form":"capsules/tablets","dosingFrequency":"twice daily","additionalDirections":""},"ferrous sulfate 324 mg":{"route":"oral","form":"capsules/tablets","dosingFrequency":"on alternate days or less frequently","additionalDirections":"relation to food"}}}) != "MRCI Score = 7":
         return "error."
 
-    if runFunction({"drugList":{"Erythropoietin":{"route":"others","form":"dialysate","dosing frequency":"q 12h","additional directions":""},"atenolol 25 mg tablet":{"route":"oral","form":"capsules/tablets","dosing frequency":"on alternate days or less frequently","additional directions":"take with specific fluid"}}}) != "MRCI Score = 11.5":
+    if execute({"drugList":{"Erythropoietin":{"route":"others","form":"dialysate","dosingFrequency":"q 12h","additionalDirections":""},"atenolol 25 mg tablet":{"route":"oral","form":"capsules/tablets","dosingFrequency":"on alternate days or less frequently","additionalDirections":"take with specific fluid"}}}) != "MRCI Score = 11.5":
         return "error."
 
-    if runFunction({"drugList":{"Erythropoietin":{"route":"ear,eye,nose","form":"eye gels, eye ointments","dosing frequency":"not specficied","additional directions":""},"sitaGLIPtin 50 mg-metformin 1,000 mg tablet":{"route":"oral","form":"capsules/tablets","dosing frequency":"on alternate days or less frequently","additional directions":"take with specific fluid"}}}) != "cannot calculate":
+    if execute({"drugList":{"Erythropoietin":{"route":"ear,eye,nose","form":"eye gels, eye ointments","dosingFrequency":"not specficied","additionalDirections":""},"sitaGLIPtin 50 mg-metformin 1,000 mg tablet":{"route":"oral","form":"capsules/tablets","dosingFrequency":"on alternate days or less frequently","additionalDirections":"take with specific fluid"}}}) != "cannot calculate":
         return "error."
 
-    if runFunction({"drugList":{"Erythropoietin":{"route":"inhalation","form":"chewable","dosing frequency":"","additional directions":""}}}) !=  "cannot calculate":
+    if execute({"drugList":{"Erythropoietin":{"route":"inhalation","form":"chewable","dosingFrequency":"","additionalDirections":""}}}) !=  "cannot calculate":
         return "error."
 
-    if runFunction({"drugList":{"Advil AM":{"route":"oral or nasal","form":"","dosing frequency":"","additional directions":""},"Advil PM":{"route":"oral","form":"","dosing frequency":"","additional directions":""}}}) != "cannot calculate":
+    if execute({"drugList":{"Advil AM":{"route":"oral or nasal","form":"","dosingFrequency":"","additionalDirections":""},"Advil PM":{"route":"oral","form":"","dosingFrequency":"","additionalDirections":""}}}) != "cannot calculate":
         return "error."
     return "ok."
 
 
-def runFunction(drugList):
+def execute(drugList):
     drugDict = drugList["drugList"]
-    
+
     total1 = CalculateDosageForm(drugDict)
     if total1 == "cannot calculate":
         return total1

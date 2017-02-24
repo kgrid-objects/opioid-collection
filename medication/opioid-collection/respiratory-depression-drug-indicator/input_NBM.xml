@@ -4,7 +4,7 @@
     <ot:noofparams>1</ot:noofparams>
     <ot:params>
       <rdf:Seq>
-        <rdf:li>rxcuisIn</rdf:li>
+        <rdf:li>rxcui</rdf:li>
       </rdf:Seq>
     </ot:params>
   </rdf:Description>

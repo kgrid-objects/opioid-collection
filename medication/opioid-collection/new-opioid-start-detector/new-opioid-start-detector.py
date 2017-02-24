@@ -10,16 +10,16 @@ def execute(inputs):
 
     opioidCheck = {}
     # get rx from visit a, and check if it is an opioid
-    rx = visit_A["rx"]
-    if rx == "":
-        return "rxCUI not provided"
-    opioidCheck["visit_A"] = opioidDetector(rx)
+    rxcui = visit_A["rxcui"]
+    if rxcui == "":
+        return "rxcui not provided"
+    opioidCheck["visit_A"] = opioidDetector(rxcui)
 
     # get rx from visit b, and check if it is an opioid. If it is in opioid, opioid detector returns 1
-    rx = visit_B["rx"]
-    if rx == "":
+    rxcui = visit_B["rxcui"]
+    if rxcui == "":
         return "rxCUI not provided"
-    opioidCheck["visit_B"] = opioidDetector(rx)
+    opioidCheck["visit_B"] = opioidDetector(rxcui)
 
     # compare dates a and dates b to see which visit was first
     date1 = visit_A["date"]
@@ -37,10 +37,10 @@ def execute(inputs):
 
 
 # checks if the rx is an opioid, if yes: return 1, if no: return 0
-def opioidDetector(rx):
+def opioidDetector(rxcui):
     # hard coded
     opioidList=["480","2670","235412","23088","4337","5489","221107","314667","3423","6378","6468","6754","6813","7052","7804","7814","32926","8785","73032","56795","787390","10689"]
-    if rx in opioidList:
+    if rxcui in opioidList:
         return 1
     else:
         return 0
@@ -91,16 +91,14 @@ def visitComparison(minDate,opioidCheck):
 
 
 def test():
-    if execute({"visitA":{"date":"2013/4/20","rx":"2670"},"visitB":{"date":"2013/3/31","rx":"10"}}) != "new opioid starter":
+    if execute({"visitA":{"date":"2013/4/20","rxcui":"2670"},"visitB":{"date":"2013/3/31","rxcui":"10"}}) != "new opioid starter":
         return "error."
-    if execute({"visitA":{"date":"2013/4/20","rx":"70"},"visitB":{"date":"2013/3/31","rx":"10"}}) != "not prescribed an opioid":
+    if execute({"visitA":{"date":"2013/4/20","rxcui":"70"},"visitB":{"date":"2013/3/31","rxcui":"10"}}) != "not prescribed an opioid":
         return "error."
-    if execute({"visitA":{"date":"2013/4/20","rx":"70"},"visitB":{"date":"2013/3/31","rx":"2670"}}) != "previously prescribed opioid":
+    if execute({"visitA":{"date":"2013/4/20","rxcui":"70"},"visitB":{"date":"2013/3/31","rxcui":"2670"}}) != "previously prescribed opioid":
         return "error."
-    if execute({"visitA":{"date":"","rx":"70"},"visitB":{"date":"","rx":"2670"}}) != "date information not provided":
+    if execute({"visitA":{"date":"","rxcui":"70"},"visitB":{"date":"","rxcui":"2670"}}) != "date information not provided":
         return "error."
-    if execute({"visitA":{"date":"2013/4/20","rx":"70"},"visitB":{"date":"2013/3/31","rx":""}}) != "rxCUI not provided":
+    if execute({"visitA":{"date":"2013/4/20","rxcui":"70"},"visitB":{"date":"2013/3/31","rxcui":""}}) != "rxCUI not provided":
         return "error."
     return "ok."
-
-#print test()

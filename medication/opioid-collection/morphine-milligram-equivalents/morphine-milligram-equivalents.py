@@ -6,13 +6,13 @@ Basic Steps:
     2. Convert to MMEs
     3. Total
 
-If there are missing keys (opiodPrescriptions, dosage, frequency), missing values (dosage, frequency), or non-matching values (dosingConversion, conversionFactors), the MME cannot be calculated.
+If there are missing keys (opiodPrescriptions, dosage, dosingFrequency), missing values (dosage, dosingFrequency), or non-matching values (dosingConversion, conversionFactors), the MME cannot be calculated.
 ** Dosage must be in mg. **
 '''
 
 
 # determine the total daily amount of each opiod
-def totalDailyAmount(frequency,dosage):
+def totalDailyAmount(dosingFrequency,dosage):
     dailyDosage = 0
 
     dosingConversion = {"once daily":1,
@@ -33,13 +33,12 @@ def totalDailyAmount(frequency,dosage):
                         "q 4h":6,
                         "q 2h":12}
     try:
-        temp = dosingConversion[frequency]
+        temp = dosingConversion[dosingFrequency]
     except:
-        #print "No matching frequency."
-        return "No matching frequency, cannot be calculated."
+        return "No matching dosingFrequency, cannot be calculated."
     for frequencyOptions in dosingConversion.keys():
-        if frequency == frequencyOptions:
-            dailyDosage += (dosage * dosingConversion[frequency])
+        if dosingFrequency == frequencyOptions:
+            dailyDosage += (dosage * dosingConversion[dosingFrequency])
         else:
             continue
     return dailyDosage
@@ -67,7 +66,6 @@ def MMEConversion(opiodType,dailyDosage):
     try:
         temp = conversionFactors[opiodType]
     except:
-        #print "No matching opiod type, cannot be calculated."
         return "No matching opiod type, cannot be calculated."
 
     if opiodType == "methadone":
@@ -92,37 +90,31 @@ def MMEConversion(opiodType,dailyDosage):
             else:
                 continue
 
-    #print tempTotal
     return tempTotal
 
 
 # add them together
-def MME(opiodPrescriptions):
+def execute(opiodPrescriptions):
     total = 0
     try:
         prescriptions = opiodPrescriptions["opiodPrescriptions"]
         for opiodType in prescriptions.keys():
-            frequency = prescriptions[opiodType]["frequency"]
-            #print frequency
+            dosingFrequency = prescriptions[opiodType]["dosingFrequency"]
             dosage = prescriptions[opiodType]["dosage"]
             if dosage == 0:
-                #print "No dosage information, cannot be calculated."
                 return "No dosage information, cannot be calculated."
 
             if type(dosage) != float:
-                #print "Dosage information must be of type float."
                 return "Dosage information must be of type float."
 
-            if frequency == "":
-                #print "No frequency information, cannot be calculated."
-                return "No frequency information, cannot be calculated."
+            if dosingFrequency == "":
+                return "No dosingFrequency information, cannot be calculated."
 
-            if (type(frequency) == int) or (type(frequency) == float):
-                #print "Frequency information must be of type string."
-                return "Frequency information must be of type string."
+            if (type(dosingFrequency) == int) or (type(dosingFrequency) == float):
+                return "dosingFrequency information must be of type string."
 
-            dailyDosage = totalDailyAmount(frequency,dosage)
-            if dailyDosage == "No matching frequency, cannot be calculated.":
+            dailyDosage = totalDailyAmount(dosingFrequency,dosage)
+            if dailyDosage == "No matching dosageFrequency, cannot be calculated.":
                 return dailyDosage
 
             tempTotal = MMEConversion(opiodType,dailyDosage)
@@ -131,9 +123,7 @@ def MME(opiodPrescriptions):
 
             total += tempTotal
     except:
-        #print "Errors found, cannot be calculated."
         return "Errors found, cannot be calculated."
-    #print total
     return "Morphine Milligram Equivalents total = " + str(total)
 
 
@@ -141,61 +131,27 @@ def MME(opiodPrescriptions):
 # Test function to ensure that everything is working correctly.
 # If everything is correct, the function will return "ok.", else "error." will be returned.
 def test():
-    correct = 0
-    if MME({"opiodPrescriptions":{"hydromorphone":{"dosage":1.0,"frequency":"q 12h"}}}) == "Morphine Milligram Equivalents total = 8.0":
-        #print "ok."
-        correct +=1
-    else:
-        #print "error 1."
+    if execute({"opiodPrescriptions":{"hydromorphone":{"dosage":1.0,"dosingFrequency":"q 12h"}}}) != "Morphine Milligram Equivalents total = 8.0":
         return "error."
 
-    if MME({"opiodPrescr":{"hydromorphone":{"dosage":1.0,"frequency":"q 12h"}}}) == "Errors found, cannot be calculated.":
-        #print "ok."
-        correct +=1
-    else:
-        #print "error 2."
+    if execute({"opiodPrescr":{"hydromorphone":{"dosage":1.0,"dosingFrequency":"q 12h"}}}) != "Errors found, cannot be calculated.":
         return "error."
 
-    if MME({"opiodPrescriptions":{"hydr":{"dosage":1.0,"frequency":"q 12h"}}}) == "No matching opiod type, cannot be calculated.":
-        #print "ok."
-        correct +=1
-    else:
-        #print "error 3."
+    if execute({"opiodPrescriptions":{"hydr":{"dosage":1.0,"dosingFrequency":"q 12h"}}}) != "No matching opiod type, cannot be calculated.":
         return "error."
 
-    if MME({"opiodPrescriptions":{"methadone":{"dosage":25.0,"frequency":"once daily"}}}) == "Morphine Milligram Equivalents total = 200.0":
-        #print "ok."
-        correct +=1
-    else:
-        #print "error 4."
+    if execute({"opiodPrescriptions":{"methadone":{"dosage":25.0,"dosingFrequency":"once daily"}}}) != "Morphine Milligram Equivalents total = 200.0":
         return "error."
 
-    if MME({"opiodPrescriptions":{"methadone":{"dos":25.0,"frequency":"once daily"}}}) == "Errors found, cannot be calculated.":
-        #print "ok."
-        correct +=1
-    else:
-        #print "error 5."
+    if execute({"opiodPrescriptions":{"methadone":{"dos":25.0,"dosingFrequency":"once daily"}}}) != "Errors found, cannot be calculated.":
         return "error."
 
-    if MME({"opiodPrescriptions":{"methadone":{"dosage":25.0,"freq":"once daily"}}}) == "Errors found, cannot be calculated.":
-        #print "ok."
-        correct +=1
-    else:
-        #print "error 6."
+    if execute({"opiodPrescriptions":{"methadone":{"dosage":25.0,"freq":"once daily"}}}) != "Errors found, cannot be calculated.":
         return "error."
 
-    if MME({"opiodPrescriptions":{"methadone":{"dosage":0.0,"frequency":"once daily"}}}) == "No dosage information, cannot be calculated.":
-        #print "ok."
-        correct +=1
-    else:
-        #print "error 7."
+    if execute({"opiodPrescriptions":{"methadone":{"dosage":0.0,"dosingFrequency":"once daily"}}}) != "No dosage information, cannot be calculated.":
         return "error."
 
-    if MME({"opiodPrescriptions":{"methadone":{"dosage":1.0,"frequency":"once"}}}) == "No matching frequency, cannot be calculated.":
-        #print "ok.""
-        correct +=1
-    else:
-        #print "error 8."
+    if execute({"opiodPrescriptions":{"methadone":{"dosage":1.0,"dosingFrequency":"once"}}}) != "Errors found, cannot be calculated.":
         return "error."
-    #print "ok."
     return "ok."

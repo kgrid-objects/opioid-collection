@@ -3,7 +3,7 @@ Per-day Morphine Milligram Equivalents (equianalgesia) for non-morphine opioid p
 Created: December 14, 2016
 
 ### Description
-This KO takes in a prescription (opiod, dosage, and frequency), and outputs the MME.
+This KO takes in a prescription (opiod, dosage, and dosingFrequency), and outputs the MME.
 
 ### Running
 Basic Steps:
@@ -11,18 +11,18 @@ Basic Steps:
     2. Convert to MMEs
     3. Total
 
-To run the KO, call MME(opiodPrescriptions).
+To run the KO, call execute(opiodPrescriptions).
 
-The input must be formatted as follows, where opiodPrescriptions, dosage, and frequency represent keys that cannot be changed. Dosage is type float, and frequency is type string.
+The input must be formatted as follows, where opiodPrescriptions, dosage, and dosingFrequency represent keys that cannot be changed. Dosage is type float, and dosingFrequency is type string.
 
   {"opiodPrescriptions":
   	{"opiodType":
   		{"dosage":0.0,
-  		"frequency":""}
+  		"dosingFrequency":""}
   	}
   }
 
-If there are missing keys (opiodPrescriptions, dosage, frequency), missing values (dosage, frequency), or non-matching values (dosingConversion, conversionFactors), the MME cannot be calculated and will return an error message.
+If there are missing keys (opiodPrescriptions, dosage, dosingFrequency), missing values (dosage, dosingFrequency), or non-matching values (dosingConversion, conversionFactors), the MME cannot be calculated and will return an error message.
 ** Dosage must be in mg. **
 
 ### Getting started
@@ -30,7 +30,7 @@ We have included a test() function that should be ran prior to beginning. To run
 
 1. python2
 2. import morphine-milligram-equivalents
-3. morphine-milligram-equivalents.MME({"opiodPrescriptions":{"opiodType":{"dosage":0.0,"frequency":""}}})
+3. morphine-milligram-equivalents.execute({"opiodPrescriptions":{"opiodType":{"dosage":0.0,"dosingFrequency":""}}})
 
 ### Running through SHELF REST API...
 To run through SHELF REST API, the knowledge object needs to be added to ObjectTeller and to the REST API SHELF before its executable.

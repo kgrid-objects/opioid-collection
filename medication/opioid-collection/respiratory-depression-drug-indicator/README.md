@@ -12,9 +12,9 @@ Identify regimens where the risk of harm from respiratory depression is real.
 Prior to running the script, run test() to make sure calculations are working correctly.
 
 To run this object, use scanForRespiratoryDepressionMedications(). Input should be formatted as the following, with spaces between each drug ID the patient is taking.
- 	{"rxcuisIn":" Id Id Id etc.."}.
+ 	{"rxcui":" Id Id Id etc.."}.
 
-"rxcuisIn" is a coded key that should not be changed.
+"rxcui" is a coded key that should not be changed.
 
 The object uses a reference list of drug IDs associated with opioids, benzodiazepine, and muscle relaxant. The reference list is available from rxnav.nlm.nih.gov (https://rxnav.nlm.nih.gov/REST/rxclass/). The list can be pre-generated from that URL. To run the API, import requests and re, and run makeListOfRxCUIs(classID).
 
@@ -22,7 +22,7 @@ The object uses a reference list of drug IDs associated with opioids, benzodiaze
   To run program from terminal, go to terminal and cd into directory where the python file is located. Enter the following:
   1. python
   2. import NBM
-  3. NBM.scanForRespiratoryDepressionMedications({"rxcuisIn":"Id Id Id"})
+  3. NBM.scanForRespiratoryDepressionMedications({"rxcui":"Id Id Id"})
 
 ### Running through SHELF REST API...
 To run through SHELF REST API, the knowledge object needs to be added to ObjectTeller and to the REST API SHELF before its executable.

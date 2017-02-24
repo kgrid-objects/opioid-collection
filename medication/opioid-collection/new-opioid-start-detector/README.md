@@ -10,16 +10,16 @@ This object takes in a two visit summaries (e.g. admit and discharge summary), a
 Prior to running the script, run the function test() to make sure calculations are working correctly.
 
 To run this object, execute the function execute(). Input should be formatted as the following:
-  execute({"visitA":{"date":"2/4/20","rx":"70"},"visitB":{"date":"2013/3/31","rx":"790"}})
+  execute({"visitA":{"date":"2/4/20","rxcui":"70"},"visitB":{"date":"2013/3/31","rxcui":"790"}})
 
-"visitA", "visitB", "date" and "rx" are key words the program searches for. Therefore, these coded strings should not be altered. date must be formatted as YYYY/MM/DD. To check if the rxCUI is an opioid, we have hardcoded a list of opioid rxCUI's and compare the inputs to that list.
+"visitA", "visitB", "date" and "rxcui" are key words the program searches for. Therefore, these coded strings should not be altered. date must be formatted as YYYY/MM/DD. To check if the rxCUI is an opioid, we have hardcoded a list of opioid rxCUI's and compare the inputs to that list.
 
 
 ### Getting started...
   To run program from terminal, go to terminal and cd into the directory where the python file is located. Enter the following:
   1. python
   2. import new-opioid-start-detector.py
-  3. new-opioid-start-detector.execute({"visitA":{"date":"2/4/20","rx":"70"},"visitB":{"date":"2013/3/31","rx":"790"}})
+  3. new-opioid-start-detector.execute({"visitA":{"date":"2/4/20","rxcui":"70"},"visitB":{"date":"2013/3/31","rxcui":"790"}})
 
 ### Running through SHELF REST API...
   To run through SHELF REST API, the knowledge object needs to be added to ObjectTeller and to the REST API SHELF before its executable.

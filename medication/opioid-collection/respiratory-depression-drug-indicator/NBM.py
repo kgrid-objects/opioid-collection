@@ -31,9 +31,9 @@ def muscleRelaxantCheck(n,muscleRelaxantList): # Check if an RxCUI indicates a m
 
 # execution sequence begins here
 
-def scanForRespiratoryDepressionMedications(info):
+def execute(info):
     # breaking input dictionary into list on spaces
-    rxcuistring = info.get("rxcuisIn")
+    rxcuistring = info.get("rxcui")
     rxcuistring
     rxcuis=rxcuistring.split()
 
@@ -74,27 +74,14 @@ def scanForRespiratoryDepressionMedications(info):
 
 # Test function to see if program is working correctly.
 def test():
-    if scanForRespiratoryDepressionMedications({"rxcuisIn":"480 2101 10767"}) == "Opioid? True Benzodiazepine? True Muscle Relaxant? True":
-        print "ok."
-    else:
-        print "error."
-
-    if scanForRespiratoryDepressionMedications({"rxcuisIn":"830861 2101 10767"}) == "Opioid? False Benzodiazepine? True Muscle Relaxant? True":
-        print "ok."
-    else:
-        print "error."
-
-    if scanForRespiratoryDepressionMedications({"rxcuisIn":"830861 1099870 966443"}) == "Opioid? False Benzodiazepine? False Muscle Relaxant? False":
-        print "ok."
-    else:
-        print "error."
-
-    if scanForRespiratoryDepressionMedications({"rxcuisIn":"480 2101 1099870"}) == "Opioid? True Benzodiazepine? False Muscle Relaxant? True":
-        print "ok."
-    else:
-        print "error."
-
-    if scanForRespiratoryDepressionMedications({"rxcuisIn":""}) == "Opioid? False Benzodiazepine? False Muscle Relaxant? False":
-        print "ok."
-    else:
-        print "error."
+    if execute({"rxcui":"480 2101 10767"}) != "Opioid? True Benzodiazepine? True Muscle Relaxant? True":
+        return "error."
+    if execute({"rxcui":"830861 2101 10767"}) != "Opioid? False Benzodiazepine? True Muscle Relaxant? True":
+        return "error."
+    if execute({"rxcui":"830861 1099870 966443"}) != "Opioid? False Benzodiazepine? False Muscle Relaxant? False":
+        return "error."
+    if execute({"rxcui":"480 2101 1099870"}) != "Opioid? True Benzodiazepine? False Muscle Relaxant? True":
+        return "error."
+    if execute({"rxcui":""}) != "Opioid? False Benzodiazepine? False Muscle Relaxant? False":
+        return "error."
+    return "ok."

@@ -16,14 +16,14 @@ To identify medication regimens that have a high complexity.
 ### Running Locally...
 Prior to running the script, run test() to make sure calculations are working correctly.
 
-To run this object, use runFunction(). Input should be formatted as the following:
+To run this object, use execute(). Input should be formatted as the following:
   {"drugList":
-      {"drug name":
-          {"route":"X","form":"X","dosing frequency":"X","additional directions":"X"}
+      {"medication":
+          {"route":"X","form":"X","dosingFrequency":"X","additionalDirections":"X"}
           }
         }
     }
-"drug name" and "X" can be altered to the corresponding information, but "drugList", "route", "form, "dosing frequency", and "additional directions" are key words the program searches for. Therefore, these coded strings should not be altered.
+"medication" and "X" can be altered to the corresponding information, but "drugList", "route", "form, "dosingFrequency", and "additionalDirections" are key words the program searches for. Therefore, these coded strings should not be altered.
 
 The following options can be specified for each coded variable. The options are taken directly from Appendix II of the paper, "Medication Regiment Complexity Index (MRCI)". If the input entered is not one of the options, "cannot calculate" will be returned.
 
@@ -71,7 +71,7 @@ The following options can be specified for each coded variable. The options are 
       - patient controlled analgesia
       - suppositories
       - vaginal cream
-3. dosing frequency
+3. dosingFrequency
   - once daily
   - once daily prn
   - twice daily
@@ -95,7 +95,7 @@ The following options can be specified for each coded variable. The options are 
   - oxygen prn
   - oxygen<15hrs
   - oxygen>15 hrs
-4. additional directions
+4. additionalDirections
   - break or crush tablet
   - dissolve tablet/powder
   - multiple units at one time
@@ -112,7 +112,7 @@ The following options can be specified for each coded variable. The options are 
   To run program from terminal, go to terminal and cd into the directory where the python file is located. Enter the following:
   1. python
   2. import MRCI
-  3. MRCI.runFunction({"drug name":{"route":"","form":"","dosing frequency":"","additional directions":""}})
+  3. MRCI.execute({"medication":{"route":"","form":"","dosingFrequency":"","additionalDirections":""}})
 
 ### Running through SHELF REST API...
   To run through SHELF REST API, the knowledge object needs to be added to ObjectTeller and to the REST API SHELF before its executable.
