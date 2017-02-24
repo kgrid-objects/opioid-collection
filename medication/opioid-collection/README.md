@@ -1,7 +1,7 @@
 # MiHIN Transition of Care Objects: Medication, Opioid
 This Opioid collection was created to allow for opioid screening across the MiHIN network.
 
-The collection currently consists of the following 3 knowledge objects:
+The collection currently consists of the following 4 knowledge objects:
 
 1. Medication Regimen Complexity Indicator (MRCI)
   - Input: map of prescribed drugs (drug name, route, form, dosing frequency and additional directions) (e.g. {"drugList":{"atenolol 25 mg tablet":{"route":"oral","form":"capsules/tablets","dosing frequency":"on alternate days or less frequently","additional directions":"take with specific fluid"}}})
@@ -17,3 +17,8 @@ The collection currently consists of the following 3 knowledge objects:
   - Input: map of opioid prescriptions (drug name, dosage and frequency) (e.g. {"opiodPrescriptions":{"methadone":{"dosage":25.0,"frequency":"once daily"}}})
   - Output: MME (e.g. "Morphine Milligram Equivalents total = 200.0")
   - ArkID - ark:/99999/fk4c25559n
+ 
+4. New Opioid Start Detector
+  - Input: date and rxCUI parameters from 2 visit summaries (e.g. {"visitA":{"date":"2/4/20","rx":"70"},"visitB":{"date":"2013/3/31","rx":"790"}})
+  - Output: "new opioid starter", "not prescribed an opioid", or "previously prescribed opioid"
+  - ArkID - ark:/99999/fk43b69v25
