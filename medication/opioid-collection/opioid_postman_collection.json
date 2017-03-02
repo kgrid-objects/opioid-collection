@@ -1,39 +1,22 @@
 {
-	"id": "b7b9f928-2268-9261-4d61-f2f75e217ab5",
-	"name": "MiHIN: Respiratory Depression & MRCI",
+	"id": "e89ef3b2-d7b6-3ab8-5bed-353f668885dd",
+	"name": "MiHIN: Respiratory Depression & MRCI copy",
 	"description": "",
 	"order": [
-		"4c848c34-1900-e112-8aa1-a4779419434a",
-		"78755673-ade4-87cf-659a-67e88a6ad89d",
-		"d747259f-17c1-945b-ecb3-3e8be6fb0eba",
-		"5ce0f091-d055-4bd0-1d24-7080e863aeaa",
-		"5338c96b-db5c-3566-6989-b9e1dd3669a6"
+		"4b89b848-f4f8-fd7a-81a3-b4b9cc32ca22",
+		"4ea573e6-0e47-7077-3eae-957f5b84ee42",
+		"4a51c501-1072-a5c2-a07d-a6170d41c6cf",
+		"8990365e-d251-a487-c158-a05021c1c0a0",
+		"155556f7-37bc-44db-fa24-bc705133739f"
 	],
 	"folders": [],
 	"timestamp": 1480689726982,
 	"owner": "1316650",
 	"public": false,
+	"hasRequests": true,
 	"requests": [
 		{
-			"id": "4c848c34-1900-e112-8aa1-a4779419434a",
-			"headers": "",
-			"url": "http://dlhs-fedora-dev-a.umms.med.umich.edu:8080/ExecutionStack/shelf/ark:/67034/k43k5p",
-			"preRequestScript": null,
-			"pathVariables": {},
-			"method": "PUT",
-			"data": null,
-			"dataMode": "params",
-			"version": 2,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1480694178644,
-			"name": "http://dlhs-fedora-dev-a.umms.med.umich.edu:8080/ExecutionStack/shelf/ark:/67034/k43k5p",
-			"description": "",
-			"collectionId": "b7b9f928-2268-9261-4d61-f2f75e217ab5"
-		},
-		{
-			"id": "5338c96b-db5c-3566-6989-b9e1dd3669a6",
+			"id": "155556f7-37bc-44db-fa24-bc705133739f",
 			"headers": "Accept: application/json\nContent-Type: application/json\n",
 			"url": "http://dlhs-fedora-dev-a.umms.med.umich.edu:8080/ExecutionStack/knowledgeObject/ark:/67034/k4zw2d/result",
 			"preRequestScript": null,
@@ -45,10 +28,10 @@
 			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\ntests[\"Body matches string\"] = responseBody.has(\"MRCI Score = 13\");",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1481300027493,
+			"time": 1488475313259,
 			"name": "http://dlhs-fedora-dev-a.umms.med.umich.edu:8080/ExecutionStack/knowledgeObject/ark:/67034/k4zw2d/result",
 			"description": "",
-			"collectionId": "b7b9f928-2268-9261-4d61-f2f75e217ab5",
+			"collectionId": "e89ef3b2-d7b6-3ab8-5bed-353f668885dd",
 			"responses": [
 				{
 					"status": "",
@@ -111,7 +94,7 @@
 					"state": {
 						"size": "normal"
 					},
-					"id": "4b4faa20-96d6-3fd2-3680-c1e6c7f488e4",
+					"id": "6582d868-6a52-64b4-26d3-80b03c22127c",
 					"name": "MRCI_Response",
 					"request": {
 						"url": "http://dlhs-fedora-dev-a.umms.med.umich.edu:8080/ExecutionStack/knowledgeObject/ark:/67034/k4zw2d/result",
@@ -133,13 +116,68 @@
 						"data": "{\"drugList\":\n\t{\"lisinopril 40 mg tablet\":{\"route\":\"oral\",\"form\":\"capsules/tablets\",\"dosing frequency\":\"twice daily\",\"additional directions\":\"\"},\n\t\"metroprolol tartrate 100 mg tablet\":{\"route\":\"oral\",\"form\":\"capsules/tablets\", \"dosing frequency\":\"twice daily\",\"additional directions\":\"break or crush tablet\"},\n\t\"amLODIPine 10 mg tablet\":{\"route\":\"oral\",\"form\":\"capsules/tablets\",\"dosing frequency\":\"once daily\",\"additional directions\":\"\"},\n\t\"levothyroxine 75 mcg capsule\":{\"route\":\"oral\",\"form\":\"capsules/tablets\",\"dosing frequency\":\"once daily\",\"additional directions\":\"alternating dose\"}\n\t}\n}",
 						"method": "POST",
 						"dataMode": "raw"
-					}
+					},
+					"owner": "1316650"
 				}
 			],
-			"rawModeData": "{\"drugList\":\n\t{\"lisinopril 40 mg tablet\":{\"route\":\"oral\",\"form\":\"capsules/tablets\",\"dosing frequency\":\"twice daily\",\"additional directions\":\"\"},\n\t\"metroprolol tartrate 100 mg tablet\":{\"route\":\"oral\",\"form\":\"capsules/tablets\", \"dosing frequency\":\"twice daily\",\"additional directions\":\"break or crush tablet\"},\n\t\"amLODIPine 10 mg tablet\":{\"route\":\"oral\",\"form\":\"capsules/tablets\",\"dosing frequency\":\"once daily\",\"additional directions\":\"\"},\n\t\"levothyroxine 75 mcg capsule\":{\"route\":\"oral\",\"form\":\"capsules/tablets\",\"dosing frequency\":\"once daily\",\"additional directions\":\"alternating dose\"}\n\t}\n}"
+			"rawModeData": "{\"drugList\":\n\t{\"lisinopril 40 mg tablet\":{\"route\":\"oral\",\"form\":\"capsules/tablets\",\"dosingFrequency\":\"twice daily\",\"additionalDirections\":\"\"},\n\t\"metroprolol tartrate 100 mg tablet\":{\"route\":\"oral\",\"form\":\"capsules/tablets\", \"dosingFrequency\":\"twice daily\",\"additionalDirections\":\"break or crush tablet\"},\n\t\"amLODIPine 10 mg tablet\":{\"route\":\"oral\",\"form\":\"capsules/tablets\",\"dosingFrequency\":\"once daily\",\"additionalDirections\":\"\"},\n\t\"levothyroxine 75 mcg capsule\":{\"route\":\"oral\",\"form\":\"capsules/tablets\",\"dosingFrequency\":\"once daily\",\"additionalDirections\":\"alternating dose\"}\n\t}\n}"
 		},
 		{
-			"id": "5ce0f091-d055-4bd0-1d24-7080e863aeaa",
+			"id": "4a51c501-1072-a5c2-a07d-a6170d41c6cf",
+			"headers": "",
+			"url": "http://dlhs-fedora-dev-a.umms.med.umich.edu:8080/ExecutionStack/shelf",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1480694188457,
+			"name": "http://dlhs-fedora-dev-a.umms.med.umich.edu:8080/ExecutionStack/shelf",
+			"description": "",
+			"collectionId": "e89ef3b2-d7b6-3ab8-5bed-353f668885dd"
+		},
+		{
+			"id": "4b89b848-f4f8-fd7a-81a3-b4b9cc32ca22",
+			"headers": "",
+			"url": "http://dlhs-fedora-dev-a.umms.med.umich.edu:8080/ExecutionStack/shelf/ark:/67034/k43k5p",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "PUT",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1480694178644,
+			"name": "http://dlhs-fedora-dev-a.umms.med.umich.edu:8080/ExecutionStack/shelf/ark:/67034/k43k5p",
+			"description": "",
+			"collectionId": "e89ef3b2-d7b6-3ab8-5bed-353f668885dd"
+		},
+		{
+			"id": "4ea573e6-0e47-7077-3eae-957f5b84ee42",
+			"headers": "",
+			"url": "http://dlhs-fedora-dev-a.umms.med.umich.edu:8080/ExecutionStack/shelf/ark:/67034/k4zw2d",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "PUT",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1480694182866,
+			"name": "http://dlhs-fedora-dev-a.umms.med.umich.edu:8080/ExecutionStack/shelf/ark:/67034/k4zw2d",
+			"description": "",
+			"collectionId": "e89ef3b2-d7b6-3ab8-5bed-353f668885dd"
+		},
+		{
+			"id": "8990365e-d251-a487-c158-a05021c1c0a0",
 			"headers": "Accept: application/json\nContent-Type: application/json\n",
 			"url": "http://dlhs-fedora-dev-a.umms.med.umich.edu:8080/ExecutionStack/knowledgeObject/ark:/67034/k43k5p/result",
 			"preRequestScript": null,
@@ -151,10 +189,10 @@
 			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\ntests[\"Body matches string\"] = responseBody.has(\"Opioid? True Benzodiazepine? True Muscle Relaxant? True\");",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1481296643473,
+			"time": 1488475380859,
 			"name": "http://dlhs-fedora-dev-a.umms.med.umich.edu:8080/ExecutionStack/knowledgeObject/ark:/67034/k43k5p/result",
 			"description": "",
-			"collectionId": "b7b9f928-2268-9261-4d61-f2f75e217ab5",
+			"collectionId": "e89ef3b2-d7b6-3ab8-5bed-353f668885dd",
 			"responses": [
 				{
 					"status": "",
@@ -217,7 +255,7 @@
 					"state": {
 						"size": "normal"
 					},
-					"id": "39d3561b-c5bb-53b9-864e-66b5ecdc0df8",
+					"id": "8c9e258a-5ffa-0300-bac4-b30ec8dbe9e6",
 					"name": "NBM_Response",
 					"request": {
 						"url": "http://dlhs-fedora-dev-a.umms.med.umich.edu:8080/ExecutionStack/knowledgeObject/ark:/67034/k43k5p/result",
@@ -239,46 +277,11 @@
 						"data": "{\"rxcuisIn\":\n\t\"830861 1099870 966443\"\n\t}",
 						"method": "POST",
 						"dataMode": "raw"
-					}
+					},
+					"owner": "1316650"
 				}
 			],
-			"rawModeData": "{\"rxcuisIn\":\"480 2101 10767\"}"
-		},
-		{
-			"id": "78755673-ade4-87cf-659a-67e88a6ad89d",
-			"headers": "",
-			"url": "http://dlhs-fedora-dev-a.umms.med.umich.edu:8080/ExecutionStack/shelf/ark:/67034/k4zw2d",
-			"preRequestScript": null,
-			"pathVariables": {},
-			"method": "PUT",
-			"data": null,
-			"dataMode": "params",
-			"version": 2,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1480694182866,
-			"name": "http://dlhs-fedora-dev-a.umms.med.umich.edu:8080/ExecutionStack/shelf/ark:/67034/k4zw2d",
-			"description": "",
-			"collectionId": "b7b9f928-2268-9261-4d61-f2f75e217ab5"
-		},
-		{
-			"id": "d747259f-17c1-945b-ecb3-3e8be6fb0eba",
-			"headers": "",
-			"url": "http://dlhs-fedora-dev-a.umms.med.umich.edu:8080/ExecutionStack/shelf",
-			"preRequestScript": null,
-			"pathVariables": {},
-			"method": "GET",
-			"data": null,
-			"dataMode": "params",
-			"version": 2,
-			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1480694188457,
-			"name": "http://dlhs-fedora-dev-a.umms.med.umich.edu:8080/ExecutionStack/shelf",
-			"description": "",
-			"collectionId": "b7b9f928-2268-9261-4d61-f2f75e217ab5"
+			"rawModeData": "{\"rxcui\":\"480 2101 10767\"}"
 		}
 	]
 }
