@@ -1,0 +1,102 @@
+{
+  "relatedGroup": {
+    "rxcui": "480",
+    "termType": [
+      "SCD",
+      "SBD"
+    ],
+    "conceptGroup": [
+      {
+        "tty": "SBD",
+        "conceptProperties": [
+          {
+            "rxcui": "1723218",
+            "name": "5 ML Alfentanil 0.5 MG/ML Injection [Alfenta]",
+            "synonym": "5 ML Alfenta 0.5 MG/ML Injection",
+            "tty": "SBD",
+            "language": "ENG",
+            "suppress": "N",
+            "umlscui": "C4059415"
+          },
+          {
+            "rxcui": "1723220",
+            "name": "2 ML Alfentanil 0.5 MG/ML Injection [Alfenta]",
+            "synonym": "2 ML Alfenta 0.5 MG/ML Injection",
+            "tty": "SBD",
+            "language": "ENG",
+            "suppress": "N",
+            "umlscui": "C4059414"
+          },
+          {
+            "rxcui": "1723221",
+            "name": "10 ML Alfentanil 0.5 MG/ML Injection [Alfenta]",
+            "synonym": "10 ML Alfenta 0.5 MG/ML Injection",
+            "tty": "SBD",
+            "language": "ENG",
+            "suppress": "N",
+            "umlscui": "C4059911"
+          },
+          {
+            "rxcui": "1723222",
+            "name": "20 ML Alfentanil 0.5 MG/ML Injection [Alfenta]",
+            "synonym": "20 ML Alfenta 0.5 MG/ML Injection",
+            "tty": "SBD",
+            "language": "ENG",
+            "suppress": "N",
+            "umlscui": "C4059910"
+          }
+        ]
+      },
+      {
+        "tty": "SCD",
+        "conceptProperties": [
+          {
+            "rxcui": "1723206",
+            "name": "2 ML Alfentanil 0.5 MG/ML Injection",
+            "synonym": "alfentanil (as alfentanil HCl) 500 MCG/ML in 2 ML Injection",
+            "tty": "SCD",
+            "language": "ENG",
+            "suppress": "N",
+            "umlscui": "C4048673"
+          },
+          {
+            "rxcui": "1723208",
+            "name": "10 ML Alfentanil 0.5 MG/ML Injection",
+            "synonym": "alfentanil (as alfentanil HCl) 500 MCG/ML in 10 ML Injection",
+            "tty": "SCD",
+            "language": "ENG",
+            "suppress": "N",
+            "umlscui": "C4048672"
+          },
+          {
+            "rxcui": "1723209",
+            "name": "20 ML Alfentanil 0.5 MG/ML Injection",
+            "synonym": "alfentanil (as alfentanil HCl) 500 MCG/ML in 20 ML Injection",
+            "tty": "SCD",
+            "language": "ENG",
+            "suppress": "N",
+            "umlscui": "C4059912"
+          },
+          {
+            "rxcui": "1723210",
+            "name": "5 ML Alfentanil 0.5 MG/ML Injection",
+            "synonym": "alfentanil (as alfentanil HCl) 500 MCG/ML in 5 ML Injection",
+            "tty": "SCD",
+            "language": "ENG",
+            "suppress": "N",
+            "umlscui": "C4059134"
+          },
+          {
+            "rxcui": "106500",
+            "name": "Alfentanil 5 MG/ML Injectable Solution",
+            "synonym": "",
+            "tty": "SCD",
+            "language": "ENG",
+            "suppress": "N",
+            "umlscui": "C0358392"
+          }
+        ]
+      }
+    ]
+  }
+}
