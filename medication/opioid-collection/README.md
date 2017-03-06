@@ -1,7 +1,7 @@
 # MiHIN Transition of Care Objects: Medication, Opioid
 This Opioid collection was created to allow for opioid screening across the MiHIN network.
 
-The collection currently consists of the following 4 knowledge objects:
+The collection currently consists of the following 5 knowledge objects. For the demo on March 30th, the knowledge objects that will be showcased are Medication Regimen Complexity Indicator (MRCI), Respiratory Depression Indicator (Triple Threat) and Opioid User Detector.
 
 1. Medication Regimen Complexity Indicator (MRCI)
   - Input: map of prescribed drugs (drug name, route, form, dosing frequency and additional directions) (e.g. {"drugList":{"atenolol 25 mg tablet":{"route":"oral","form":"capsules/tablets","dosingFrequency":"on alternate days or less frequently","additionalDirections":"take with specific fluid"}}})
@@ -22,3 +22,12 @@ The collection currently consists of the following 4 knowledge objects:
   - Input: date and rxCUI parameters from 2 visit summaries (e.g. {"visitA":{"date":"2/4/20","rxcui":"70"},"visitB":{"date":"2013/3/31","rxcui":"790"}})
   - Output: "new opioid starter", "not prescribed an opioid", or "previously prescribed opioid"
   - ArkID - ark:/99999/fk43b69v25
+
+5. Opioid User Detector
+  - Input: dictionary of rxCUIs with a space delimiter (e.g. {"rxcui":"480 2101 10767"})
+  - Output: True/False presence of an opioid (e.g. "Opioid? True")
+  - ArkID - ark:/99999/fk4vx0mr08
+  
+Within each knowledge object repository, we have included the python code, an input RDF, an output RDF, a README, and the clinical documentation where the knowledge was extracted from. The README contains important metadata, along with information on how to execute the object locally and how to execute the object using REST API. 
+
+We have created a collection of all of the knowledge objects that can be found in the following file: transition_of_care_objects.postman_collection.json. The transition of care collection contains a list of commands for all knowledge objects, including a PUT(ADD/UPDATE) command and a POST command for each one. Each knowledge object also has a set of execution test functions that can be found in the transition of care collection, along with a sample development environment (SampleDev.postman_env.json). Both the environment and collection can be directly imported to a REST API client; we use postman.
