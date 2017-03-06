@@ -19,14 +19,11 @@ def CalculateDosageForm(drugDict):
                 elif dosageForm == "":
                     break
                 elif (count == (len((dosingFormScores[route]).keys()))):
-                    #print "** INVALID DOSAGE FORM **"
                     return "cannot calculate"
                 else:
                     continue
         else:
-            #print "** INVALID ROUTE TYPE **"
             return "cannot calculate"
-    #print "Total = " + str(total)
     return total
 
 # Calculates Appendix II. Medication Regimen Complexity Index (MRCI): B
@@ -61,7 +58,6 @@ def CalculateAddDirect(drugDict):
     # Taking # of drugs per additional direction and multiplying by weight
     total = WeightDrugs(AddDirectWeight,MedsPerAddDirect)
 
-    #print "Complextiy Score = " + str(complexityScore)
     return total
 
 
@@ -77,7 +73,6 @@ def TallyDrugs(drugDict,attribute,tallyDict):
             elif attributeValue == "":
                 break
             elif (count == len(tallyDict.keys())):
-                #print "** INVALID " + str(attribute.upper()) + " TYPE **"
                 return "cannot calculate"
             else:
                 continue
@@ -102,19 +97,14 @@ def WeightDrugs(weightDict,tallyDict):
 def test():
     if execute({"drugList":{"lisinopril 40 mg tablet":{"route":"oral","form":"capsules/tablets","dosingFrequency":"twice daily","additionalDirections":""},"metroprolol tartrate 100 mg tablet":{"route":"oral","form":"capsules/tablets", "dosingFrequency":"twice daily","additionalDirections":"break or crush tablet"},"amLODIPine 10 mg tablet":{"route":"oral","form":"capsules/tablets","dosingFrequency":"once daily","additionalDirections":""},"levothyroxine 75 mcg capsule":{"route":"oral","form":"capsules/tablets","dosingFrequency":"once daily","additionalDirections":"alternating dose"}}}) != "MRCI Score = 13":
         return "error."
-
     if execute({"drugList":{"colchicine 0.l6mg tablet":{"route":"oral","form":"capsules/tablets","dosingFrequency":"twice daily","additionalDirections":""},"ferrous sulfate 324 mg":{"route":"oral","form":"capsules/tablets","dosingFrequency":"on alternate days or less frequently","additionalDirections":"relation to food"}}}) != "MRCI Score = 7":
         return "error."
-
     if execute({"drugList":{"Erythropoietin":{"route":"others","form":"dialysate","dosingFrequency":"q 12h","additionalDirections":""},"atenolol 25 mg tablet":{"route":"oral","form":"capsules/tablets","dosingFrequency":"on alternate days or less frequently","additionalDirections":"take with specific fluid"}}}) != "MRCI Score = 11.5":
         return "error."
-
     if execute({"drugList":{"Erythropoietin":{"route":"ear,eye,nose","form":"eye gels, eye ointments","dosingFrequency":"not specficied","additionalDirections":""},"sitaGLIPtin 50 mg-metformin 1,000 mg tablet":{"route":"oral","form":"capsules/tablets","dosingFrequency":"on alternate days or less frequently","additionalDirections":"take with specific fluid"}}}) != "cannot calculate":
         return "error."
-
     if execute({"drugList":{"Erythropoietin":{"route":"inhalation","form":"chewable","dosingFrequency":"","additionalDirections":""}}}) !=  "cannot calculate":
         return "error."
-
     if execute({"drugList":{"Advil AM":{"route":"oral or nasal","form":"","dosingFrequency":"","additionalDirections":""},"Advil PM":{"route":"oral","form":"","dosingFrequency":"","additionalDirections":""}}}) != "cannot calculate":
         return "error."
     return "ok."

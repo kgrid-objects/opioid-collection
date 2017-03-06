@@ -8,7 +8,7 @@
       </rdf:Seq>
     </ot:params>
   </rdf:Description>
-  <rdf:Description rdf:about="http://uofm.org/objectteller/param/">
+  <rdf:Description rdf:about="http://uofm.org/objectteller/drugList/">
     <ot:datatype>LIST</ot:datatype>
   </rdf:Description>
 </rdf:RDF>
