@@ -9,6 +9,6 @@
     </ot:params>
   </rdf:Description>
   <rdf:Description rdf:about="http://uofm.org/objectteller/drugList/">
-    <ot:datatype>LIST</ot:datatype>
+    <ot:datatype>MAP</ot:datatype>
   </rdf:Description>
 </rdf:RDF>

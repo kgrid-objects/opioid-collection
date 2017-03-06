@@ -25,11 +25,11 @@ To run this object, use execute(). Input should be formatted as the following:
     }
 "medication" and "X" can be altered to the corresponding information, but "drugList", "route", "form, "dosingFrequency", and "additionalDirections" are key words the program searches for. Therefore, these coded strings should not be altered.
 
-The following options can be specified for each coded variable. The options are taken directly from Appendix II of the paper, "Medication Regiment Complexity Index (MRCI)". If the input entered is not one of the options, "cannot calculate" will be returned.
+The following options can be specified for each coded variable. The options are taken directly from Appendix II of the paper, "Medication Regimen Complexity Index (MRCI)". If the input entered is not one of the options, "cannot calculate" will be returned.
 
 1. route
     - oral
-    - topical
+    - topicale.g.
     - ear,eye,nose
     - inhalation
     - others
@@ -118,6 +118,13 @@ The following options can be specified for each coded variable. The options are 
   To run through SHELF REST API, the knowledge object needs to be added to ObjectTeller and to the REST API SHELF before its executable.
   The ark ID for this object is: **ark:/67034/k4zw2d**
 
-  To add to shelf: http://dlhs-fedora-dev-a.umms.med.umich.edu:8080/ExecutionStack/shelf/ark:/67034/k4zw2d
-  To check shelf: http://dlhs-fedora-dev-a.umms.med.umich.edu:8080/ExecutionStack/shelf
-  To execute: after entering input into "body", http://dlhs-fedora-dev-a.umms.med.umich.edu:8080/ExecutionStack/knowledgeObject/ark:/67034/k4zw2d/result
+    1. To add to shelf: PUT {{baseUrl}}/shelf/ark:/67034/k4zw2d
+    2. To check shelf: GET {{baseUrl}}/shelf
+    3. To execute:
+      - Add the following headers:
+        - Content-Type:application/json
+        - Accept:application/json
+      - Enter input into "body" (e.g. {"drugList":{"lisinopril 40 mg tablet":{"route":"oral","form":"capsules/tablets","dosingFrequency":"twice daily","additionalDirections":""},"metroprolol tartrate 100 mg tablet":{"route":"oral","form":"capsules/tablets", "dosingFrequency":"twice daily","additionalDirections":"break or crush tablet"},"amLODIPine 10 mg tablet":{"route":"oral","form":"capsules/tablets","dosingFrequency":"once daily","additionalDirections":""},"levothyroxine 75 mcg capsule":{"route":"oral","form":"capsules/tablets","dosingFrequency":"once daily","additionalDirections":"alternating dose"}}})
+      - Run the POST command: POST {{baseUrl}}/knowledgeObject/ark:/67034/k4zw2d/result
+
+We have also included some helpful execution test functions for this knowledge object, that can be found in the transition of care collection:  transition_of_care_objects.postman_collection.json. See notes in Opioid Collection respository for more information.

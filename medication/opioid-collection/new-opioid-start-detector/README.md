@@ -25,11 +25,13 @@ To run this object, execute the function execute(). Input should be formatted as
   To run through SHELF REST API, the knowledge object needs to be added to ObjectTeller and to the REST API SHELF before its executable.
   The ark ID for this object is: **ark:/99999/fk43b69v25**
 
-  1. To add to shelf: http://dlhs-fedora-dev-a.umms.med.umich.edu:8080/ExecutionStack/shelf/ark:/99999/fk43b69v25
-  2. To check shelf: http://dlhs-fedora-dev-a.umms.med.umich.edu:8080/ExecutionStack/shelf
+  1. To add to shelf: PUT {{baseUrl}}/shelf/ark:/99999/fk43b69v25
+  2. To check shelf: GET {{baseUrl}}/shelf
   3. To execute:
     - Add the following headers:
       - Content-Type:application/json
       - Accept:application/json
-    - Enter input into "body"
-    - Run the POST command. http://dlhs-fedora-dev-a.umms.med.umich.edu:8080/ExecutionStack/knowledgeObject/ark:/99999/fk43b69v25/result
+    - Enter input into "body" (e.g. {"visitA":{"date":"2/4/20","rxcui":"70"},"visitB":{"date":"2013/3/31","rxcui":"790"}})
+    - Run the POST command. POST {{baseUrl}}/knowledgeObject/ark:/99999/fk43b69v25/result
+
+We have also included some helpful execution test functions for this knowledge object, that can be found in the transition of care collection: transition_of_care_objects.postman_collection.json. See notes in Opioid Collection respository for more information.

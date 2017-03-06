@@ -25,11 +25,20 @@ The object uses a reference list of drug IDs associated with opioids, benzodiaze
   3. NBM.scanForRespiratoryDepressionMedications({"rxcui":"Id Id Id"})
 
 ### Running through SHELF REST API...
-To run through SHELF REST API, the knowledge object needs to be added to ObjectTeller and to the REST API SHELF before its executable.
-The ark ID for this object is:**ark:/67034/k43k5p**
-    To add to shelf: http://dlhs-fedora-dev-a.umms.med.umich.edu:8080/ExecutionStack/shelf/ark:/67034/k43k5p
-    To check shelf: http://dlhs-fedora-dev-a.umms.med.umich.edu:8080/ExecutionStack/shelf
-    To execute: after entering input into "body", http://dlhs-fedora-dev-a.umms.med.umich.edu:8080/ExecutionStack/knowledgeObject/ark:/67034/k43k5p/result
+  To run through SHELF REST API, the knowledge object needs to be added to ObjectTeller and to the REST API SHELF before its executable.
+  The ark ID for this object is: **ark:/67034/k43k5p**
+
+  1. To add to shelf: PUT {{baseUrl}}/shelf/ark:/67034/k43k5p
+  2. To check shelf: GET {{baseUrl}}/shelf
+  3. To execute:
+    - Add the following headers:
+      - Content-Type:application/json
+      - Accept:application/json
+    - Enter input into "body" (e.g. {"rxcui":"480 2101 10767"})
+    - Run the POST command. POST {{baseUrl}}knowledgeObject/ark:/67034/k43k5p/result
+
+We have also included some helpful execution test functions for this knowledge object, that can be found in the transition of care collection:  transition_of_care_objects.postman_collection.json. See notes in Opioid Collection respository for more information.
+
 
 ### Notes for future development...
 This script was created with a potential to extract the API calls into a separate knowledge object. If defined as a separate object, one could utilize object chaining to call the API knowledge object on this knowledge object.
