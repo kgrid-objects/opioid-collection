@@ -113,7 +113,7 @@
 			"currentHelper": "normal",
 			"helperAttributes": {},
 			"time": 1488825268020,
-			"name": "http://dlhs-fedora-dev-a.umms.med.umich.edu:8080/ExecutionStack/shelf",
+			"name": "Get Shelf",
 			"description": "",
 			"collectionId": "e35f7ff6-96a6-453f-ed55-7d2409d72265",
 			"responses": []
