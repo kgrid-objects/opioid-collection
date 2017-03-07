@@ -1,3 +1,3 @@
 # transition-of-care-objects
 
-[Opioid collection](medication/opioid-collection/README.md)
+[Opioid collection](medication/opioid-collection)
