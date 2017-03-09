@@ -317,11 +317,6 @@
 				"method": "POST",
 				"header": [
 					{
-						"key": "Accept",
-						"value": "application/json",
-						"description": ""
-					},
-					{
 						"key": "Content-Type",
 						"value": "application/json",
 						"description": ""
