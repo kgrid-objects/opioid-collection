@@ -1,7 +1,7 @@
 # MiHIN Transition of Care Objects: Medication, Opioid
 This Opioid collection was created to allow for opioid screening across the MiHIN network.
 
-The collection currently consists of the following 5 knowledge objects. For the demo on March 30th, the knowledge objects that will be showcased are Medication Regimen Complexity Indicator (MRCI), Respiratory Depression Indicator (Triple Threat) and Opioid User Detector.
+The collection currently consists of the following 5 knowledge objects. For the demo on March 30th, the knowledge objects that will be showcased are Respiratory Depression Indicator (Triple Threat) and Opioid User Detector.
 
 ## Current objects
 2. Respiratory Depression Indicator
