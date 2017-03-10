@@ -16,7 +16,9 @@ The collection currently consists of the following 5 knowledge objects. For the 
   
 Within each knowledge object repository, we have included the python code, an input RDF, an output RDF, a README, and the clinical documentation where the knowledge was extracted from. The README contains important metadata, along with information on how to execute the object locally and how to execute the object using REST API. 
 
-We have created a collection of all of the knowledge objects that can be found in the following file: transition_of_care_objects.postman_collection.json. The transition of care collection contains a list of commands for all knowledge objects, including a PUT(ADD/UPDATE) command and a POST command for each one. Each knowledge object also has a set of execution test functions that can be found in the transition of care collection, along with a sample development environment (SampleDev.postman_env.json). Both the environment and collection can be directly imported to a REST API client; we use postman.
+We have created a collection of these 2 knowledge objects that can be found in the following file: local-toc.json. The transition of care collection contains a list of commands for these knowledge objects, including a PUT(ADD/UPDATE) command and a POST command for each one. Each knowledge object also has a set of execution test functions that can be found in the transition of care collection, along with a sample development environment (SampleDev.postman_env.json). Both the environment and collection can be directly imported to a REST API client; we use postman. 
+
+We have also created a bash file (toc.sh) for knowledge objects respiratory depression indicator and opioid user detector, including the same commands as the postman collection.
 
 ## Other objects
 
