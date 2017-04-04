@@ -4,11 +4,11 @@
         <ot:noofparams>1</ot:noofparams>
         <ot:params>
             <rdf:Seq>
-                <rdf:li>opiodPrescriptions</rdf:li>
+                <rdf:li>opioidPrescriptions</rdf:li>
             </rdf:Seq>
         </ot:params>
     </rdf:Description>
-    <rdf:Description rdf:about="http://uofm.org/objectteller/opiodPrescriptions/">
+    <rdf:Description rdf:about="http://uofm.org/objectteller/opioidPrescriptions/">
         <ot:datatype>MAP</ot:datatype>
     </rdf:Description>
 
