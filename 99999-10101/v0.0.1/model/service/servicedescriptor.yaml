@@ -4,7 +4,7 @@ info:
   title: 'Opioid Use Detector'
   description: 'This object scans a list of prescriptions and determines if the patient is exposed to an opioid.'
 servers:
-  - url: 'http://localhost:8080/99999-10101/v0.0.1'
+  - url: 'http://kgrid-activator.herokuapp.com/99999/10101/v0.0.1'
 paths:
   /opioidDetector:
     post:
@@ -36,7 +36,7 @@ components:
       required:
         - rxcuis
       properties:
-        name:
+        rxcuis:
           type: string
           example: '106500,200240,856917,994226,197446,801958'
     output:
