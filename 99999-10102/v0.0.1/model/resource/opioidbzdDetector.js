@@ -1,7 +1,7 @@
 function opioidbzdDetector(inputs){
   var regimenList = inputs.rxcuis.split(",");
   var output = []
-  var jsonoutput ={"summary":"","detail":""}
+  var jsonoutput ={"condition_satisfied":false,"summary":"","detail":""}
   //JAVASCRIPT ARRAYS WITH RXNORM CODES - JUNE 10, 2018 - ALLEN FLYNN
 
   //OPIOID CODES
@@ -25,5 +25,6 @@ function opioidbzdDetector(inputs){
   })
   jsonoutput.detail=detail
   jsonoutput.summary=summaryentry
+  jsonoutput.condition_satisfied = summaryentry.opioid || summaryentry.bzd 
   return jsonoutput
  }
