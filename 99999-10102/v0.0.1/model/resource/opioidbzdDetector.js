@@ -25,6 +25,6 @@ function opioidbzdDetector(inputs){
   })
   jsonoutput.detail=detail
   jsonoutput.summary=summaryentry
-  jsonoutput.condition_satisfied = summaryentry.opioid || summaryentry.bzd 
+  jsonoutput.condition_satisfied = summaryentry.opioid && summaryentry.bzd 
   return jsonoutput
  }
