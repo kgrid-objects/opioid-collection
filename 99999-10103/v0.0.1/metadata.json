@@ -19,5 +19,7 @@
     "published": false,
     "version": "v0.0.1",
     "lastModified": 1528317149305,
-    "createdOn": 1528317149304
+    "createdOn": 1528317149304,
+    "modelpath": "model",
+    "service":"service/servicedescriptor.yaml"
 }
