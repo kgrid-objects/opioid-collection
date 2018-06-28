@@ -1,0 +1,29 @@
+{
+  "name": "mopen-opioid-collection",
+  "version": "1.0.0",
+  "description": "[Opioid collection](medication/opioid-collection).",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "clean":   "rm -rf dist",
+    "copy":    "mkdir -p dist/shelf && cp -rf 99999-10101 dist/shelf/99999-10101 && cp -rf 99999-10102 dist/shelf/99999-10102 && cp -rf 99999-10103 dist/shelf/99999-10103",
+    "zipKOs":  "cd dist && zip -r -X opioid-shelf.zip shelf -x \"*.DS_Store\"",
+    "release": "npm run clean && npm run copy && npm run zipKOs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kgrid/mopen-opioid-collection.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kgrid/mopen-opioid-collection/issues"
+  },
+  "homepage": "https://github.com/kgrid/mopen-opioid-collection#readme",
+  "dependencies": {
+    "archiver": "^2.1.1"
+  }
+}
