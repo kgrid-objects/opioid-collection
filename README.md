@@ -1,10 +1,21 @@
-# Building and modifying the objects
+# Michigan OPEN Knowledge Objects
 
-The objects are currently using the Javascript
+## Overview
+Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi.
 
-There are currently three knowledge objects developed for this collection.
-- 99999-10101: Opioid Use Detector
-- 99999-10102: Opioid and Benzodiazepine Detector
-- 99999-10103: Respiratory Depression Risk Indicator
+### Getting Started
+Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi.
+
+Show collection deployed to heroku. 
+
+### Usage
+Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. 
+Link to API doc
+Describe output
+
+### Install
+Donec non enim in turpis pulvinar facilisis. Ut felis.
+How to deploy them to your activator
+
 
 To open, enter `https://kgrid.org/mopen-opioid-collection/service/mopen.yaml` in the top text box and click `explore`
