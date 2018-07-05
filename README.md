@@ -18,9 +18,9 @@ Table of Contents
 
 
 ### Getting Started
-Great way to start is see the MOpen Opioid Collection in action.  The MOpen Opioid Collection has been 
-installed on our testing [KGrid Activator](https://github.com/kgrid/kgrid-activator) in order to demonstrated their usage.  
-This [Heroku KGrid Activator](https://kgrid-activator.herokuapp.com/) is referenced in the API Documentation for each KO. 
+Test drive the MOpen Opioid Collection on the [Heroku KGrid Activator](https://kgrid-activator.herokuapp.com/) sandbox.  Below each KO exposes it's API documentation as OpenAPI 3.0 specification displayed in a Swaggers UI tool.  Utilizing this tool you can test out the interation with each KO.
+
+
 
 
 ### Knowledge Object Collection
