@@ -7,11 +7,11 @@ Table of Contents
 --
 - [Getting Started](#getting-started)
 - [Knowledge Object Collection](#knowledge-object-collection)
-   1. [Opioid Use Detector](#:one:opioid-use-detector) 
-   1. [Opioid and Benzodiazepine Detector](#:two:opioid-and-benzodiazepine-detector)
-  1. [Respiratory Depression Risk Indicator](#:three:respiratory-depression-risk-indicator )
+   1. [Opioid Use Detector](#one-opioid-use-detector) 
+   1. [Opioid and Benzodiazepine Detector](#two-opioid-and-benzodiazepine-detector)
+  1. [Respiratory Depression Risk Indicator](#three-respiratory-depression-risk-indicator )
 - [Install the Michigan OPEN Opioid-related KO Collection](#install)  
-- [Common Issues/Problems](#common-issues/problems)
+- [Common Issues/Problems](#common-issuesproblems)
 - [Roadmap](#roadmap)
 
 
