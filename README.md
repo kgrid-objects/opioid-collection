@@ -98,7 +98,7 @@ curl -X POST \
  ```
 Additional API documentation can be found in the [Swagger UI](https://kgrid-demos.github.io/swaggerui/?url=https://kgrid.org/mopen-opioid-collection/99999-10103/v0.0.1/model/service/servicedescriptor.yaml)  visualation of the OpenAPI specification.
 
-### Install
+### Install KOs on KGrid Activator
 In order to use the MOpen Opioid Knowledge Object Collection you need to have an instance of the KGrid Activator up and running. To do this, refer to [KGrid Activator](http://kgrid.org/kgrid-activator/) deployment details.  Once you have [KGrid Activator](http://kgrid.org/kgrid-activator/) up and running you will need to add the [MOpen Opioid](https://github.com/kgrid/mopen-opioid-collection/releases/latest) KOs to the existing shelf. 
 
  1. Download the released MOpen Opiod KOs self (opid_shelf.zip) from github [MOpen-Opioid Collection](https://github.com/kgrid/mopen-opioid-collection/releases/latest)
