@@ -13,58 +13,92 @@ Table of Contents
 - [Install the Michigan OPEN Opioid-related KO Collection](#install)  
 - [Common Issues/Problems](#Ccmmon-issues/problems)
 
-
 ### Getting Started
-Test drive one or more of the KOs in the MOpen Opioid-related Knowledge Object Collection on our sandbox at Herokuapp.com here: [Heroku KGrid Activator](https://kgrid-activator.herokuapp.com/).  Below in this documentation, find each KO's API documentation in the OpenAPI 3.0 specification format. By clicking on the API Documentation link for each KO, the API documentation will be displayed in a Swagger UI tool.  Utilizing this Swagger UI tool you can test out the input and output interation using each KO.
-
-
-
+Test drive one or more of the KOs in the MOpen Opioid-related Knowledge Object Collection on our sandbox at Herokuapp.com here: [Heroku KGrid Activator](https://kgrid-activator.herokuapp.com/).  Below in this documentation, find each KO's API documentation in the OpenAPI 3.0 specification format. By clicking on the API Documentation link for each KO, the API documentation will be displayed in a Swagger UI tool.  Utilizing the example curl or the Swagger UI tool you can test out the interation using each KO.
 
 ### Knowledge Object Collection
 
 #### Opioid Use Detector
 This KO scans a patient's medication regimen, which is presented to the KO as a list of RxNorm Semantic Clinical Drug codes, for the presence of an opioid prescription.  This KO has many potential uses, including one use as a filtering or screening mechanism when applied in the context of health information exchange. 
 
-* [Knowledge Object](./99999-10101) 
-* [API Documentation](https://kgrid-demos.github.io/swaggerui/?url=https://kgrid.org/mopen-opioid-collection/99999-10101/v0.0.1/model/service/servicedescriptor.yaml) 
-
-Example Curl Usage
+**Example API Usage with curl**
 ```
 curl -X POST \
   http://kgrid-activator.herokuapp.com/99999/10101/v0.0.1/opioidDetector \
   -H 'Content-Type: application/json' \
   -d '{"rxcuis":"106500,200240,856917,994226,197446,801958"}'
 ```  
+**Example API Response**
+```json
+{
+    "result": {
+        "condition_satisfied": true,
+        "summary": {
+            "opioid": true
+        },
+        "detail": {
+            "106500": {
+                "opioid": true
+            },
+            "197446": {
+                "opioid": false
+            },
+            "200240": {
+                "opioid": false
+            },
+            "801958": {
+                "opioid": false
+            },
+            "856917": {
+                "opioid": false
+            },
+            "994226": {
+                "opioid": true
+            }
+        }
+    },
+    "info": {
+        "ko": "99999/10101/v0.0.1",
+        "inputs": {
+            "rxcuis": "106500,200240,856917,994226,197446,801958"
+        }
+    }
+}
+```
 
+* [Knowledge Object] source (./99999-10101) 
+* [API Documentation](https://kgrid-demos.github.io/swaggerui/?url=https://kgrid.org/mopen-opioid-collection/99999-10101/v0.0.1/model/service/servicedescriptor.yaml) 
 
 #### Opioid and Benzodiazepine Detector
 This KO scans a list of a patient's prescriptions, which are presented to the KO as a list of RxNorm Semantic Clinical Drug codes, and determines if they are being exposed simultaneously to a known risky combination of an opioid and a benzodiazepine.
+
+**Example API Usage with curl**
+```json
+curl -X POST \
+  http://kgrid-activator.herokuapp.com/99999/10102/v0.0.1/opioidbzdDetector \
+  -H 'Cache-Control: no-cache' \
+  -H 'Content-Type: application/json' \
+  -d '{"rxcuis":"106500,200240,856917,994226,197446,801958"}'
+```
 
 * [Knowledge Object](./99999-10102) 
 * [API Documentation](https://kgrid-demos.github.io/swaggerui/?url=https://kgrid.org/mopen-opioid-collection/99999-10102/v0.0.1/model/service/servicedescriptor.yaml) 
 
 
-```json
-curl -X POST \
-  http://kgrid-activator.herokuapp.com/99999/10102/v0.0.1/opioidbzdDetector \
-  -H 'Cache-Control: no-cache' \
-  -H 'Content-Type: application/json' \
-  -d '{"rxcuis":"106500,200240,856917,994226,197446,801958"}'
-```
 #### Respiratory Depression Risk Indicator
 This KO scans a list of a patient's prescriptions, which are presented to the KO as a list or RxNorm Semantic Clinical Drug Codes, and determines if they are at higher risk for drug-induced respiratory depression because of being exposed simultaneously to a combination of an opioid, a benzodiazepine, and a muscle relaxant.
 
-* [Knowledge Object](./99999-10103) 
-* [API Documentation](https://kgrid-demos.github.io/swaggerui/?url=https://kgrid.org/mopen-opioid-collection/99999-10103/v0.0.1/model/service/servicedescriptor.yaml) 
 
-
+**Example API Usage with curl**
 ```json
 curl -X POST \
   http://kgrid-activator.herokuapp.com/99999/10102/v0.0.1/opioidbzdDetector \
   -H 'Cache-Control: no-cache' \
   -H 'Content-Type: application/json' \
   -d '{"rxcuis":"106500,200240,856917,994226,197446,801958"}'
-```
+ ```
+* [Knowledge Object](./99999-10103) 
+* [API Documentation](https://kgrid-demos.github.io/swaggerui/?url=https://kgrid.org/mopen-opioid-collection/99999-10103/v0.0.1/model/service/servicedescriptor.yaml) 
 
 ### Install
 In order to use the MOpen Opioid Knowledge Object Collection you need to have an instance of the KGrid Activator up and running. To do this, refer to [KGrid Activator](http://kgrid.org/kgrid-activator/) deployment details.  
