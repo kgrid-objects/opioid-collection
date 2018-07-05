@@ -92,8 +92,7 @@ This [KO](./99999-10103)  scans a list of a patient's prescriptions, which are p
 **Example API Usage with curl**
 ```json
 curl -X POST \
-  http://kgrid-activator.herokuapp.com/99999/10102/v0.0.1/opioidbzdDetector \
-  -H 'Cache-Control: no-cache' \
+  http://kgrid-activator.herokuapp.com/99999/10103/v0.0.1/tripleThreatDetector \
   -H 'Content-Type: application/json' \
   -d '{"rxcuis":"106500,200240,856917,994226,197446,801958"}'
  ```
@@ -132,4 +131,9 @@ This will load and activate the KOs on the shelf. You should recieve a list of t
 
 ### Common Issues/Problems
 
+More to come
+
 ### Roadmap
+
+More to come
+
