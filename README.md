@@ -103,8 +103,7 @@ curl -X POST \
 * [API Documentation](https://kgrid-demos.github.io/swaggerui/?url=https://kgrid.org/mopen-opioid-collection/99999-10103/v0.0.1/model/service/servicedescriptor.yaml) 
 
 ### Install
-In order to use the MOpen Opioid Knowledge Object Collection you need to have an instance of the KGrid Activator up and running. To do this, refer to [KGrid Activator](http://kgrid.org/kgrid-activator/) deployment details.  
-Once you have [KGrid Activator](http://kgrid.org/kgrid-activator/) up and running you will need to add the [MOpen Opioid](https://github.com/kgrid/mopen-opioid-collection/releases/latest) KOs to the existing shelf. 
+In order to use the MOpen Opioid Knowledge Object Collection you need to have an instance of the KGrid Activator up and running. To do this, refer to [KGrid Activator](http://kgrid.org/kgrid-activator/) deployment details.  Once you have [KGrid Activator](http://kgrid.org/kgrid-activator/) up and running you will need to add the [MOpen Opioid](https://github.com/kgrid/mopen-opioid-collection/releases/latest) KOs to the existing shelf. 
 
  1. Download the released MOpen Opiod KOs self (opid_shelf.zip) from github [MOpen-Opioid Collection](https://github.com/kgrid/mopen-opioid-collection/releases/latest)
  1. Place the opid_shelf.zip.zip into the directory where the activator jar is located and unzip. This will place the KOs into existing shelf directory
@@ -126,11 +125,11 @@ Once on the [KGrid Activator](http://kgrid.org/kgrid-activator/) shelf  the KOs 
 ```curl http://localhost:8080/executors```
 
 This will load and activate the KOs on the shelf. You should recieve a list of the activated endpoint similar to the following
-
+```
 [
     "99999/10103/v0.0.1/tripleThreatDetector",
     "99999/10101/v0.0.1/opioidDetector",
     "99999/10102/v0.0.1/opioidbzdDetector"
 ]
-
+```
 
