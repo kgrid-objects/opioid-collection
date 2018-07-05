@@ -1,14 +1,21 @@
 openapi: 3.0.0
+servers:
+- url: https://kgrid-activator.herokuapp.com/99999/10101/v0.0.1/
+  description: Development server
 info:
   version: 1.0.0
   title: 'Opioid Use Detector'
   description: 'This object scans a list of prescriptions and determines if the patient is exposed to an opioid.'
-servers:
-  - url: 'https://kgrid-activator.herokuapp.com/99999/10101/v0.0.1'
+tags:
+  - name: KO Endpoints
+    description:  Opioid Use Detector Endpoints
 paths:
   /opioidDetector:
-    post:
-      description: opioidDetector.
+   post:
+      tags:
+        - KO Endpoints
+      summary: detects opioids
+      description: scans a list of prescriptions and determines if the patient is exposed to an opioid
       operationId: opioidDetector
       requestBody:
         description: inputs
