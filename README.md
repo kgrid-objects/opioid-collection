@@ -66,7 +66,7 @@ curl -X POST \
 }
 ```
 
-* [Knowledge Object] source (./99999-10101) 
+* [Knowledge Object](./99999-10101) 
 * [API Documentation](https://kgrid-demos.github.io/swaggerui/?url=https://kgrid.org/mopen-opioid-collection/99999-10101/v0.0.1/model/service/servicedescriptor.yaml) 
 
 #### Opioid and Benzodiazepine Detector
