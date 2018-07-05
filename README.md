@@ -1,17 +1,26 @@
 # Michigan OPEN Knowledge Objects
 
 ## Introduction
-Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi.
 
 ### Getting Started
-Each of the knowledge objects is deployed to demo sandbox on heroku. Using this deploy you can test the KO api. 
+The MOpen Opioid Collection have been installed on our testing [KGrid Activator](https://github.com/kgrid/kgrid-activator) in order to demonstrated their usage.  
+This heroku [Heroku KGrid Activator](https://kgrid-activator.herokuapp.com/) is referenceed in the API Documentation for each KO. This should allow you 
+to see the KO in action.  
 
+Installation of the KO collection to your [KGrid Activator](https://github.com/kgrid/kgrid-activator) is outlined in the [install](#install)  
+section.
+
+Table of Contents
+--
+- [Getting Started](#getting-started)
 - [Knowledge Object Collection](#knowledge-object-collection)
    - [Opioid Use Detector](#opioid-use-detector) 
    - [Opioid and Benzodiazepine Detector](#opioid-and-benzodiazepine-detector)
   - [Respiratory Depression Risk Indicator](#respiratory-depression-risk-indicator )
 - [Install](#install)  
 - [Common Issues/Problems](#Ccmmon-issues/problems)
+
+
 
 
 ### Knowledge Object Collection
