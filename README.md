@@ -22,7 +22,7 @@ Below in this documentation, find each KO's API documentation in the OpenAPI 3.0
 
 ### Knowledge Object Collection
 
-#### (i) Opioid Use Detector
+#### Opioid Use Detector
 This [KO](./99999-10101)  scans a patient's medication regimen, which is presented to the KO as a list of RxNorm Semantic Clinical Drug codes, for the presence of an opioid prescription.  This KO has many potential uses, including one use as a filtering or screening mechanism when applied in the context of health information exchange. 
 
 **Example API Usage with curl**
@@ -71,7 +71,7 @@ curl -X POST \
 ```
 Additional API documentation can be found in the [Swagger UI](https://kgrid-demos.github.io/swaggerui/?url=https://kgrid.org/mopen-opioid-collection/99999-10101/v0.0.1/model/service/servicedescriptor.yaml) visualation of the OpenAPI specification.
 
-#### (ii) Opioid and Benzodiazepine Detector
+#### Opioid and Benzodiazepine Detector
 This [KO](./99999-10102)  scans a list of a patient's prescriptions, which are presented to the KO as a list of RxNorm Semantic Clinical Drug codes, and determines if they are being exposed simultaneously to a known risky combination of an opioid and a benzodiazepine.
 
 **Example API Usage with curl**
@@ -85,9 +85,8 @@ curl -X POST \
 
 Additional API documentation can be found in the [Swagger UI](https://kgrid-demos.github.io/swaggerui/?url=https://kgrid.org/mopen-opioid-collection/99999-10102/v0.0.1/model/service/servicedescriptor.yaml) visualation of the OpenAPI specification.
 
-#### (iii) Respiratory Depression Risk Indicator
+#### Respiratory Depression Risk Indicator
 This [KO](./99999-10103)  scans a list of a patient's prescriptions, which are presented to the KO as a list or RxNorm Semantic Clinical Drug Codes, and determines if they are at higher risk for drug-induced respiratory depression because of being exposed simultaneously to a combination of an opioid, a benzodiazepine, and a muscle relaxant.
-
 
 **Example API Usage with curl**
 ```json
