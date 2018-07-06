@@ -134,5 +134,14 @@ More to come
 
 ### Roadmap
 
-More to come
+#### Current
+
+#### Planned
+
+#### Release/Publish KOs 
+The current released/published MOpen collection is stored on GitHub [MOpen Opioid Collection Releases](https://github.com/kgrid/mopen-opioid-collection/releases). This zipped ko collection can be installed in an activator as descrided in [Install the Michigan OPEN Opioid-related KO Collection](#install)  
+
+```
+
+
 
