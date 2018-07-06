@@ -1,6 +1,6 @@
 # Michigan OPEN Opioid-related Knowledge Object (KO) Collection
+[![GitHub release](https://img.shields.io/github/release/kgrid/mopen-opioid-collection.svg)](https://github.com/kgrid/mopen-opioid-collection/releases/)
 
-## Introduction
 This is a collection of KOs for KGrid that can be used to identify and report on certain features of opioid prescribing. Each KO in this collection uses patient prescription data for its input and provides information about patient prescriptions as its output. 
 
 Table of Contents
