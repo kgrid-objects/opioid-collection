@@ -10,7 +10,7 @@ Table of Contents
    1. [Opioid Use Detector](#one-opioid-use-detector) 
    1. [Opioid and Benzodiazepine Detector](#two-opioid-and-benzodiazepine-detector)
   1. [Respiratory Depression Risk Indicator](#three-respiratory-depression-risk-indicator )
-- [Install the Michigan OPEN Opioid-related KO Collection](#install)  
+- [Install the Michigan OPEN Opioid-related KO Collection](#install-kos-on-kgrid-activator)  
 - [Common Issues/Problems](#common-issuesproblems)
 - [Roadmap](#roadmap)
 
@@ -141,7 +141,6 @@ More to come
 #### Release/Publish KOs 
 The current released/published MOpen collection is stored on GitHub [MOpen Opioid Collection Releases](https://github.com/kgrid/mopen-opioid-collection/releases). This zipped ko collection can be installed in an activator as descrided in [Install the Michigan OPEN Opioid-related KO Collection](#install)  
 
-```
 
 
 
