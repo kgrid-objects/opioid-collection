@@ -6,11 +6,16 @@
   "directories": {
     "test": "test"
   },
+  "devDependencies": {
+    "scripty": "1.7.2"
+  },
   "scripts": {
-    "clean":   "rm -rf dist",
-    "copy":    "mkdir -p dist/shelf && cp -rf 99999-10101 dist/shelf/99999-10101 && cp -rf 99999-10102 dist/shelf/99999-10102 && cp -rf 99999-10103 dist/shelf/99999-10103",
-    "zipKOs":  "cd dist && zip -r -X opioid-shelf.zip shelf -x \"*.DS_Store\"",
-    "release": "npm run clean && npm run copy && npm run zipKOs"
+    "release": "scripty"
+  },
+  "scripty": {
+    "path": "scripts",
+    "windowsPath": "scriptswin",
+    "silent": true
   },
   "repository": {
     "type": "git",
