@@ -112,12 +112,12 @@ Directory structure should look similar to the following
  │       └── v0.0.1   
  │   └── 99999-10101
  │       └── v0.0.1   
- └── kgrid-activator-0.5.8.jar
+ └── kgrid-activator-0.6.2.jar
 ```
 
 Once on the [KGrid Activator](http://kgrid.org/kgrid-activator/) shelf  the KOs will need to be activated. This is accomplished by calling the executors resource.
 
-```curl http://localhost:8080/executors```
+```curl http://localhost:8080/endpoints```
 
 This will load and activate the KOs on the shelf. You should recieve a list of the activated endpoint similar to the following
 ```
