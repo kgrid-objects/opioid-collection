@@ -3,15 +3,20 @@ info:
   version: 1.0.0
   title: 'Respiratory Depression Risk Indicator'
   description: 'This object scans a list of prescriptions and determines if the patient is at risk greater for drug-induced respiratory depression because of being exposed simultaneously to a known dangerous combination of an opioid, a benzodiazepine, and a muscle relaxant.'
+tags:
+  - name: KO Endpoints
+    description: Respiratory Depression Risk Indicator Endpoints
 servers:
   - url: 'https://kgrid-activator.herokuapp.com/99999/10103/v0.0.1'
 paths:
   /tripleThreatDetector:
     post:
-      description: tripleThreatDetector.
+      tags:
+          - KO Endpoints
+      description: scans a list of a patient's prescriptions and determines if they are at higher risk for drug-induced respiratory depression because of being exposed simultaneously to a combination of an opioid, a benzodiazepine, and a muscle relaxant.
       operationId: tripleThreatDetector
       requestBody:
-        description: inputs
+        description: RxNorm Semantic Clinical Drug codes for a paitent
         required: true
         content:
           application/json:
