@@ -69,7 +69,7 @@ curl -X POST \
     }
 }
 ```
-Additional API documentation can be found in the [Swagger UI](https://kgrid-demos.github.io/swaggerui/?url=https://kgrid-activator.herokuapp.com/99999-10101/v0.0.1/model/service/servicedescriptor.yaml) visualation of the OpenAPI specification.
+Additional API documentation can be found in the [Swagger UI](https://kgrid-demos.github.io/swaggerui/?url=https://kgrid-activator.herokuapp.com/99999/10101/v0.0.1/model/service/servicedescriptor.yaml) visualation of the OpenAPI specification.
 
 ####  :two: Opioid and Benzodiazepine Detector
 This [KO](./99999-10102)  scans a list of a patient's prescriptions, which are presented to the KO as a list of RxNorm Semantic Clinical Drug codes, and determines if they are being exposed simultaneously to a known risky combination of an opioid and a benzodiazepine.
@@ -83,7 +83,7 @@ curl -X POST \
   -d '{"rxcuis":"106500,200240,856917,994226,197446,801958"}'
 ```
 
-Additional API documentation can be found in the [Swagger UI](https://kgrid-demos.github.io/swaggerui/?url=https://kgrid-activator.herokuapp.com/99999-10102/v0.0.1/model/service/servicedescriptor.yaml) visualation of the OpenAPI specification.
+Additional API documentation can be found in the [Swagger UI](https://kgrid-demos.github.io/swaggerui/?url=https://kgrid-activator.herokuapp.com/99999/10102/v0.0.1/model/service/servicedescriptor.yaml) visualation of the OpenAPI specification.
 
 ####  :three: Respiratory Depression Risk Indicator
 This [KO](./99999-10103)  scans a list of a patient's prescriptions, which are presented to the KO as a list or RxNorm Semantic Clinical Drug Codes, and determines if they are at higher risk for drug-induced respiratory depression because of being exposed simultaneously to a combination of an opioid, a benzodiazepine, and a muscle relaxant.
@@ -95,7 +95,7 @@ curl -X POST \
   -H 'Content-Type: application/json' \
   -d '{"rxcuis":"106500,200240,856917,994226,197446,801958"}'
  ```
-Additional API documentation can be found in the [Swagger UI](https://kgrid-demos.github.io/swaggerui/?url=https://kgrid-activator.herokuapp.com/99999-10103/v0.0.1/model/service/servicedescriptor.yaml)  visualation of the OpenAPI specification.
+Additional API documentation can be found in the [Swagger UI](https://kgrid-demos.github.io/swaggerui/?url=https://kgrid-activator.herokuapp.com/99999/10103/v0.0.1/model/service/servicedescriptor.yaml)  visualation of the OpenAPI specification.
 
 ### Install KOs on KGrid Activator
 In order to use the MOpen Opioid Knowledge Object Collection you need to have an instance of the KGrid Activator up and running. To do this, refer to [KGrid Activator](http://kgrid.org/kgrid-activator/) deployment details.  Once you have [KGrid Activator](http://kgrid.org/kgrid-activator/) up and running you will need to add the [MOpen Opioid](https://github.com/kgrid/mopen-opioid-collection/releases/latest) KOs to the existing shelf. 
