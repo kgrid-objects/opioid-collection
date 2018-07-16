@@ -10,7 +10,8 @@
     "scripty": "1.7.2"
   },
   "scripts": {
-    "release": "scripty"
+    "release-shelf": "scripty",
+    "release-kos": "scripty"
   },
   "scripty": {
     "path": "scripts",
