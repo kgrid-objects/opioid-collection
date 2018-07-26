@@ -3,10 +3,7 @@
     "description": "A knowledge object that scans a medication regimen for the presence of an opioid.  This object has many potential uses, including one use as a filtering/screening mechanism when applied in the context of messaging and health information exchange at Transitions of Care. ",
     "arkId": "ark:/99999/10101",
     "citations": [
-      {
-        "citation_title": "Citation Title ",
-        "citation_at": "https://link"
-      }
+      "https://link"
     ],
     "keywords": "Keywords",
     "owners": "KGRID",
