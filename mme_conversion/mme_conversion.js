@@ -8,219 +8,45 @@
 //  Global Variable & Data Definitions
 // ====================================
 
-var opioid1 = {
-    name:"Codeine",
-    factor:0.15,
-    dose:"mg/day"
-    rxnorm:"example"
-};
+var opiodArray =
+["Codeine","Fentanyl Transdermal","Hydrocodone","Hydromorphone","Methadone 1-20 mg/day","Methadone 21-40 mg/day","Methadone 41-60 mg/day","Methadone 61-90 mg/day",
+"Morphine","Oxycodone","Oxymorphine","Burprenorphine Film/Tablet","Burprenorphine Patch","Burprenorphine Film","Butorphanol","Dihydrocodeine","Fenta Buccal or SL Tablets","Fentanyl Film or Oral Spray",
+"Fentanyl Nasal Spray","Fentanyl Patch","Levorphanol Tartrate","Meperidine hydrochloride", "Opium","Pentazocine","Tapentadol","Tramadol"];
 
+var factorArray =
+[0.15,2.4,1,4,4,8,10,12,1,1.5,3,30,12.6,0.03,7,0.25,0.13,0.18,0.16,7.2,11,0.1,1,0.37,0.4,0.1];
 
-var opioid2 = {						// two different conversion factors ?????
-    name:"Fentanyl Patch",
-    factor:2.4,
-    dose:"mcg/hour"
-    rxnorm:"example"
-};
+var dose =
+[];
 
-var opioid3 = {
-    name:"Hydrocodone",
-    factor:1,
-    dose:"mg/day"
-    rxnorm:"example"
-};
+var rxnorm =
+[];
 
-var opioid4 = {
-    name:"Hydromorphone",
-    factor:4,
-    dose:"mg/day"
-    rxnorm:"example"
-};
+// ------------------------------------------------------------------------- //
 
-var opioid5 = {
-    name:"Methadone 1-20 mg/day",
-    factor:4,
-    dose:"mg/day"
-    rxnorm:"example"
-};
+const fs = require('fs');
 
-var opioid6 = {
-    name:"Methadone 21-40 mg/day",
-    factor:8,
-    dose:"mg/day"
-    rxnorm:"example"
-};
-
-var opioid7 = {
-    name:"Methadone 41-60 mg/day",
-    factor:10,
-    dose:"mg/day"
-    rxnorm:"example"
-};
-
-var opioid8 = {
-    name:"Methadone 61-90 mg/day",
-    factor:12,
-    dose:"mg/day"
-    rxnorm:"example"
-};
-
-var opioid9 = {
-    name:"Morphine",
-    factor:1,
-    dose:"mg/day"
-    rxnorm:"example"
-};
-
-var opioid10 = {
-    name:"Oxycodone",
-    factor:1.5,
-    dose:"mg/day"
-    rxnorm:"example"
-};
-
-var opioid11 = {
-    name:"Oxymorphine",
-    factor:3,
-    dose:"mg/day"
-    rxnorm:"example"
-};
-
-var opioid12 = {
-    name:"Burprenorphine Film/Tablet",
-    factor:30,
-    dose:"mg/day"
-    rxnorm:"example"
-};
-
-var opioid13 = {
-    name:"Burprenorphine Patch ",
-    factor:12.6,
-    dose:"mcg/hour"
-    rxnorm:"example"
-};
-
-var opioid14 = {
-    name:"Burprenorphine Film",
-    factor:0.03,
-    dose:"mcg"
-    rxnorm:"example"
-};
-
-var opioid15 = {
-    name:"Butorphanol",
-    factor:7,
-    dose:"mg/day"
-    rxnorm:"example"
-};
-
-var opioid16 = {
-    name:"Dihydrocodeine",
-    factor:0.25,
-    dose:"mg/day"
-    rxnorm:"example"
-};
-
-var opioid17 = {
-    name:"Fentanyl Buccal or SL Tablets/Lozenge",
-    factor:0.13,
-    dose:"mcg/day"
-    rxnorm:"example"
-};
-
-var opioid18 = {
-    name:"Fentanyl Film or Oral Spray",
-    factor:0.18,
-    dose:"mcg/day"
-    rxnorm:"example"
-};
-
-var opioid19 = {
-    name:"Fentanyl Nasal Spray",
-    factor:0.16,
-    dose:"mcg/day"
-    rxnorm:"example"
-};
-
-var opioid20 = {
-    name:"Fentanyl Patch",
-    factor:7.2,
-    dose:"mcg/day"
-    rxnorm:"example"
-};
-
-var opioid21 = {
-    name:"Levorphanol tartrate",
-    factor:11,
-    dose:"mg/day"
-    rxnorm:"example"
-};
-
-var opioid22 = {
-    name:"Meperidine hydrochloride",
-    factor:0.1,
-    dose:"mg/day"
-    rxnorm:"example"
-};
-
-var opioid23 = {
-    name:"Opium",
-    factor:1,
-    dose:"mg/day"
-    rxnorm:"example"
-};
-
-var opioid24 = {
-    name:"Pentazocine",
-    factor:0.37,
-    dose:"mg/day"
-    rxnorm:"example"
-};
-
-var opioid25 = {
-    name:"Tapentadol",
-    factor:0.4,
-    dose:"mg/day"
-    rxnorm:"example"
-};
-
-var opioid26 = {
-    name:"Tramadol",
-    factor:0.1,
-    dose:"mg/day"
-    rxnorm:"example"
-};
-
-
-
-// ====================================
-//  Global Variable & Data Definitions
-// ====================================
-
-
-class Opiod {
-    constructor(name, factor, dose, rxnorm){
-      this.name = name;
-      this.factor = factor;
-      this.dose = dose;
-      this.rxnorm = rxnorm;
-    }
-    get factor() {
-      return this.factor;
+fs.open('prescription.js', 'r', (err, body) => {
+  if (err) {
+    if (err.code === 'ENOENT') {
+      console.error('prescription.js does not exist');
+      return;
     }
 
-}
+    throw err;
+  }
 
+  readMyData(body);
+  console.log(convertToMME(dose, drugname));
 
+});
 
+function readMyData(body){
+  var obj = JSON.parse(body);
+  return obj.dose, obj.drugname;
+};
 
-// ------------------------------------------------------------------------------------------------ //
-
-
-var object = {'dose':'value', 'drugname':'value'};
-
-for(var exKey in exjson) {
-    console.log("dose:"+exKey+", drugname:"+exjson[exKey]);
-
-
-}
+function convertToMME(dose, drugname){
+  var index = opiodArray.indexOf(drugname);
+  return factorArray[index] * dose;
+};
