@@ -22,28 +22,32 @@ var dose =
 var rxnorm =
 [];
 
+//switch this to array of objects
+
 // ------------------------------------------------------------------------- //
 
 const fs = require('fs');
 
-fs.open('prescription.js', 'r', (err, body) => {
+fs.readFile('prescription.json', { json: true, encoding: 'utf8' }, (err, body) => {
   if (err) {
     if (err.code === 'ENOENT') {
-      console.error('prescription.js does not exist');
+      console.error('prescription.json does not exist');
       return;
     }
 
     throw err;
   }
 
-  readMyData(body);
+
+  dose = readMyData(body)[0];
+  drugname = readMyData(body)[1];
   console.log(convertToMME(dose, drugname));
 
 });
 
 function readMyData(body){
   var obj = JSON.parse(body);
-  return obj.dose, obj.drugname;
+  return [obj.dose, obj.drugname];
 };
 
 function convertToMME(dose, drugname){
