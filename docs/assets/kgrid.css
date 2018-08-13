@@ -85,7 +85,7 @@ a:hover {
 }
 
 .site-title {
-  background-image: url("./img/KG_Logo_DarkBlue.png");
+  background-image: url("img/KG_Logo_DarkBlue.png");
   background-size: 60px;
   background-repeat: no-repeat;
   padding-left: 80px;
@@ -113,7 +113,7 @@ a:hover {
   margin:-88px 0 0; /* negative fixed header height */
 }
 .home {
-  background-image: url("./img/KGridLogo_Blue.png");
+  background-image: url("img/KGridLogo_Blue.png");
   background-size: 30%;
   width:80%;
   min-height: 400px;
