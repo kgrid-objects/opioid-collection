@@ -2,17 +2,14 @@
   "name": "mopen-opioid-collection",
   "version": "1.0.0",
   "description": "[Opioid collection](medication/opioid-collection).",
-  "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
   "devDependencies": {
-    "jest": "^23.4.2",
+    "jest": "^23.5.0",
+    "rewire": "^4.0.1",
     "scripty": "1.7.2"
   },
   "scripts": {
-    "release": "scripty",
-    "release-kos": "scripty"
+    "package": "scripty",
+    "test": "jest"
   },
   "scripty": {
     "path": "scripts",
