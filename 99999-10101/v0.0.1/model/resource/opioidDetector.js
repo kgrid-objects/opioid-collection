@@ -1,5 +1,4 @@
 function opioidDetector(inputs){
-  console.log(inputs);
   var regimenList = inputs.rxcuis.split(",");
   var output = []
   var jsonoutput ={"condition_satisfied":false,"summary":"","detail":""}
