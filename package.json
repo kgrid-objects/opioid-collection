@@ -1,5 +1,5 @@
 {
-  "name": "mopen-opioid-collection",
+  "name": "opioid-collection",
   "version": "1.0.0",
   "description": "[Opioid collection](medication/opioid-collection).",
   "devDependencies": {
@@ -21,15 +21,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kgrid/mopen-opioid-collection.git"
+    "url": "git+https://github.com/kgrid/opioid-collection.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/kgrid/mopen-opioid-collection/issues"
+    "url": "https://github.com/kgrid/opioid-collection/issues"
   },
-  "homepage": "https://github.com/kgrid/mopen-opioid-collection#readme",
+  "homepage": "https://github.com/kgrid/opioid-collection#readme",
   "dependencies": {
     "archiver": "^2.1.1"
   }

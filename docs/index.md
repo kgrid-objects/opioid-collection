@@ -25,7 +25,7 @@ There are currently three knowledge objects developed for this collection.
 The service descriptions can be viewed using [Swagger UI on Kgrid-demos.github.io](https://kgrid-demos.github.io/swaggerui/)
 
 
-To open, enter `https://kgrid.org/mopen-opioid-collection/service/mopen.yaml` in the top text box and click `explore`
+To open, enter `https://kgrid.org/opioid-collection/service/mopen.yaml` in the top text box and click `explore`
 
 <!-- ### For more information
 {:.no_toc}
