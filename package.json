@@ -5,11 +5,15 @@
   "devDependencies": {
     "jest": "^23.5.0",
     "rewire": "^4.0.1",
-    "scripty": "1.7.2"
+    "scripty": "1.7.2",
+    "vuepress": "^0.14.4"
   },
   "scripts": {
     "package": "scripty",
-    "test": "jest"
+    "test": "jest",
+    "deploydocs": "scripty",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
   },
   "scripty": {
     "path": "scripts",
