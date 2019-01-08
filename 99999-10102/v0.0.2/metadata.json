@@ -1,0 +1,14 @@
+{
+  "@id": "v0.0.2",
+  "@type": "koio:Implementation",
+  "identifier": "v0.0.2",
+  "title": "Opioid and Benzodiazepine Detector Implementation",
+  "description": "This object scans a list of a patient's prescriptions and determines if they are at risk being exposed simultaneously to a known dangerous combination of an opioid and a benzodiazepine.",
+  "keywords": "Keywords",
+  "hasServiceSpecification": "v0.0.2/service-specification.yaml",
+  "hasDeploymentSpecification": "v0.0.2/deployment-specification.yaml",
+  "hasPayload": "v0.0.2/opioidbzdDetector.js",
+  "@context": [
+    "http://kgrid.org/koio/contexts/knowledgeobject.jsonld"
+  ]
+}

@@ -1,0 +1,5 @@
+endpoints:
+  /opioidDetector:
+    adapterType: JAVASCRIPT
+    artifact: opioidDetector.js
+    entry: opioidDetector
