@@ -1,5 +1,5 @@
 var rewire = require('rewire');
-const opioidJS = rewire('../99999-10101/v0.0.1/model/resource/opioidDetector');
+const opioidJS = rewire('../collection/99999-10101/v0.0.1/model/resource/opioidDetector');
 
 var opioidDetector = opioidJS.__get__("opioidDetector");
 
