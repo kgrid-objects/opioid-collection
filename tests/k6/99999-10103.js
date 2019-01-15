@@ -11,7 +11,7 @@ var testObjects = [
 ]
 
 export default function() {
-  var url = `http://${hostname}/99999/10103/v0.0.1/tripleThreatDetector`;
+  var url = `http://${hostname}/99999/10103/v0.0.2/tripleThreatDetector`;
 
   var randomtestObject = testObjects[Math.floor(Math.random() * testObjects.length)];
 

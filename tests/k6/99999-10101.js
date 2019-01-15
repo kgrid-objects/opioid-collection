@@ -11,7 +11,7 @@ var testObjects = [
 ]
 
 export default function() {
-  var url = `http://${hostname}/99999/10101/v0.0.1/opioidDetector`;
+  var url = `http://${hostname}/99999/10101/v0.0.2/opioidDetector`;
 
   var randomtestObject = testObjects[Math.floor(Math.random() * testObjects.length)];
 

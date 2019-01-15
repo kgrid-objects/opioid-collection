@@ -3,13 +3,13 @@
 # Setup
 rm -rf dist
 mkdir -p dist
-cp -r 99999-* dist
+cp -r collection/* dist
 
 # create zip for each ko
 cd dist
 for d in * ; do
     echo "$d.zip"
-    zip -r -X "$d.zip" $d -x \"*.DS_Store\"
+    zip -r -X "$d.koio.zip" $d -x \"*.DS_Store\"
 done
 
 # create one big zip of all kos
