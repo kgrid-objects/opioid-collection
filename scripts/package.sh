@@ -9,7 +9,7 @@ cp -r collection/* dist
 cd dist
 for d in * ; do
     echo "$d.zip"
-    zip -r -X "$d.koio.zip" $d -x \"*.DS_Store\"
+    zip -r -X "$d.zip" $d -x \"*.DS_Store\"
 done
 
 # create one big zip of all kos
