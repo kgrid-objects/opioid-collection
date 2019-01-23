@@ -1,7 +1,7 @@
 {
   "@id": "v0.0.2",
   "@type": "koio:Implementation",
-  "identifier": "v0.0.2",
+  "identifier": "ark:/99999/10103/v0.0.2",
   "title": "Respiratory Depression Risk Indicator Implementation",
   "description": "This object scans a list of a patient's prescriptions and determines if they are at risk greater for drug-induced respiratory depression because of being exposed simultaneously to a known dangerous combination of an opioid, a benzodiazepine, and a muscle relaxant.",
   "keywords": "Keywords",
