@@ -1,0 +1,5 @@
+endpoints:
+  /mhaALTODetector:
+    adapterType: JAVASCRIPT
+    artifact: mhaALTODetector.js
+    entry: mhaALTODetector

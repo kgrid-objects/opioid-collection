@@ -1,0 +1,68 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Michigan Hospital Association Opiates of Interest Detector
+  description: >-
+    This object scans a list of prescriptions and determines if the patient is
+    taking an opiate
+tags:
+  - name: KO Endpoints
+    description: Opioid Endpoints
+servers:
+  - url: /99999/10104/v0.0.1
+paths:
+  /mhaOpiateDetector:
+    post:
+      tags:
+        - KO Endpoints
+      description: >-
+        This object scans a list of prescriptions and determines if the patient is
+            taking an opiate
+      operationId: mhaOpiateDetector
+      requestBody:
+        description: RxNorm Semantic Clinical Drug codes for a paitent
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/druglist'
+      responses:
+        '200':
+          description: response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/output'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    druglist:
+      required:
+        - rxcuis
+      properties:
+        rxcuis:
+          type: string
+          example: '106500,200240,856917,994226,197446,801958'
+    output:
+      required:
+        - result
+      properties:
+        result:
+          type: object
+          example: >-
+            {"condition_satisfied" : true, "summary" : { "mhaOpiate" : true }, "detail" : { "106500" : { "mhaOpiate" : false }, "197446" : { "mhaOpiate" : false }, "200240" : { "mhaOpiate" : false }, "801958" : { "mhaOpiate" : false }, "856917" : { "mhaOpiate" : false }, "994226" : { "mhaOpiate" : true }}}
+    Error:
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
