@@ -3,14 +3,18 @@
   "version": "1.0.0",
   "description": "[Opioid collection](medication/opioid-collection).",
   "devDependencies": {
-    "jest": "^23.5.0",
+    "jest": "^23.6.0",
     "rewire": "^4.0.1",
     "scripty": "1.7.2",
     "vuepress": "^0.14.4"
   },
   "scripts": {
     "package": "scripty",
-    "test": "jest",
+    "start": "node scripts/start.js",
+    "test:unit": "jest --passWithNoTests --ci --reporters=default --reporters=jest-junit",
+    "test:integration": "server-test :8080 postman",
+    "postman": "newman run tests/integration/opioid.postman_collection.json -e tests/integration/activator.postman_environment.json --reporters  cli,junit --reporter-junit-export test_results ",
+    "test": "npm run test:unit && npm run test:integration",
     "deploydocs": "scripty",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
@@ -35,6 +39,13 @@
   },
   "homepage": "https://github.com/kgrid/opioid-collection#readme",
   "dependencies": {
-    "archiver": "^2.1.1"
+    "archiver": "^2.1.1",
+    "download": "^7.1.0",
+    "fs-extra": "^7.0.1",
+    "jest-junit": "^6.2.1",
+    "jsonpath": "^1.0.0",
+    "newman": "^4.3.1",
+    "request": "^2.88.0",
+    "start-server-and-test": "^1.7.11"
   }
 }
