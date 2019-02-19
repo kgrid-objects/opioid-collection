@@ -137,24 +137,44 @@ Directory structure should look similar to the following
  ├── shelf
  │   └── 99999-10103
  │       └── v0.0.1   
+ │       └── v0.0.2 
  │   └── 99999-10102
- │       └── v0.0.1   
+ │       └── v0.0.1
+ │       └── v0.0.2    
  │   └── 99999-10101
+ │       └── v0.0.1
+ │       └── v0.0.2
+ │   └── 99999-10104
+ │       └── v0.0.1
+ │   └── 99999-10105
  │       └── v0.0.1   
  └── kgrid-activator-0.6.2.jar
 ```
 
-Once on the [KGrid Activator](http://kgrid.org/kgrid-activator/) shelf  the KOs will need to be activated. This is accomplished by calling the executors resource.
+Go to the /health endpoint to see that the KOs are activated
+You should receive a list of the activated endpoints similar to the following
 
-```curl http://localhost:8080/endpoints```
-
-This will load and activate the KOs on the shelf. You should recieve a list of the activated endpoint similar to the following
 ```
-[
-    "99999/10103/v0.0.1/tripleThreatDetector",
-    "99999/10101/v0.0.1/opioidDetector",
-    "99999/10102/v0.0.1/opioidbzdDetector"
-]
+{
+    "status": "UP",
+    "details": {...},
+        "activationService": {
+            "status": "UP",
+            "details": {
+                "Adapters loaded": [
+                    "JAVASCRIPT"
+                ],
+                "Endpoints loaded": [
+                    "99999-10101/v0.0.2/opioidDetector",
+                    "99999-10103/v0.0.2/tripleThreatDetector",
+                    "99999-10104/v0.0.1/mhaOpiateDetector",
+                    "99999-10105/v0.0.1/mhaALTODetector",
+                    "99999-10102/v0.0.2/opioidbzdDetector"
+                ]
+            }
+        },
+    }
+}
 ```
 
 ### Common Issues/Problems
