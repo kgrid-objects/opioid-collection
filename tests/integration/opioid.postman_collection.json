@@ -1,0 +1,310 @@
+{
+	"info": {
+		"_postman_id": "7f3b9fad-5ea5-4e16-af5d-b2591423fdd7",
+		"name": "opioid",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Run 10101 opioidbzdDetector",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4cdefc11-7cec-4320-a55e-22e17ec9ee63",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Opioid\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.result.summary.opioid).to.true;",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": " application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"rxcuis\":\"106500,200240,856917,994226,197446,801958\"}"
+				},
+				"url": {
+					"raw": "{{url}}/99999/10101/v0.0.2/opioidDetector",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"99999",
+						"10101",
+						"v0.0.2",
+						"opioidDetector"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Run 10102 opioidbzdDetector",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6aca7523-1cb6-419c-b49c-a250622815c5",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Opioid\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.result.summary.opioid).to.true;",
+							"});",
+							"pm.test(\"BZD\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.result.summary.bzd).to.true;",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": " application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"rxcuis\":\"106500,200240,856917,994226,197446,801958\"}"
+				},
+				"url": {
+					"raw": "{{url}}/99999/10102/v0.0.2/opioidbzdDetector",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"99999",
+						"10102",
+						"v0.0.2",
+						"opioidbzdDetector"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Run 10103 opioidbzdDetector",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5fd56a44-10e0-4612-be8b-41caa28f77f9",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Opioid\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.result.summary.opioid).to.true;",
+							"});",
+							"pm.test(\"BZD\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.result.summary.bzd).to.true;",
+							"});",
+							"pm.test(\"MR\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.result.summary.mr).to.true;",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": " application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"rxcuis\":\"106500,200240,856917,994226,197446,801958\"}"
+				},
+				"url": {
+					"raw": "{{url}}/99999/10103/v0.0.2/tripleThreatDetector",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"99999",
+						"10103",
+						"v0.0.2",
+						"tripleThreatDetector"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Run 10104 MHA Opiate Detector",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5fd56a44-10e0-4612-be8b-41caa28f77f9",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"MHA Opiate\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.result.summary.mhaOpiate).to.true;",
+							"});",
+							"",
+							"pm.test(\"833709 mhaOpiate\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.result.detail[\"833709\"].mhaOpiate).to.true;",
+							"});",
+							"",
+							"pm.test(\"200240 mhaOpiate\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.result.detail[\"200240\"].mhaOpiate).to.false;",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": " application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"rxcuis\":\"106500,200240,856917,833709,197446,801958\"}"
+				},
+				"url": {
+					"raw": "{{url}}/99999/10104/v0.0.1/mhaOpiateDetector",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"99999",
+						"10104",
+						"v0.0.1",
+						"mhaOpiateDetector"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Run 10105 MHA Opiate Detector Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5fd56a44-10e0-4612-be8b-41caa28f77f9",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"MHA Opiate\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.result.summary.mhaALTO).to.true;",
+							"});",
+							"",
+							"pm.test(\"1089968 mhaALTO\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.result.detail[\"1089968\"].mhaALTO).to.true;",
+							"});",
+							"",
+							"pm.test(\"200240 mhaALTO\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.result.detail[\"200240\"].mhaALTO).to.false;",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": " application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"rxcuis\":\"106500,200240,856917,1089968,197446,801958\"}"
+				},
+				"url": {
+					"raw": "{{url}}/99999/10105/v0.0.1/mhaALTODetector",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"99999",
+						"10105",
+						"v0.0.1",
+						"mhaALTODetector"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "9c2e64dd-6926-4d88-8c5b-6a28ab737849",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "2216591d-3a65-4407-8474-4f75cbbea571",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

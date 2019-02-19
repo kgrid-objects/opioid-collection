@@ -34,13 +34,21 @@ jobs:
         name: Unit Testing
         command: npm test
 
-    # - run:
-    #     name: Intgration Testing
-    #     command: npm run ci
-    #
-    # - run:
-    #     name: Create CPIC Objects zip ready for deployment
-    #     command: npm run package
+
+    - run:
+        name: Create CPIC Objects zip ready for deployment
+        command: npm run package
+
+    - run:
+        name: Create Release
+        command: |
+
+           if [ $RELEASE ]; then
+              git config --global user.email "$GIT_USER_EMAIL"
+              git config --global user.name "$GIT_USER_NAME"
+
+              .circleci/release.sh
+           fi
 
     - run:
         name: Deploy VuePress GitHub Pages

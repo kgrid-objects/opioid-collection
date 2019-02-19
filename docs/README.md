@@ -1,5 +1,5 @@
-# Michigan OPEN Opioid-related Knowledge Object (KO) Collection
-[![GitHub release](https://img.shields.io/github/release/kgrid/opioid-collection.svg)](https://github.com/kgrid/opioid-collection/releases/)
+# Opioid Collection
+[![GitHub release](https://img.shields.io/github/release/kgrid-objects/opioid-collection.svg)](https://github.com/kgrid-objects/opioid-collection/releases/)
 
 This is a collection of KOs for KGrid that can be used to identify and report on certain features of opioid prescribing. Each KO in this collection uses patient prescription data for its input and provides information about patient prescriptions as its output. 
 
@@ -7,14 +7,13 @@ Table of Contents
 --
 - [Getting Started](#getting-started)
 - [Knowledge Object Collection](#knowledge-object-collection)
-   1. [Opioid Use Detector](#one-opioid-use-detector) 
-   1. [Opioid and Benzodiazepine Detector](#two-opioid-and-benzodiazepine-detector)
-   1. [Respiratory Depression Risk Indicator](#three-respiratory-depression-risk-indicator )
-   1. [MHA Opiate Use Detector](#four-mha-opioid-detector)
-   1. [MHA ALTO Use Detector](#five-mha-alto-detector)
+   1. [Opioid Use Detector](#opioid-use-detector) 
+   1. [Opioid and Benzodiazepine Detector](#opioid-and-benzodiazepine-detector)
+   1. [Respiratory Depression Risk Indicator](#respiratory-depression-risk-indicator )
+   1. [MHA Opiate Use Detector](#mha-opioid-detector)
+   1. [MHA ALTO Use Detector](#mha-alto-detector)
 - [Install the Michigan OPEN Opioid-related KO Collection](#install-kos-on-kgrid-activator)  
-- [Common Issues/Problems](#common-issuesproblems)
-- [Roadmap](#roadmap)
+- [Opioid Collection Testing](#opioid-collection-testing)  
 
 
 ### Getting Started
@@ -114,7 +113,7 @@ Additional API documentation can be found in the [Swagger UI](https://kgrid-demo
 
 ####  :five: MHA ALTO Detector
 
-This [KO](99999-10104)  scans a patient's medication regimen, which is presented to the KO as a list of RxNorm Semantic Clinical Drug codes, for the presence of an ALTO (alternative to opioids) prescription.  This KO has many potential uses, including one use as a filtering or screening mechanism when applied in the context of health information exchange. 
+This [KO](99999-10105)  scans a patient's medication regimen, which is presented to the KO as a list of RxNorm Semantic Clinical Drug codes, for the presence of an ALTO (alternative to opioids) prescription.  This KO has many potential uses, including one use as a filtering or screening mechanism when applied in the context of health information exchange. 
 
 **Example API Usage with curl**
 ```
@@ -124,7 +123,6 @@ curl -X POST \
   -d '{"rxcuis":"106500,200240,856917,994226,197446,1733892"}'
  ```
 Additional API documentation can be found in the [Swagger UI](https://kgrid-demos.github.io/swaggerui/?url=https://kgrid-activator.herokuapp.com/99999/10104/v0.0.1/servicedescriptor.yaml)  visualation of the OpenAPI specification.
-
 
 ### Install KOs on KGrid Activator
 In order to use the MOpen Opioid Knowledge Object Collection you need to have an instance of the KGrid Activator up and running. To do this, refer to [KGrid Activator](http://kgrid.org/kgrid-activator/) deployment details.  Once you have [KGrid Activator](http://kgrid.org/kgrid-activator/) up and running you will need to add the [MOpen Opioid](https://github.com/kgrid/opioid-collection/releases/latest) KOs to the existing shelf. 
@@ -177,19 +175,48 @@ You should receive a list of the activated endpoints similar to the following
 }
 ```
 
-### Common Issues/Problems
+## Opioid Collection Testing
 
-More to come
-
-### Roadmap
-
-#### Current
-
-#### Planned
-
-#### Release/Publish KOs 
-The current released/published MOpen collection is stored on GitHub [MOpen Opioid Collection Releases](https://github.com/kgrid/opioid-collection/releases). This zipped ko collection can be installed in an activator as descrided in [Install the Michigan OPEN Opioid-related KO Collection](#install-kos-on-kgrid-activator)  
+### Prerequisites
+There are testing and packaging features in this project that require npm, npm is installed with Node.js
+[npm](https://www.npmjs.com/get-npm).  Once npm is installed run  ```npm install``` at the root of this project.
 
 
+NPM test will run both unit and integration tests. 
+
+```
+npm test
+```
+### Unit Tests
+
+The KO Unit Test are located in the [tests directory](./tests).  These tests utilize
+[Jest](https://jestjs.io/) 
+
+```
+npm run test:unit
+```
+
+### Integration Tests
+We test the IPP KO endpoints in a KGrid Activator instance using [Postman](https://www.getpostman.com/) and
+[Newman](https://www.npmjs.com/package/newman). The Opioid Collection integration tests are defined in the 
+_opioid.postman_collection.json_. The integration script uses the 
+[start server and test](https://www.npmjs.com/package/start-server-and-test).  
+The integration test does the following:
+
+1. downloads the latest KGrid Activator
+1. runs the activator with the IPP KOs
+1. runs the ipp collection defined as the IPP test/integration 
+ 
+```
+npm run test:integration
+```
 
 
+
+
+**Tricks**
+
+You can start a local activator pointing to the IPP collection 
+```
+npm run start
+```
