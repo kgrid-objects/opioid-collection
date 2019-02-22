@@ -24,7 +24,7 @@ Below in this documentation, find each KO's API documentation in the OpenAPI 3.0
 ### Knowledge Object Collection
 
 ####  :one: Opioid Use Detector
-This [KO](99999-10101)  scans a patient's medication regimen, which is presented to the KO as a list of RxNorm Semantic Clinical Drug codes, for the presence of an opioid prescription.  This KO has many potential uses, including one use as a filtering or screening mechanism when applied in the context of health information exchange. 
+This KO scans a patient's medication regimen, which is presented to the KO as a list of RxNorm Semantic Clinical Drug codes, for the presence of an opioid prescription.  This KO has many potential uses, including one use as a filtering or screening mechanism when applied in the context of health information exchange. 
 
 **Example API Usage with curl**
 ```
@@ -73,7 +73,7 @@ curl -X POST \
 Additional API documentation can be found in the [Swagger UI](https://kgrid-demos.github.io/swaggerui/?url=https://kgrid-activator.herokuapp.com/99999/10101/v0.0.2/servicedescriptor.yaml) visualation of the OpenAPI specification.
 
 ####  :two: Opioid and Benzodiazepine Detector
-This [KO](99999-10102)  scans a list of a patient's prescriptions, which are presented to the KO as a list of RxNorm Semantic Clinical Drug codes, and determines if they are being exposed simultaneously to a known risky combination of an opioid and a benzodiazepine.
+This KO  scans a list of a patient's prescriptions, which are presented to the KO as a list of RxNorm Semantic Clinical Drug codes, and determines if they are being exposed simultaneously to a known risky combination of an opioid and a benzodiazepine.
 
 **Example API Usage with curl**
 ```json
@@ -87,7 +87,7 @@ curl -X POST \
 Additional API documentation can be found in the [Swagger UI](https://kgrid-demos.github.io/swaggerui/?url=https://kgrid-activator.herokuapp.com/99999/10102/v0.0.2/servicedescriptor.yaml) visualation of the OpenAPI specification.
 
 ####  :three: Respiratory Depression Risk Indicator
-This [KO](99999-10103)  scans a list of a patient's prescriptions, which are presented to the KO as a list or RxNorm Semantic Clinical Drug Codes, and determines if they are at higher risk for drug-induced respiratory depression because of being exposed simultaneously to a combination of an opioid, a benzodiazepine, and a muscle relaxant.
+This KO scans a list of a patient's prescriptions, which are presented to the KO as a list or RxNorm Semantic Clinical Drug Codes, and determines if they are at higher risk for drug-induced respiratory depression because of being exposed simultaneously to a combination of an opioid, a benzodiazepine, and a muscle relaxant.
 
 **Example API Usage with curl**
 ```json
@@ -100,7 +100,7 @@ Additional API documentation can be found in the [Swagger UI](https://kgrid-demo
 
 ####  :four: MHA Opioid Detector
 
-This [KO](99999-10104)  scans a patient's medication regimen, which is presented to the KO as a list of RxNorm Semantic Clinical Drug codes, for the presence of an opioid prescription.  This KO has many potential uses, including one use as a filtering or screening mechanism when applied in the context of health information exchange. 
+This  KO  scans a patient's medication regimen, which is presented to the KO as a list of RxNorm Semantic Clinical Drug codes, for the presence of an opioid prescription.  This KO has many potential uses, including one use as a filtering or screening mechanism when applied in the context of health information exchange. 
 
 **Example API Usage with curl**
 ```
@@ -113,7 +113,7 @@ Additional API documentation can be found in the [Swagger UI](https://kgrid-demo
 
 ####  :five: MHA ALTO Detector
 
-This [KO](99999-10105)  scans a patient's medication regimen, which is presented to the KO as a list of RxNorm Semantic Clinical Drug codes, for the presence of an ALTO (alternative to opioids) prescription.  This KO has many potential uses, including one use as a filtering or screening mechanism when applied in the context of health information exchange. 
+This  KO  scans a patient's medication regimen, which is presented to the KO as a list of RxNorm Semantic Clinical Drug codes, for the presence of an ALTO (alternative to opioids) prescription.  This KO has many potential uses, including one use as a filtering or screening mechanism when applied in the context of health information exchange. 
 
 **Example API Usage with curl**
 ```
@@ -125,10 +125,10 @@ curl -X POST \
 Additional API documentation can be found in the [Swagger UI](https://kgrid-demos.github.io/swaggerui/?url=https://kgrid-activator.herokuapp.com/99999/10104/v0.0.1/servicedescriptor.yaml)  visualation of the OpenAPI specification.
 
 ### Install KOs on KGrid Activator
-In order to use the MOpen Opioid Knowledge Object Collection you need to have an instance of the KGrid Activator up and running. To do this, refer to [KGrid Activator](http://kgrid.org/kgrid-activator/) deployment details.  Once you have [KGrid Activator](http://kgrid.org/kgrid-activator/) up and running you will need to add the [MOpen Opioid](https://github.com/kgrid/opioid-collection/releases/latest) KOs to the existing shelf. 
+In order to use the MOpen Opioid Knowledge Object Collection you need to have an instance of the KGrid Activator up and running. To do this, refer to [KGrid Activator](http://kgrid.org/kgrid-activator/) deployment details.  Once you have [KGrid Activator](http://kgrid.org/kgrid-activator/) up and running you will need to add the [MOpen Opioid](https://github.com/kgrid-objects/opioid-collection/releases/latest) KOs to the existing shelf. 
 
- 1. Download the released MOpen Opiod KOs self (opid_shelf.zip) from github [MOpen-Opioid Collection](https://github.com/kgrid/opioid-collection/releases/latest)
- 1. Place the opid_shelf.zip.zip into the directory where the activator jar is located and unzip. This will place the KOs into existing shelf directory
+ 1. Download the released MOpen Opiod KOs self (opioid_all.zip) from github [MOpen-Opioid Collection](https://github.com/kgrid-objects/opioid-collection/releases/latest)
+ 1. Place the opioid-all.zip into the directory where the activator jar is located and unzip. This will place the KOs into existing shelf directory
  
 Directory structure should look similar to the following
 ```json
