@@ -5,8 +5,7 @@
   "devDependencies": {
     "jest": "^24.9.0",
     "rewire": "^4.0.1",
-    "scripty": "1.7.2",
-    "vuepress": "^1.0.2"
+    "scripty": "1.7.2"
   },
   "scripts": {
     "package": "scripty",
@@ -14,10 +13,7 @@
     "test:unit": "jest --passWithNoTests --ci --reporters=default --reporters=jest-junit",
     "test:integration": "server-test :8080 postman",
     "postman": "newman run tests/integration/opioid.postman_collection.json -e tests/integration/activator.postman_environment.json --reporters  cli,junit --reporter-junit-export test_results ",
-    "test": "npm run test:unit && npm run test:integration",
-    "deploydocs": "scripty",
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "test": "npm run test:unit && npm run test:integration"
   },
   "scripty": {
     "path": "scripts",

@@ -1,7 +1,9 @@
 #!/usr/bin/env sh
 
+npm run build
+
 REM navigate into the build output directory
-cd docs/.vuepress/dist
+cd web/.vuepress/dist
 
 git init
 git add -A
