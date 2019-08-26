@@ -11,8 +11,6 @@ cd docs
 npm install
 npm run build
 # copy web docs to github pages dist
-echo pwd
-echo ls
 mkdir -p web/.vuepress/dist/.circleci
 cp -a ../.circleci/. web/.vuepress/dist/.circleci/.
 
