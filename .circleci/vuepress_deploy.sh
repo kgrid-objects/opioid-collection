@@ -6,6 +6,7 @@ git config --global user.email "kgrid-developers@umich.edu"
 git config --global user.name "circleci"
 
 # build
+npm install --save-dev babel-runtime
 npm run docs:build
 # copy web demo to github pages dist
 mkdir -p docs/.vuepress/dist/.circleci
