@@ -11,11 +11,11 @@ cd docs
 npm install
 npm run build
 # copy web docs to github pages dist
-mkdir -p docs/web/.vuepress/dist/.circleci
-cp -a .circleci/. docs/web/.vuepress/dist/.circleci/.
+mkdir -p web/.vuepress/dist/.circleci
+cp -a ../.circleci/. docs/web/.vuepress/dist/.circleci/.
 
 # navigate into the build output directory
-cd docs/web/.vuepress/dist
+cd web/.vuepress/dist
 
 git init
 git add -A
