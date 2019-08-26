@@ -1,0 +1,17 @@
+{
+  "name": "@kgrid/opioid-collection-docs",
+  "version": "1.0.0",
+  "description": "Vue Press Documentation for opioid-collection",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "scripty",
+    "start": "vuepress dev web",
+    "build": "vuepress build web"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "scripty": "^1.9.1",
+    "vuepress": "^1.0.3"
+  }
+}
