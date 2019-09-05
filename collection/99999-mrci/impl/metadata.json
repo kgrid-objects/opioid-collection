@@ -1,0 +1,10 @@
+{
+    "@id": "impl",
+    "@type": "koio:Implementation",
+    "identifier": "ark:/99999/mrci/impl",
+    "title": "Computation of Medication Regimen Complexity Index",
+    "hasServiceSpecification": "impl/service.yaml",
+    "@context": [
+        "http://kgrid.org/koio/contexts/implementation.jsonld"
+    ]
+}

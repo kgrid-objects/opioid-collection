@@ -1,0 +1,51 @@
+{
+  "patientwithprescriptionlist":{
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "prescriptions": {
+        "type": "array",
+        "items":{
+          "type": "object",
+          "properties":{
+            "rxnorm": {
+              "type": "string"
+            },
+            "medicationname": {
+              "type": "string"
+            },
+            "genericname": {
+              "type": "string"
+            },
+            "strengthvalue": {
+              "type": "number"
+            },
+            "strengthunit": {
+              "type": "string"
+            },
+            "form": {
+              "type": "string"
+            },
+            "route": {
+              "type": "string"
+            },
+            "sig": {
+              "type": "string"
+            },
+            "dosagevalue":{
+              "type": "string"
+            },
+            "dosageunit":{
+              "type": "string"
+            },
+            "frequency":{
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,46 @@
+openapi: 3.0.2
+info:
+  version: impl
+  title: Computation of Medication Regimen Complexity Index
+  description: Computing Patient's Medication Regimen Complexity Index based on the patient's prescription list
+servers:
+  - url: /99999/mrci/impl
+paths:
+  /mrci:
+    post:
+      description: Medication Regimen Complexity Index
+      operationId: mrci
+      requestBody:
+        description: inputs
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/input'
+      responses:
+        '200':
+          description: response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/output'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: 'https://demo.kgrid.org/schemas/basicerror.yaml'
+      x-kgrid-activation:
+        artifact: src/index.js
+        adapter: JAVASCRIPT
+        entry: mrci
+components:
+  schemas:
+    input:
+      $ref: 'schema.json#/patientwithprescriptionlist'
+    output:
+      required:
+        - result
+      properties:
+        result:
+          type: object
