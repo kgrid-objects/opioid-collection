@@ -3,7 +3,8 @@
     "type": "object",
     "properties": {
       "id": {
-        "type": "string"
+        "type": "string",
+        "example":"PA-01011"
       },
       "prescriptions": {
         "type": "array",
@@ -11,37 +12,48 @@
           "type": "object",
           "properties":{
             "rxnorm": {
-              "type": "string"
+              "type": "string",
+              "example": "313782"
             },
             "medicationname": {
-              "type": "string"
+              "type": "string",
+              "example": "ACETAMINOPHEN 325 MG TABLET"
             },
             "genericname": {
-              "type": "string"
+              "type": "string",
+              "example": "ACETAMINOPHEN"
             },
             "strengthvalue": {
-              "type": "number"
+              "type": "number",
+              "example": 325
             },
             "strengthunit": {
-              "type": "string"
+              "type": "string",
+              "example": "mg"
             },
             "form": {
-              "type": "string"
+              "type": "string",
+              "example": "Tablet"
             },
             "route": {
-              "type": "string"
+              "type": "string",
+              "example": "Oral"
             },
             "sig": {
-              "type": "string"
+              "type": "string",
+              "example": "650 MG EVERY 6 HOURS"
             },
             "dosagevalue":{
-              "type": "string"
+              "type": "string",
+              "example": "650"
             },
             "dosageunit":{
-              "type": "string"
+              "type": "string",
+              "example": "MG"
             },
             "frequency":{
-              "type": "string"
+              "type": "string",
+              "example": "EVERY 6 HOURS"
             }
           }
         }

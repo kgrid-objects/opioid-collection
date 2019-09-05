@@ -4,20 +4,27 @@ function mrci(inputs){
   var list=masterlisting()
   for(var i=0; i<patient.prescriptions.length;i++) {
     rxprocess(patient.prescriptions[i])
-    var mrciWeighting = {A:0,B:0,C:[]}
+    var mrciWeighting = {}
     if(list[patient.prescriptions[i].key_A]) {
       list[patient.prescriptions[i].key_A].count ++
-      mrciWeighting.A = list[patient.prescriptions[i].key_A].weighting
+      mrciWeighting[patient.prescriptions[i].key_A]= list[patient.prescriptions[i].key_A].weighting
+    }else{
+      mrciWeighting[patient.prescriptions[i].key_A]=''
     }
-    if(list[patient.prescriptions[i].key_B]) {
-      list[patient.prescriptions[i].key_B].count ++
-      mrciWeighting.B = list[patient.prescriptions[i].key_B].weighting
-    }
-    mrciWeighting.C=[]
+    patient.prescriptions[i].key_B.forEach(function(e){
+      if(list[e]){
+        list[e].count ++
+        mrciWeighting[e]=list[e].weighting
+      }else{
+        mrciWeighting[e]=''
+      }
+    })
     patient.prescriptions[i].key_C.forEach(function(e){
       if(list[e]){
         list[e].count ++
-        mrciWeighting.C.push(list[e].weighting)
+        mrciWeighting[e]=list[e].weighting
+      }else{
+        mrciWeighting[e]=''
       }
     })
     patient.prescriptions[i].mrciWeighting=mrciWeighting
@@ -39,12 +46,31 @@ function mrci(inputs){
 
 function rxprocess(prescription) {
   var rxData = prescription
-  rxData.key_A = prescription.route.toLowerCase()+'_'+prescription.form.toLowerCase()
+  rxData.key_A = routeformkeylookup(prescription.route.toLowerCase(),prescription.form.toLowerCase())
   rxData.key_B = freqkeylookup(prescription.frequency)
   rxData.key_C = additionaldirkey(prescription)
 }
 
+function routeformkeylookup(route, form) {
+  var route_dict={
+    "oral":"oral",
+    "eye":"ear_eye_nose",
+    "ear":"ear_eye_nose",
+    "nose":"ear_eye_nose",
+    "injection":"injection",
+    "inhalation":"inhalation"
+  }
+  var form_dict = {
+    "tablet":"cap_tab",
+    "solution":"solution",
+    "mdi":"mdi"
+  }
+  return route_dict[route]+'-'+form_dict[form]
+}
+
 function freqkeylookup(freq){
+  var keys = []
+  var freqArr = freq.split(' and ')
   var dict = {
     "EVERY 6 HOURS":"q_6h",
     "EVERY 6 HOURS PRN":"q_6h_prn",
@@ -56,7 +82,10 @@ function freqkeylookup(freq){
     "3 times daily":"threetimes_daily",
     "PRN":"prn"
   }
-  return dict[freq] || 'na'
+  for(var i=0; i<freqArr.length;i++) {
+    keys.push(dict[freq] || 'na')
+  }
+  return keys
 }
 
 function additionaldirkey(p) {
@@ -77,9 +106,9 @@ function additionaldirkey(p) {
 
 function masterlisting(){
   var masterlist = {
-    "oral_tablet":{ "section":"A", "count": 0, "weighting": 1, "subtotal": 0 },
-    "injection_solution":{ "section":"A", "count": 0, "weighting": 4, "subtotal": 0 },
-    "inhalation_mdi":{ "section":"A", "count": 0, "weighting": 4, "subtotal": 0 },
+    "oral-cap_tab":{ "section":"A", "count": 0, "weighting": 1, "subtotal": 0 },
+    "injection-solution":{ "section":"A", "count": 0, "weighting": 4, "subtotal": 0 },
+    "inhalation-mdi":{ "section":"A", "count": 0, "weighting": 4, "subtotal": 0 },
     "once_daily":{ "section":"B", "count": 0, "weighting": 1, "subtotal": 0 },
     "twice_daily":{ "section":"B", "count": 0, "weighting": 2, "subtotal": 0 },
     "threetimes_daily":{ "section":"B", "count": 0, "weighting": 3, "subtotal": 0 },
