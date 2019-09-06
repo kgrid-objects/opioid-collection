@@ -1,17 +1,18 @@
 function mrci(inputs){
-  var patient = inputs
   var totalMRCI = 0
   var list=masterlisting()
-  for(var i=0; i<patient.prescriptions.length;i++) {
-    rxprocess(patient.prescriptions[i])
+  for(var i=0; i<inputs.prescriptions.length;i++) {
+    var key_A = routeformkeylookup(inputs.prescriptions[i].route.toLowerCase(),inputs.prescriptions[i].form.toLowerCase())
+    var key_B = freqkeylookup(inputs.prescriptions[i].frequency.toLowerCase())
+    var key_C = additionaldirkey(inputs.prescriptions[i])
     var mrciWeighting = {}
-    if(list[patient.prescriptions[i].key_A]) {
-      list[patient.prescriptions[i].key_A].count ++
-      mrciWeighting[patient.prescriptions[i].key_A]= list[patient.prescriptions[i].key_A].weighting
+    if(list[key_A]) {
+      list[key_A].count ++
+      mrciWeighting[key_A]= list[key_A].weighting
     }else{
-      mrciWeighting[patient.prescriptions[i].key_A]=''
+      mrciWeighting[key_A]=''
     }
-    patient.prescriptions[i].key_B.forEach(function(e){
+    key_B.forEach(function(e){
       if(list[e]){
         list[e].count ++
         mrciWeighting[e]=list[e].weighting
@@ -19,7 +20,7 @@ function mrci(inputs){
         mrciWeighting[e]=''
       }
     })
-    patient.prescriptions[i].key_C.forEach(function(e){
+    key_C.forEach(function(e){
       if(list[e]){
         list[e].count ++
         mrciWeighting[e]=list[e].weighting
@@ -27,7 +28,7 @@ function mrci(inputs){
         mrciWeighting[e]=''
       }
     })
-    patient.prescriptions[i].mrciWeighting=mrciWeighting
+    inputs.prescriptions[i].mrciWeighting=mrciWeighting
   }
   for(var key in list){
     if(list[key]){
@@ -40,20 +41,14 @@ function mrci(inputs){
       }
     }
   }
-  patient.totalMRCI=totalMRCI
-  return patient;
-}
-
-function rxprocess(prescription) {
-  var rxData = prescription
-  rxData.key_A = routeformkeylookup(prescription.route.toLowerCase(),prescription.form.toLowerCase())
-  rxData.key_B = freqkeylookup(prescription.frequency)
-  rxData.key_C = additionaldirkey(prescription)
+  inputs.totalMRCI=totalMRCI
+  return inputs;
 }
 
 function routeformkeylookup(route, form) {
   var route_dict={
     "oral":"oral",
+    "topical":"topical",
     "eye":"ear_eye_nose",
     "ear":"ear_eye_nose",
     "nose":"ear_eye_nose",
@@ -61,26 +56,79 @@ function routeformkeylookup(route, form) {
     "inhalation":"inhalation"
   }
   var form_dict = {
-    "tablet":"cap_tab",
-    "solution":"solution",
-    "mdi":"mdi"
+    "oral":{
+      "capsule":"cap_tab",
+      "tablet":"cap_tab",
+      "gargle":"garg_rinse",
+      "mouthwash":"garg_rinse",
+      "gum":"gum_loz",
+      "lozenge":"gum_loz",
+      "liquid":"liquid",
+      "powder":"powd_gran",
+      "granule":"powd_gran",
+      "sublingual spray":"slspry_sltab",
+      "sublingual tablet":"slspry_sltab",
+    },
+    "topical":{
+      "cream":"crm_gel_oint",
+      "gel":"crm_gel_oint",
+      "ointment":"crm_gel_oint",
+      "dressing":"dressing",
+      "paint":"pnt_sln",
+      "solution":"pnt_sln",
+      "paste":"paste",
+      "patch":"patch",
+      "spray":"spray"
+    },
+    "ear":{
+      "drop":"drp_crm_oint",
+      "cream":"drp_crm_oint",
+      "ointment":"drp_crm_oint"
+    },
+    "eye":{
+      "drop":"drop",
+      "gel":"gel_oint",
+      "ointment":"gel_oint"
+    },
+    "nose":{
+      "drop":"drp_crm_oint",
+      "cream":"drp_crm_oint",
+      "ointment":"drp_crm_oint",
+      "spray":"spray"
+    },
+    "injection":{
+      "solution":"solution",
+      "prefilled":"prefilled",
+      "ampoule":"amp_vial",
+      "vial":"amp_vial"
+    },
+    "inhalation":{
+      "mdi":"mdi",
+      "nebuliser":"nebuliser",
+      "accuhaler":"accuhaler",
+      "aerolizer":"aerolizer",
+      "oxygen":"oxy_cct",
+      "concentrator":"oxy_cct",
+      "turbuhaler":"turbuhaler",
+      "dpi":"dpi"
+    }
   }
-  return route_dict[route]+'-'+form_dict[form]
+  return route_dict[route]+'-'+form_dict[route][form]
 }
 
 function freqkeylookup(freq){
   var keys = []
   var freqArr = freq.split(' and ')
   var dict = {
-    "EVERY 6 HOURS":"q_6h",
-    "EVERY 6 HOURS PRN":"q_6h_prn",
-    "EVERY 24 HOURS":"once_daily",
-    "EVERY 15 MIN PRN":"q_15m_prn",
+    "every 6 hours":"q_6h",
+    "every 6 hours prn":"q_6h_prn",
+    "every 24 hours":"once_daily",
+    "every 15 min prn":"q_15m_prn",
     "each morning":"once_daily",
     "each night":"once_daily",
     "twice daily":"twice_daily",
     "3 times daily":"threetimes_daily",
-    "PRN":"prn"
+    "prn":"prn"
   }
   for(var i=0; i<freqArr.length;i++) {
     keys.push(dict[freq] || 'na')
