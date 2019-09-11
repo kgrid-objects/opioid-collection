@@ -16,7 +16,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/input'
+              $ref: 'https://demo.kgrid.org/schemas/patientwithrx.yaml#/patientwithprescriptionlist'
       responses:
         '200':
           description: response
@@ -36,8 +36,6 @@ paths:
         entry: mrci
 components:
   schemas:
-    input:
-      $ref: 'schema.json#/patientwithprescriptionlist'
     output:
       required:
         - result

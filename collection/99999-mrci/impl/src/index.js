@@ -10,6 +10,7 @@ function mrci(inputs){
     var key_C = additionaldirkey(inputs.prescriptions[i])
     var prescription = {}
     prescription.rxnorm=inputs.prescriptions[i].rxnorm
+    prescription.medicationname = inputs.prescriptions[i].medicationname
     prescription.sig = inputs.prescriptions[i].sig
     var mrciWeighting = {}
 
