@@ -48,7 +48,7 @@ module.exports =
           },
           "form": "Tablet",
           "route": "Oral",
-          "sig": "20 MG EVERY 24 HOURSS",
+          "sig": "20 MG EVERY 24 HOURS",
           "dosage":[
             { "value":"20",
               "unit":"MG",
@@ -331,7 +331,7 @@ module.exports =
         "genericname": "albuterol",
         "strength":{
           "value": 1,
-          "unit":"puff"
+          "unit":""
         },
         "form": "nebuliser",
         "route": "Inhalation",
@@ -412,11 +412,11 @@ module.exports =
       },
       {
         "rxnorm": "1111111",
-        "medicationname": "ipratropium nebules 42 μg",
+        "medicationname": "ipratropium nebules 250ug/mL",
         "genericname": "ipratropium",
         "strength":{
           "value": 1,
-          "unit":"puff"
+          "unit":""
         },
         "form": "nebuliser",
         "route": "Inhalation",
@@ -505,7 +505,7 @@ module.exports =
       },
       {
         "rxnorm": "1111111",
-        "medicationname": "albuterol nebules 2.5mg/2.5mL",
+        "medicationname": "albuterol nebules 2.5 mg/2.5 mL",
         "genericname": "albuterol",
         "strength":{
           "value": 1,
@@ -591,7 +591,7 @@ module.exports =
       },
       {
         "rxnorm": "1111111",
-        "medicationname": "medroxyprogesterone 10 mg",
+        "medicationname": "medroxyprogesterone 10 mg tablets",
         "genericname": "medroxyprogesterone",
         "strength":{
           "value": 1,
@@ -701,7 +701,7 @@ module.exports =
       },
       {
         "rxnorm": "1111111",
-        "medicationname": "albuterol nebules 2.5mg/2.5mL",
+        "medicationname": "albuterol nebules 2.5 mg/2.5 mL",
         "genericname": "albuterol",
         "strength":{
           "value": 1,
@@ -854,7 +854,7 @@ module.exports =
       },
       {
         "rxnorm": "1111111",
-        "medicationname": "fluticasone plus salmeterol Accuhaler 250/25 μg",
+        "medicationname": "fluticasone plus salmeterol MDI 250/25 μg",
         "genericname": "fluticasone plus salmeterol",
         "strength":{
           "value": 1,
