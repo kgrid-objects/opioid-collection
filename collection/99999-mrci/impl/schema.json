@@ -23,13 +23,18 @@
               "type": "string",
               "example": "ACETAMINOPHEN"
             },
-            "strengthvalue": {
-              "type": "number",
-              "example": 325
-            },
-            "strengthunit": {
-              "type": "string",
-              "example": "mg"
+            "strength":{
+              "type":"object",
+              "properties":{
+                "value": {
+                  "type": "number",
+                  "example": 325
+                },
+                "unit": {
+                  "type": "string",
+                  "example": "mg"
+                }
+              }
             },
             "form": {
               "type": "string",
@@ -43,17 +48,25 @@
               "type": "string",
               "example": "650 MG EVERY 6 HOURS"
             },
-            "dosagevalue":{
-              "type": "string",
-              "example": "650"
-            },
-            "dosageunit":{
-              "type": "string",
-              "example": "MG"
-            },
-            "frequency":{
-              "type": "string",
-              "example": "EVERY 6 HOURS"
+            "dosage":{
+              "type":"array",
+              "items": {
+                "type":"object",
+                "properties":{
+                  "value":{
+                    "type": "string",
+                    "example": "650"
+                  },
+                  "unit":{
+                    "type": "string",
+                    "example": "MG"
+                  },
+                  "frequency":{
+                    "type": "string",
+                    "example": "EVERY 6 HOURS"
+                  }
+                }
+              }
             }
           }
         }

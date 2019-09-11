@@ -1,11 +1,18 @@
 function mrci(inputs){
   var totalMRCI = 0
+  var output = {}
+  output.prescriptions = []
   var list=masterlisting()
   for(var i=0; i<inputs.prescriptions.length;i++) {
+    var sig = inputs.prescriptions[i].sig.replace(inputs.prescriptions[i].medicationname)
     var key_A = routeformkeylookup(inputs.prescriptions[i].route.toLowerCase(),inputs.prescriptions[i].form.toLowerCase())
-    var key_B = freqkeylookup(inputs.prescriptions[i].frequency.toLowerCase())
+    var key_B = freqkeylookup(inputs.prescriptions[i].dosage)
     var key_C = additionaldirkey(inputs.prescriptions[i])
+    var prescription = {}
+    prescription.rxnorm=inputs.prescriptions[i].rxnorm
+    prescription.sig = inputs.prescriptions[i].sig
     var mrciWeighting = {}
+
     if(list[key_A]) {
       list[key_A].count ++
       mrciWeighting[key_A]= list[key_A].weighting
@@ -16,8 +23,6 @@ function mrci(inputs){
       if(list[e]){
         list[e].count ++
         mrciWeighting[e]=list[e].weighting
-      }else{
-        mrciWeighting[e]=''
       }
     })
     key_C.forEach(function(e){
@@ -28,7 +33,8 @@ function mrci(inputs){
         mrciWeighting[e]=''
       }
     })
-    inputs.prescriptions[i].mrciWeighting=mrciWeighting
+    prescription.mrciWeighting=mrciWeighting
+    output.prescriptions.push(prescription)
   }
   for(var key in list){
     if(list[key]){
@@ -41,8 +47,9 @@ function mrci(inputs){
       }
     }
   }
-  inputs.totalMRCI=totalMRCI
-  return inputs;
+  output.totalMedication = output.prescriptions.length
+  output.totalMRCI=totalMRCI
+  return output;
 }
 
 //**  Keys for Section A
@@ -126,44 +133,95 @@ function routeformkeylookup(route, form) {
 }
 
 //**  Keys for Section B
-function freqkeylookup(freq){
+function freqkeylookup(dosage){
   var keys = []
-  var freqArr = freq.split(' and ')
   var dict = {
     "once daily":"once_daily",
     "once daily prn":"once_daily_prn",
     "twice daily":"twice_daily",
     "twice daily prn":"twice_daily_prn",
     "3 times daily":"threetimes_daily",
+    "3 times daily prn":"threetimes_daily_prn",
+    "4 times daily":"fourtimes_daily",
+    "4 times daily prn":"fourtimes_daily_prn",
+    "every 12 hours":"q_12h",
+    "every 12 hours prn":"q_12h_prn",
+    "every 8 hours":"q_8h",
+    "every 8 hours prn":"q_8h_prn",
     "every 6 hours":"q_6h",
     "every 6 hours prn":"q_6h_prn",
+    "every 4 hours":"q_4h",
+    "every 4 hours prn":"q_4h_prn",
+    "every 2 hours":"q_2h",
+    "every 2 hours prn":"q_2h_prn",
+    "prn":"prn",
+    "sos":"prn",
+    "on alternate days":"alt_day_less_freq",
+    "less frequently":"alt_day_less_freq",
+    "oxygen prn":"oxy_prn",
+    "oxygen <15hrs":"oxy_lt15hr",
+    "oxygen >15hrs":"oxy_gt15hr",
     "every 24 hours":"once_daily",
     "every 15 min prn":"q_15m_prn",
     "each morning":"once_daily",
     "each night":"once_daily",
-    "prn":"prn",
-    "sos":"prn"
+    "at midday":"once_daily",
+    "each morning and afternoon":'twice_daily',
+    "weekly":"alt_day_less_freq",
+    "at night as needed":"once_daily_prn",
+    "every 4–6 hours":'q_6h',
+    "daily":"once_daily",
+    "at lunch":"once_daily",
+    "each week":"alt_day_less_freq",
+    "as needed":"prn"
   }
-  for(var i=0; i<freqArr.length;i++) {
-    keys.push(dict[freq] || 'na')
-  }
+  dosage.forEach(function(d){
+    keys.push(dict[d.frequency.toLowerCase()] || 'na')
+  })
   return keys
 }
 
 //**  Keys for Section C
 function additionaldirkey(p) {
   var keys = []
-  var dose = 0
-  var doseArr = p.dosagevalue.split('-')
-  if(doseArr.length>1) {
-    keys.push('variable_dose')
-    dose = doseArr[0]
-  } else {
-    dose = p.dosagevalue
-  }
-  if(( parseFloat(dose) / p.strengthvalue ) > 1) {
-    keys.push('multiple_unit')
-  }
+  var alt_dose = false
+  var prev_dose = 0
+  p.dosage.forEach(function(d){
+    var dose = 0
+    var doseArr = d.value.split('-')
+    if(doseArr.length>1) {
+      keys.push('variable_dose')
+      dose = doseArr[0]
+    } else {
+      dose = d.value
+    }
+    if(prev_dose!=0){
+      alt_dose = alt_dose | prev_dose!=dose
+    }
+    if(alt_dose) {
+      keys.push('alt_dose')
+    }
+    prev_dose=dose
+    if(( parseFloat(dose) / p.strength.value ) > 1) {
+      keys.push('multiple_unit')
+    }
+    if( includes(p.sig, 'morning')
+      | includes(p.sig, 'night')
+      | includes(p.sig, 'lunch')
+      | includes(p.sig, 'midday')
+    ){
+      keys.push('spcf_time')
+    }
+    if( includes(p.sig, 'use as directed')
+      | includes(p.sig, 'take as directed')
+    ){
+      keys.push('as_directed')
+    }
+    if( includes(p.sig, 'food')
+    ){
+      keys.push('rel_food')
+    }
+  })
   return keys
 }
 
@@ -238,4 +296,8 @@ function masterlisting(){
     "alt_dose":{ "section":"C", "count": 0, "weighting": 2, "subtotal": 0 }
   }
   return masterlist
+}
+
+function includes(s, ss){
+  return s.split(ss).length>1
 }
