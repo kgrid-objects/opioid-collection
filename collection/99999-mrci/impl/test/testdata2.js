@@ -2,116 +2,225 @@ module.exports =
 [
   {
     input: {
-      "id": "PA-01011",
+      "id": "MRCI-0A",
       "prescriptions": [
         {
-          "rxnorm": "313782",
-          "medicationname": "ACETAMINOPHEN 325 MG TABLET",
-          "genericname": "ACETAMINOPHEN",
+          "rxnorm": "1048445",
+          "medicationname": "COLESTIPOL 1 GRAM TABLET",
+          "genericname": "COLESTIPOL HCL",
           "strength":{
-            "value": 325,
+            "value": 1,
+            "unit":"g"
+          },
+          "form": "Tablet",
+          "route": "Oral",
+          "sig": "3 G 2 TIMES DAILY",
+          "dosage":[
+            { "value":"3",
+              "unit":"G",
+              "frequency":"2 TIMES DAILY" }
+          ]
+        },
+        {
+          "rxnorm": "830865",
+          "medicationname": "DILTIAZEM ER 60 MG CAPSULE,EXTENDED RELEASE 12 HR",
+          "genericname": "DILTIAZEM HCL",
+          "strength":{
+            "value": 60,
+            "unit":"mg"
+          },
+          "form": "Capsule, Sust. Release 12 hr",
+          "route": "Oral",
+          "sig": "60 MG EVERY EVENING",
+          "dosage":[
+            { "value":"60",
+              "unit":"MG",
+              "frequency":"EVERY EVENING" }
+          ]
+        },
+        {
+          "rxnorm": "310459",
+          "medicationname": "GEMFIBROZIL 600 MG TABLET",
+          "genericname": "GEMFIBROZIL",
+          "strength":{
+            "value": 600,
             "unit":"mg"
           },
           "form": "Tablet",
           "route": "Oral",
-          "sig": "650 MG EVERY 6 HOURS",
+          "sig": "600 MG 2 TIMES DAILY BEFORE MEALS",
           "dosage":[
-            { "value":"650",
+            { "value":"600",
               "unit":"MG",
-              "frequency":"EVERY 6 HOURS" }
+              "frequency":"2 TIMES DAILY" }
           ]
         },
         {
-          "rxnorm": "313782",
-          "medicationname": "ACETAMINOPHEN 325 MG TABLET",
-          "genericname": "ACETAMINOPHEN",
+          "rxnorm": "855312",
+          "medicationname": "WARFARIN",
+          "genericname": "WARFARIN SODIUM",
           "strength":{
-            "value": 325,
+            "value": 2.5,
             "unit":"mg"
           },
           "form": "Tablet",
           "route": "Oral",
-          "sig": "325-650 MG EVERY 6 HOURS PRN",
+          "sig": "2.5 MG Every TUESDAY, THURSDAY, and SATURDAY",
           "dosage":[
-            { "value":"325-650",
+            { "value":"2.5",
               "unit":"MG",
-              "frequency":"EVERY 6 HOURS PRN" }
+              "frequency":"Every TUESDAY, THURSDAY, and SATURDAY" }
           ]
         },
         {
-          "rxnorm": "197582",
-          "medicationname": "DEXAMETHASONE 4 MG TABLET",
-          "genericname": "DEXAMETHASONE",
+          "rxnorm": "855312",
+          "medicationname": "WARFARIN",
+          "genericname": "WARFARIN SODIUM",
           "strength":{
-            "value": 4,
+            "value": 2,
             "unit":"mg"
           },
           "form": "Tablet",
           "route": "Oral",
-          "sig": "20 MG EVERY 24 HOURS",
+          "sig": "2 MG Every MONDAY, WEDNESDAY, FRIDAY, and SUNDAY",
           "dosage":[
-            { "value":"20",
+            { "value":"2",
               "unit":"MG",
-              "frequency":"EVERY 24 HOURS" }
+              "frequency":"Every MONDAY, WEDNESDAY, FRIDAY, and SUNDAY" }
           ]
         },
         {
-          "rxnorm": "197582",
-          "medicationname": "DEXAMETHASONE 4 MG TABLET",
-          "genericname": "DEXAMETHASONE",
+          "rxnorm": "197625",
+          "medicationname": "DOXAZOSIN 1 MG TABLET",
+          "genericname": "DOXAZOSIN MESYLATE",
           "strength":{
-            "value": 4,
+            "value": 1,
             "unit":"mg"
           },
           "form": "Tablet",
           "route": "Oral",
-          "sig": "4 MG EVERY 6 HOURS",
+          "sig": "2 MG AT BEDTIME",
           "dosage":[
-            { "value":"4",
+            { "value":"2",
               "unit":"MG",
-              "frequency":"EVERY 6 HOURS" }
+              "frequency":"AT BEDTIME" }
           ]
         },
         {
-          "rxnorm": "1723740",
-          "medicationname": "DIPHENHYDRAMINE 50 MG/ML INJECTION SOLUTION",
-          "genericname": "DIPHENHYDRAMINE HCL",
+          "rxnorm": "617312",
+          "medicationname": "ATORVASTATIN 10 MG TABLET",
+          "genericname": "ATORVASTATIN CALCIUM",
           "strength":{
-            "value": 50,
-            "unit":"mg/mL"
+            "value": 10,
+            "unit":"mg"
           },
-          "form": "Solution",
-          "route": "Injection",
-          "sig": "12.5 MG EVERY 15 MIN PRN",
+          "form": "Tablet",
+          "route": "Oral",
+          "sig": "10 MG AT BEDTIME",
           "dosage":[
-            { "value":"12.5",
+            { "value":"10",
               "unit":"MG",
-              "frequency":"EVERY 15 MIN PRN" }
+              "frequency":"AT BEDTIME" }
           ]
         }
       ]
     },
-    output: 27
+    output: 18
   },
   {
     input: {
-      "id": "JG-0A",
+      "id": "MRCI-0C",
       "prescriptions": [
       {
-        "rxnorm": "1111111",
-        "medicationname": "albuterol MDI 100 μg",
-        "genericname": "albuterol",
+        "rxnorm": "309362",
+        "medicationname": "CLOPIDOGREL 75 MG TABLET",
+        "genericname": "CLOPIDOGREL BISULFATE",
         "strength":{
-          "value": 1,
-          "unit":"puff"
+          "value": 75,
+          "unit":"mg"
         },
-        "form": "MDI",
-        "route": "Inhalation",
-        "sig": "albuterol MDI 100 μg 2 puffs each morning",
+        "form": "Tablet",
+        "route": "Oral",
+        "sig": "75 MG ONCE DAILY",
         "dosage":[
           { "value":"2",
             "unit":"puffs",
             "frequency":"each morning" }
+        ]
+      }
+    ]
+    },
+    output: 7
+  },
+  {
+    input: {
+      "id": "MRCI-0D",
+      "prescriptions": [
+      {
+        "rxnorm": "617312",
+        "medicationname": "ATORVASTATIN 10 MG TABLET",
+        "genericname": "ATORVASTATIN CALCIUM",
+        "strength":{
+          "value": 10,
+          "unit":"mg"
+        },
+        "form": "Tablet",
+        "route": "Oral",
+        "sig": "10 MG ONCE DAILY",
+        "dosage":[
+          { "value":"10",
+            "unit":"mg",
+            "frequency":"ONCE DAILY" }
+        ]
+      }
+    ]
+    },
+    output: 7
+  },
+  {
+    input: {
+      "id": "MRCI-0E",
+      "prescriptions": [
+      {
+        "rxnorm": "861132",
+        "medicationname": "ALFUZOSIN ER 10 MG TABLET,EXTENDED RELEASE 24 HR",
+        "genericname": "ALFUZOSIN HCL",
+        "strength":{
+          "value": 10,
+          "unit":"mg"
+        },
+        "form": "Tablet Sustained Release 24 hr",
+        "route": "Oral",
+        "sig": "10 MG ONCE DAILY WITH BREAKFAST",
+        "dosage":[
+          { "value":"10",
+            "unit":"mg",
+            "frequency":"ONCE DAILY" }
+        ]
+      }
+    ]
+    },
+    output: 7
+  },
+  {
+    input: {
+      "id": "MRCI-0H",
+      "prescriptions": [
+      {
+        "rxnorm": "198405",
+        "medicationname": "IBUPROFEN 100 MG TABLET",
+        "genericname": "IBUPROFEN",
+        "strength":{
+          "value": 100,
+          "unit":"mg"
+        },
+        "form": "Tablet",
+        "route": "Oral",
+        "sig": "200 MG EVERY 6 TO 8 HOURS PRN WITH MILK",
+        "dosage":[
+          { "value":"200",
+            "unit":"mg",
+            "frequency":"EVERY 6 TO 8 HOURS PRN" }
         ]
       }
     ]

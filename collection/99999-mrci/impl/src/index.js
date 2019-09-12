@@ -4,9 +4,11 @@ function mrci(inputs){
   output.prescriptions = []
   var list=masterlisting()
   for(var i=0; i<inputs.prescriptions.length;i++) {
-    var sig = inputs.prescriptions[i].sig.replace(inputs.prescriptions[i].medicationname)
-    var key_A = routeformkeylookup(inputs.prescriptions[i].route.toLowerCase(),inputs.prescriptions[i].form.toLowerCase())
-    var key_B = freqkeylookup(inputs.prescriptions[i].dosage)
+    var prescription =JSON.parse(JSON.stringify(inputs.prescriptions[i]))
+    var sig = prescription.sig.replace(inputs.prescriptions[i].medicationname)
+    var key_A = routeformkeylookup(prescription.route.toLowerCase(),prescription.form.toLowerCase())
+    var obj=rxprocess(prescription)
+    var key_B = freqkeylookup(obj.dosage)
     var key_C = additionaldirkey(inputs.prescriptions[i])
     var prescription = {}
     prescription.rxnorm=inputs.prescriptions[i].rxnorm
@@ -67,6 +69,8 @@ function routeformkeylookup(route, form) {
   var form_dict = {
     "oral":{
       "capsule":"cap_tab",
+      "capsule, sust. release 12 hr":"cap_tab",
+      "tablet sustained release 24 hr":"cap_tab",
       "tablet":"cap_tab",
       "gargle":"garg_rinse",
       "mouthwash":"garg_rinse",
@@ -162,11 +166,14 @@ function freqkeylookup(dosage){
     "oxygen prn":"oxy_prn",
     "oxygen <15hrs":"oxy_lt15hr",
     "oxygen >15hrs":"oxy_gt15hr",
+    "2 times daily":"twice_daily",
     "every 24 hours":"once_daily",
     "every 15 min prn":"q_15m_prn",
     "each morning":"once_daily",
+    "every evening":"once_daily",
     "each night":"once_daily",
     "at midday":"once_daily",
+    "at bedtime":"once_daily",
     "each morning and afternoon":'twice_daily',
     "weekly":"alt_day_less_freq",
     "at night as needed":"once_daily_prn",
@@ -174,9 +181,13 @@ function freqkeylookup(dosage){
     "daily":"once_daily",
     "at lunch":"once_daily",
     "each week":"alt_day_less_freq",
+    "every tuesday, thursday, and saturday":"alt_day_less_freq",
+    "every monday, wednesday, friday, and sunday":"alt_day_less_freq",
+    "every 6 to 8 hours prn":"q_8h_prn",
     "as needed":"prn"
   }
   dosage.forEach(function(d){
+    // console.log(d.frequency.toLowerCase())
     keys.push(dict[d.frequency.toLowerCase()] || 'na')
   })
   return keys
@@ -206,21 +217,30 @@ function additionaldirkey(p) {
     if(( parseFloat(dose) / p.strength.value ) > 1) {
       keys.push('multiple_unit')
     }
-    if( includes(p.sig, 'morning')
-      | includes(p.sig, 'night')
-      | includes(p.sig, 'lunch')
-      | includes(p.sig, 'midday')
+    if( includes(p.sig.toLowerCase(), 'morning')
+      | includes(p.sig.toLowerCase(), 'night')
+      | includes(p.sig.toLowerCase(), 'breakfast')
+      | includes(p.sig.toLowerCase(), 'lunch')
+      | includes(p.sig.toLowerCase(), 'midday')
+      | includes(p.sig.toLowerCase(), 'evening')
+      | includes(p.sig.toLowerCase(), "at bedtime")
     ){
       keys.push('spcf_time')
     }
-    if( includes(p.sig, 'use as directed')
-      | includes(p.sig, 'take as directed')
+    if( includes(p.sig.toLowerCase(), 'use as directed')
+      | includes(p.sig.toLowerCase(), 'take as directed')
     ){
       keys.push('as_directed')
     }
-    if( includes(p.sig, 'food')
+    if( includes(p.sig.toLowerCase(), 'food')
+      | includes(p.sig.toLowerCase(), 'meal')
+      | includes(p.sig.toLowerCase(), 'breakfast')
     ){
       keys.push('rel_food')
+    }
+    if( includes(p.sig.toLowerCase(), 'milk')
+    ){
+      keys.push('spcf_fluid')
     }
   })
   return keys
@@ -301,4 +321,54 @@ function masterlisting(){
 
 function includes(s, ss){
   return s.split(ss).length>1
+}
+
+
+function rxprocess(prescription) {
+  // console.log(prescription)
+  var sig = prescription.sig.replace(prescription.medicationname+' ','').replace(prescription.medicationname,'').toLowerCase()
+  var processed = {}
+  processed.sig=sig
+  processed.dosage =[]
+
+  var spInstructions = [
+    'after food',
+    'use as directed',
+    'before meals',
+    'with breakfast',
+    'with milk'
+  ]
+
+  spInstructions.forEach(function(e){
+    sig = sig.replace(' '+e,'').replace(e+' ','').replace(e,'')
+  })
+
+  var unit = prescription.strength.unit.toLowerCase()
+  var unitSeparator = unit.split('/')[0]
+  if(unit!=''){
+    if(sig.includes(unit+'s')) {
+      unitSeparator = unit+'s'
+    }
+  }
+  // console.log(sig)
+  var sig_unit_Arr = []
+  var sig0 = sig.split(' ')[0]
+  if(unit!='' && sig.includes(unitSeparator)){
+    sig_unit_Arr=sig.split(' '+unitSeparator+' ')
+  } else {
+    if(Number.isFinite(sig0)){
+      sig_unit_Arr.push(sig0)
+    } else {
+      sig_unit_Arr.push('')
+    }
+    sig_unit_Arr.push(sig.replace(sig0+' ',''))
+  }
+  // console.log(sig_unit_Arr)
+
+  var obj= {}
+  obj.value = sig_unit_Arr[0]
+  obj.unit = unit
+  obj.frequency =sig_unit_Arr[1] || ''
+  processed.dosage.push(obj)
+  return processed
 }
