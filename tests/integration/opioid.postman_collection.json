@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "7f3b9fad-5ea5-4e16-af5d-b2591423fdd7",
+		"_postman_id": "18779971-d0fd-4fd7-9d4f-161d80ea11d5",
 		"name": "opioid",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -226,7 +226,7 @@
 			"response": []
 		},
 		{
-			"name": "Run 10105 MHA Opiate Detector Copy",
+			"name": "Run 10105 MHA Opiate Detector",
 			"event": [
 				{
 					"listen": "test",
@@ -279,6 +279,69 @@
 						"10105",
 						"v0.0.1",
 						"mhaALTODetector"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Run 10106 Opioid Advisor",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5fd56a44-10e0-4612-be8b-41caa28f77f9",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"patient id\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.result.patient_id).to.equal(\"PA-01011\");",
+							"});",
+							"pm.test(\"Opioid\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.result.opioid_detected).to.true;",
+							"});",
+							"pm.test(\"BZD\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.result.benzo_detected).to.true;",
+							"});",
+							"pm.test(\"MR\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.result.muscle_relaxant_detected).to.true;",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n      \"id\": \"PA-01011\",\n      \"prescriptions\": [\n        {\n          \"rxnorm\": \"106500\"\n        },\n        {\n          \"rxnorm\": \"197446\"\n        },\n        {\n          \"rxnorm\": \"801958\"\n        }\n      ]\n   }"
+				},
+				"url": {
+					"raw": "{{url}}/99999/10106/impl/opioidadvisor",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"99999",
+						"10106",
+						"impl",
+						"opioidadvisor"
 					]
 				}
 			},

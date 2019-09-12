@@ -23,6 +23,7 @@ There are currently five knowledge objects developed for this collection.
 - 99999-10103: Respiratory Depression Risk Indicator
 - 99999-10104: MHA Opiate Use Detector
 - 99999-10105: MHA ALTO Use Detector
+- 99999-10106: Opioid Advisor
 
 The service descriptions can be viewed using [Swagger UI on Kgrid-demos.github.io](https://kgrid-demos.github.io/swaggerui/)
 
