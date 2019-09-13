@@ -1,7 +1,7 @@
 function opioidadvisor(inputs) {
 
   try {
-
+    var informessages = [];
     var list=[];
     for(var i=0; i<inputs.prescriptions.length;i++) {
       list.push(inputs.prescriptions[i].rxnorm)
@@ -9,14 +9,14 @@ function opioidadvisor(inputs) {
     var prescriptions ={};
     prescriptions.rxcuis=list.join(",");
 
-    var executor = context.getExecutor("99999-10101/v0.0.2/opioidDetector");
-    var opioidDetectorResponse = executor.execute(prescriptions);
+    informessages.push("list of prescriptions " + JSON.stringify(prescriptions));
 
-    executor = context.getExecutor("99999-10102/v0.0.2/opioidbzdDetector");
-    var opioidbzdDetectorResponse = executor.execute(prescriptions);
-
-    executor = context.getExecutor("99999-10103/v0.0.2/tripleThreatDetector");
-    var tripleThreatDetectorResponse = executor.execute(prescriptions);
+    var opioidDetectorResponse =  context.getExecutor("99999-10101/v0.0.2/opioidDetector").execute(prescriptions);
+    informessages.push("opioidDetectorResponse " + JSON.stringify(opioidDetectorResponse));
+    var opioidbzdDetectorResponse = context.getExecutor("99999-10102/v0.0.2/opioidbzdDetector").execute(prescriptions);
+    informessages.push(" opioidbzdDetectorResponse " + JSON.stringify(opioidbzdDetectorResponse));
+    var tripleThreatDetectorResponse = context.getExecutor("99999-10103/v0.0.2/tripleThreatDetector").execute(prescriptions);
+    informessages.push(" tripleThreatDetectorResponse " + JSON.stringify(tripleThreatDetectorResponse));
 
     var report = {};
     report.patient_id=inputs.id;
@@ -27,7 +27,7 @@ function opioidadvisor(inputs) {
     return report;
 
   } catch(err) {
-    throw "Error loading opioid detectors "+err + " rxnorms " + JSON.stringify(prescriptions);
+    throw "Error loading opioid detectors "+err + " rxnorms " + JSON.stringify(prescriptions) + " processing " + informessages;
   }
 
 
