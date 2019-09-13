@@ -6,7 +6,7 @@
   "contributors" : "KGRID TEAM",
   "desription" : "Evaluates list of a patient's prescriptions and determines Opioid risk. KO is a mashup of three existing KOs Opioid Use Detector, Opioid and Benzodiazepine Detector and Respiratory Depression Risk Detector",
   "citations" : [ "https://link" ],
-  "keywords" : "Keywords",
+  "keywords" : "opioid advisor bebnzodiazepine",
   "hasImplementation" : [ "99999-10106/impl" ],
   "@context" : [ "http://kgrid.org/koio/contexts/knowledgeobject.jsonld" ]
 }
