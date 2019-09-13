@@ -1,12 +1,10 @@
 {
-  "@id": "impl",
-  "@type": "koio:Implementation",
-  "identifier": "ark:/99999/10106/impl",
-  "title": "Opioid Advisor",
-  "description": "Evaluates list of a patient's prescriptions and determines Opioid risk. KO is a mashup of three existing KOs Opioid Use Detector, Opioid and Benzodiazepine Detector and Respiratory Depression Risk Detector",
-  "keywords": "Keywords",
-  "hasServiceSpecification": "impl/openapi.yaml",
-  "@context": [
-    "http://kgrid.org/koio/contexts/implementation.jsonld"
-  ]
+  "@id" : "impl",
+  "@type" : "koio:Implementation",
+  "identifier" : "ark:/99999/10106/impl",
+  "title" : "Opioid Advisor",
+  "description" : "Evaluates list of a patient's prescriptions and determines Opioid risk. KO is a mashup of three existing KOs Opioid Use Detector, Opioid and Benzodiazepine Detector and Respiratory Depression Risk Detector",
+  "keywords" : "Keywords",
+  "hasServiceSpecification" : "impl/openapi.yaml",
+  "@context" : [ "http://kgrid.org/koio/contexts/implementation.jsonld" ]
 }
