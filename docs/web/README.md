@@ -71,7 +71,7 @@ curl -X POST \
     }
 }
 ```
-Additional API documentation can be found in the [Swagger UI](hhttps://editor.swagger.io/?url=https://kgrid-activator.herokuapp.com/99999/10101/v0.0.2/service) visualisation of the OpenAPI specification.
+Additional API documentation can be found in the [Swagger UI](hhttps://editor.swagger.io/?url=https://kgrid-activator.herokuapp.com/kos/99999/10101/v0.0.2/service) visualisation of the OpenAPI specification.
 
 ####  :two: Opioid and Benzodiazepine Detector
 This KO  scans a list of a patient's prescriptions, which are presented to the KO as a list of RxNorm Semantic Clinical Drug codes, and determines if they are being exposed simultaneously to a known risky combination of an opioid and a benzodiazepine.
@@ -85,7 +85,7 @@ curl -X POST \
   -d '{"rxcuis":"106500,200240,856917,994226,197446,801958"}'
 ```
 
-Additional API documentation can be found in the [Swagger UI](https://editor.swagger.io/?url=https://kgrid-activator.herokuapp.com/99999/10102/v0.0.2/servicel) visualisation of the OpenAPI specification.
+Additional API documentation can be found in the [Swagger UI](https://editor.swagger.io/?url=https://kgrid-activator.herokuapp.com/kos/99999/10102/v0.0.2/servicel) visualisation of the OpenAPI specification.
 
 ####  :three: Respiratory Depression Risk Indicator
 This KO scans a list of a patient's prescriptions, which are presented to the KO as a list or RxNorm Semantic Clinical Drug Codes, and determines if they are at higher risk for drug-induced respiratory depression because of being exposed simultaneously to a combination of an opioid, a benzodiazepine, and a muscle relaxant.
@@ -97,7 +97,7 @@ curl -X POST \
   -H 'Content-Type: application/json' \
   -d '{"rxcuis":"106500,200240,856917,994226,197446,801958"}'
  ```
-Additional API documentation can be found in the [Swagger UI](https://editor.swagger.io/?url=https://kgrid-activator.herokuapp.com/99999/10103/v0.0.2/service) visualisation of the OpenAPI specification.
+Additional API documentation can be found in the [Swagger UI](https://editor.swagger.io/?url=https://kgrid-activator.herokuapp.com/kos/99999/10103/v0.0.2/service) visualisation of the OpenAPI specification.
 
 ####  :four: MHA Opioid Detector
 
@@ -110,7 +110,7 @@ curl -X POST \
   -H 'Content-Type: application/json' \
   -d '{"rxcuis":"106500,200240,856917,994226,197446,801958"}'
  ```
-Additional API documentation can be found in the [Swagger UI](hhttps://editor.swagger.io/?url=https://kgrid-activator.herokuapp.com/99999/10104/v0.0.1/service) visualisation of the OpenAPI specification.
+Additional API documentation can be found in the [Swagger UI](hhttps://editor.swagger.io/?url=https://kgrid-activator.herokuapp.com/kos/99999/10104/v0.0.1/service) visualisation of the OpenAPI specification.
 
 ####  :six: Opioid Advisor
 
