@@ -4,12 +4,15 @@ function mrci(inputs){
   output.prescriptions = []
   var list=masterlisting()
   for(var i=0; i<inputs.prescriptions.length;i++) {
-    var prescription =JSON.parse(JSON.stringify(inputs.prescriptions[i]))
+    var prescription = {}
+    for(var key in inputs.prescriptions[i]){
+      prescription[key]=inputs.prescriptions[i][key]
+    }
     var sig = prescription.sig.replace(inputs.prescriptions[i].medicationname)
     var key_A = routeformkeylookup(prescription.route.toLowerCase(),prescription.form.toLowerCase())
     var obj=rxprocess(prescription)
     var key_B = freqkeylookup(obj.dosage)
-    var key_C = additionaldirkey(inputs.prescriptions[i])
+    var key_C = additionaldirkey(obj)
     var prescription = {}
     prescription.rxnorm=inputs.prescriptions[i].rxnorm
     prescription.medicationname = inputs.prescriptions[i].medicationname
@@ -57,6 +60,13 @@ function mrci(inputs){
 
 //**  Keys for Section A
 function routeformkeylookup(route, form) {
+  var stroute = route
+  if(route=='transdermal'){
+    stroute = 'topical'
+  }
+  if(route=='buccal'){
+    stroute = 'oral'
+  }
   var route_dict={
     "oral":"oral",
     "topical":"topical",
@@ -64,19 +74,22 @@ function routeformkeylookup(route, form) {
     "ear":"ear_eye_nose",
     "nose":"ear_eye_nose",
     "injection":"injection",
-    "inhalation":"inhalation"
+    "inhalation":"inhalation",
+    "rectal":"rectal"
   }
   var form_dict = {
     "oral":{
       "capsule":"cap_tab",
       "capsule, sust. release 12 hr":"cap_tab",
       "tablet sustained release 24 hr":"cap_tab",
+      "tablet sustained release":"cap_tab",
       "tablet":"cap_tab",
       "gargle":"garg_rinse",
       "mouthwash":"garg_rinse",
       "gum":"gum_loz",
       "lozenge":"gum_loz",
       "liquid":"liquid",
+      "suspension":"liquid",
       "powder":"powd_gran",
       "granule":"powd_gran",
       "sublingual spray":"slspry_sltab",
@@ -125,16 +138,18 @@ function routeformkeylookup(route, form) {
       "turbuhaler":"turbuhaler",
       "dpi":"dpi"
     },
+    "rectal":{
+      "enema":"enema",
+      "suppository":"suppository"
+    },
     "others":{
       "dialysate":"dialysate",
-      "enema":"enema",
       "pessary":"pessary",
       "patient controlled analgesia":"pca",
-      "suppository":"suppository",
       "vaginal cream":"vcream"
     }
   }
-  return route_dict[route]+'-'+form_dict[route][form]
+  return route_dict[stroute]+'-'+form_dict[stroute][form]
 }
 
 //**  Keys for Section B
@@ -167,6 +182,7 @@ function freqkeylookup(dosage){
     "oxygen <15hrs":"oxy_lt15hr",
     "oxygen >15hrs":"oxy_gt15hr",
     "2 times daily":"twice_daily",
+    "2 times daily and prn":"twice_daily+prn",
     "every 24 hours":"once_daily",
     "every 15 min prn":"q_15m_prn",
     "each morning":"once_daily",
@@ -175,11 +191,15 @@ function freqkeylookup(dosage){
     "at midday":"once_daily",
     "at bedtime":"once_daily",
     "each morning and afternoon":'twice_daily',
+    "every morning and evening":"twice_daily",
     "weekly":"alt_day_less_freq",
     "at night as needed":"once_daily_prn",
+    "every 3 hours":"q_4h",
     "every 4–6 hours":'q_6h',
     "daily":"once_daily",
+    "daily prn":"daily_prn",
     "at lunch":"once_daily",
+    "every 72 hours":"alt_day_less_freq",
     "each week":"alt_day_less_freq",
     "every tuesday, thursday, and saturday":"alt_day_less_freq",
     "every monday, wednesday, friday, and sunday":"alt_day_less_freq",
@@ -217,6 +237,10 @@ function additionaldirkey(p) {
     if(( parseFloat(dose) / p.strength.value ) > 1) {
       keys.push('multiple_unit')
     }
+    if(( parseFloat(dose) / p.strength.value ) !=  Math.round( parseFloat(dose) / p.strength.value ) && includes(p.form.toLowerCase(),'tablet')) {
+      keys.push('brk_crsh_tab')
+    }
+
     if( includes(p.sig.toLowerCase(), 'morning')
       | includes(p.sig.toLowerCase(), 'night')
       | includes(p.sig.toLowerCase(), 'breakfast')
@@ -276,15 +300,16 @@ function masterlisting(){
     "inhalation-turbuhaler":{ "section":"A", "count": 0, "weighting": 3, "subtotal": 0 },
     "inhalation-dpi":{ "section":"A", "count": 0, "weighting": 3, "subtotal": 0 },
     "others-dialysate":{ "section":"A", "count": 0, "weighting": 5, "subtotal": 0 },
-    "others-enema":{ "section":"A", "count": 0, "weighting": 2, "subtotal": 0 },
+    "rectal-enema":{ "section":"A", "count": 0, "weighting": 2, "subtotal": 0 },
     "others-pessary":{ "section":"A", "count": 0, "weighting": 3, "subtotal": 0 },
     "others-pca":{ "section":"A", "count": 0, "weighting": 2, "subtotal": 0 },
-    "others-suppository":{ "section":"A", "count": 0, "weighting": 2, "subtotal": 0 },
+    "rectal-suppository":{ "section":"A", "count": 0, "weighting": 2, "subtotal": 0 },
     "others-vcream":{ "section":"A", "count": 0, "weighting": 2, "subtotal": 0 },
     "once_daily":{ "section":"B", "count": 0, "weighting": 1, "subtotal": 0 },
     "once_daily_prn":{ "section":"B", "count": 0, "weighting": 0.5, "subtotal": 0 },
     "twice_daily":{ "section":"B", "count": 0, "weighting": 2, "subtotal": 0 },
     "twice_daily_prn":{ "section":"B", "count": 0, "weighting": 1, "subtotal": 0 },
+    "twice_daily+prn":{ "section":"B", "count": 0, "weighting": 2.5, "subtotal": 0 },
     "threetimes_daily":{ "section":"B", "count": 0, "weighting": 3, "subtotal": 0 },
     "threetimes_daily_prn":{ "section":"B", "count": 0, "weighting": 1.5, "subtotal": 0 },
     "fourtimes_daily":{ "section":"B", "count": 0, "weighting": 4, "subtotal": 0 },
@@ -300,6 +325,7 @@ function masterlisting(){
     "q_2h":{ "section":"B", "count": 0, "weighting": 12.5, "subtotal": 0 },
     "q_2h_prn":{ "section":"B", "count": 0, "weighting": 6.5, "subtotal": 0 },
     "q_15m_prn":{ "section":"B", "count": 0, "weighting": 6.5, "subtotal": 0 },
+    "daily_prn":{ "section":"B", "count": 0, "weighting": 0.5, "subtotal": 0 },
     "prn":{ "section":"B", "count": 0, "weighting": 0.5, "subtotal": 0 },
     "alt_day_less_freq":{ "section":"B", "count": 0, "weighting": 2, "subtotal": 0 },
     "oxy_prn":{ "section":"B", "count": 0, "weighting": 1, "subtotal": 0 },
@@ -329,34 +355,43 @@ function rxprocess(prescription) {
   var sig = prescription.sig.replace(prescription.medicationname+' ','').replace(prescription.medicationname,'').toLowerCase()
   var processed = {}
   processed.sig=sig
+  processed.form=prescription.form
   processed.dosage =[]
-
+  processed.strength = {}
+  if(prescription.strength!=''){
+    processed.strength.value = parseFloat(prescription.strength.split(' ')[0])
+    processed.strength.unit = prescription.strength.split(' ')[1]
+  } else {
+    processed.strength.value = 1
+    processed.strength.unit = ''
+  }
   var spInstructions = [
     'after food',
     'use as directed',
     'before meals',
     'with breakfast',
-    'with milk'
+    'with milk',
+    'with meals'
   ]
 
   spInstructions.forEach(function(e){
     sig = sig.replace(' '+e,'').replace(e+' ','').replace(e,'')
   })
 
-  var unit = prescription.strength.unit.toLowerCase()
+  var unit = processed.strength.unit.toLowerCase()
   var unitSeparator = unit.split('/')[0]
   if(unit!=''){
-    if(sig.includes(unit+'s')) {
+    if(includes(sig, unit+'s')) {
       unitSeparator = unit+'s'
     }
   }
   // console.log(sig)
   var sig_unit_Arr = []
   var sig0 = sig.split(' ')[0]
-  if(unit!='' && sig.includes(unitSeparator)){
+  if(unit!='' && includes(sig, unitSeparator)){
     sig_unit_Arr=sig.split(' '+unitSeparator+' ')
   } else {
-    if(Number.isFinite(sig0)){
+    if(typeof sig0 == 'number'){
       sig_unit_Arr.push(sig0)
     } else {
       sig_unit_Arr.push('')
