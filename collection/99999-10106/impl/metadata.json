@@ -1,5 +1,5 @@
 {
-  "@id": "v0.0.1",
+  "@id": "impl",
   "@type": "koio:Implementation",
   "identifier": "ark:/99999/10106/impl",
   "title": "Opioid Advisor",
