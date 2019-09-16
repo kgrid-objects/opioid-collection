@@ -13,6 +13,7 @@ Table of Contents
    1. [MHA Opiate Use Detector](#mha-opioid-detector)
    1. [MHA ALTO Use Detector](#mha-alto-detector)
    1. [Opioid Advisor](#opioid-advisor)
+   1. [Medication Regimen Complexity Index Calculator](#medication-regimen-complexity-index-calculator)
 - [Install the Michigan OPEN Opioid-related KO Collection](#install-kos-on-kgrid-activator)  
 - [Opioid Collection Testing](#opioid-collection-testing)  
 
@@ -138,7 +139,7 @@ curl -X POST \
  ```
 Additional API documentation can be found in the [Swagger UI](https://editor.swagger.io/?url=https://kgrid-activator.herokuapp.com/kos/99999/10106/impl/service) visualization of the OpenAPI specification.
 
-####  :seven: Medication Regimen Complexity Index (MRCI) Calculator
+####  :seven: Medication Regimen Complexity Index Calculator
 
 Calculates Medication Regimen Complexity Index (MRCI) of a patient's prescription regimen. This KO is a modified implementation of the MRCI computation model from the paper [Development and Validation of the Medication Regimen Complexity Index](https://journals.sagepub.com/doi/full/10.1345/aph.1D479).
 
