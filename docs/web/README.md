@@ -1,13 +1,13 @@
 # Opioid Collection
 [![GitHub release](https://img.shields.io/github/release/kgrid-objects/opioid-collection.svg)](https://github.com/kgrid-objects/opioid-collection/releases/)
 
-This is a collection of KOs for KGrid that can be used to identify and report on certain features of opioid prescribing. Each KO in this collection uses patient prescription data for its input and provides information about patient prescriptions as its output. 
+This is a collection of KOs for KGrid that can be used to identify and report on certain features of opioid prescribing. Each KO in this collection uses patient prescription data for its input and provides information about patient prescriptions as its output.
 
 Table of Contents
 --
 - [Getting Started](#getting-started)
 - [Knowledge Object Collection](#knowledge-object-collection)
-   1. [Opioid Use Detector](#opioid-use-detector) 
+   1. [Opioid Use Detector](#opioid-use-detector)
    1. [Opioid and Benzodiazepine Detector](#opioid-and-benzodiazepine-detector)
    1. [Respiratory Depression Risk Indicator](#respiratory-depression-risk-indicator )
    1. [MHA Opiate Use Detector](#mha-opioid-detector)
@@ -25,7 +25,7 @@ Below in this documentation, find each KO's API documentation in the OpenAPI 3.0
 ### Knowledge Object Collection
 
 ####  :one: Opioid Use Detector
-This KO scans a patient's medication regimen, which is presented to the KO as a list of RxNorm Semantic Clinical Drug codes, for the presence of an opioid prescription.  This KO has many potential uses, including one use as a filtering or screening mechanism when applied in the context of health information exchange. 
+This KO scans a patient's medication regimen, which is presented to the KO as a list of RxNorm Semantic Clinical Drug codes, for the presence of an opioid prescription.  This KO has many potential uses, including one use as a filtering or screening mechanism when applied in the context of health information exchange.
 
 **Example API Usage with curl**
 ```
@@ -101,7 +101,7 @@ Additional API documentation can be found in the [Swagger UI](https://editor.swa
 
 ####  :four: MHA Opioid Detector
 
-This  KO  scans a patient's medication regimen, which is presented to the KO as a list of RxNorm Semantic Clinical Drug codes, for the presence of an opioid prescription.  This KO has many potential uses, including one use as a filtering or screening mechanism when applied in the context of health information exchange. 
+This  KO  scans a patient's medication regimen, which is presented to the KO as a list of RxNorm Semantic Clinical Drug codes, for the presence of an opioid prescription.  This KO has many potential uses, including one use as a filtering or screening mechanism when applied in the context of health information exchange.
 
 **Example API Usage with curl**
 ```
@@ -136,20 +136,48 @@ curl -X POST \
       ]
    }'
  ```
-Additional API documentation can be found in the [Swagger UI](https://editor.swagger.io/?url=https://kgrid-activator.herokuapp.com/kos/99999/10106/impl/service) visualisation of the OpenAPI specification.
+Additional API documentation can be found in the [Swagger UI](https://editor.swagger.io/?url=https://kgrid-activator.herokuapp.com/kos/99999/10106/impl/service) visualization of the OpenAPI specification.
+
+####  :seven: Medication Regimen Complexity Index (MRCI) Calculator
+
+Calculates Medication Regimen Complexity Index (MRCI) of a patient's prescription regimen. This KO is a modified implementation of the MRCI computation model from the paper [Development and Validation of the Medication Regimen Complexity Index](https://journals.sagepub.com/doi/full/10.1345/aph.1D479).
+
+**Example API Usage with curl**
+```
+curl -X POST \
+  http://kgrid-activator.herokuapp.com/99999/mrci/impl/mrci \
+  -H 'Content-Type: application/json' \
+  -d ' {
+    "id": "MRCI-0C",
+    "prescriptions": [
+    {
+      "rxnorm": "309362",
+      "medicationname": "CLOPIDOGREL 75 MG TABLET",
+      "genericname": "CLOPIDOGREL BISULFATE",
+      "strength":"75 mg",
+      "form": "Tablet",
+      "route": "Oral",
+      "sig": "75 MG ONCE DAILY"
+    }
+  ]
+  }'
+ ```
+Additional API documentation can be found in the [Swagger UI](https://editor.swagger.io/?url=https://kgrid-activator.herokuapp.com/kos/99999/mrci/impl/service) visualization of the OpenAPI specification.
+
+
 
 ### Install KOs on KGrid Activator
-In order to use the MOpen Opioid Knowledge Object Collection you need to have an instance of the KGrid Activator up and running. To do this, refer to [KGrid Activator](http://kgrid.org/kgrid-activator/) deployment details.  Once you have [KGrid Activator](http://kgrid.org/kgrid-activator/) up and running you will need to add the [MOpen Opioid](https://github.com/kgrid-objects/opioid-collection/releases/latest) KOs to the existing shelf. 
+In order to use the MOpen Opioid Knowledge Object Collection you need to have an instance of the KGrid Activator up and running. To do this, refer to [KGrid Activator](http://kgrid.org/kgrid-activator/) deployment details.  Once you have [KGrid Activator](http://kgrid.org/kgrid-activator/) up and running you will need to add the [MOpen Opioid](https://github.com/kgrid-objects/opioid-collection/releases/latest) KOs to the existing shelf.
 
  1. Download the released MOpen Opiod KOs self (opioid_all.zip) from github [MOpen-Opioid Collection](https://github.com/kgrid-objects/opioid-collection/releases/latest)
  1. Place the opioid-all.zip into the directory where the activator jar is located and unzip. This will place the KOs into existing shelf directory
- 
+
 Directory structure should look similar to the following
 ```json
  ├── shelf
  │   └── 99999-10103
  │       └── v0.0.1   
- │       └── v0.0.2 
+ │       └── v0.0.2
  │   └── 99999-10102
  │       └── v0.0.1
  │       └── v0.0.2    
@@ -196,7 +224,7 @@ There are testing and packaging features in this project that require npm, npm i
 [npm](https://www.npmjs.com/get-npm).  Once npm is installed run  ```npm install``` at the root of this project.
 
 
-NPM test will run both unit and integration tests. 
+NPM test will run both unit and integration tests.
 
 ```
 npm test
@@ -204,30 +232,30 @@ npm test
 ### Unit Tests
 
 The KO Unit Test are located in the [tests directory](./tests).  These tests utilize
-[Jest](https://jestjs.io/) 
+[Jest](https://jestjs.io/)
 
 ```
 npm run test:unit
 ```
 
 ### Integration Tests
-We test the IPP KO endpoints in a KGrid Activator instance using [Postman](https://www.getpostman.com/) and
-[Newman](https://www.npmjs.com/package/newman). The Opioid Collection integration tests are defined in the 
-_opioid.postman_collection.json_. The integration script uses the 
+We test the Opioid KO endpoints in a KGrid Activator instance using [Postman](https://www.getpostman.com/) and
+[Newman](https://www.npmjs.com/package/newman). The Opioid Collection integration tests are defined in the
+_opioid.postman_collection.json_. The integration script uses the
 [start server and test](https://www.npmjs.com/package/start-server-and-test).  
 The integration test does the following:
 
 1. downloads the latest KGrid Activator
-1. runs the activator with the IPP KOs
-1. runs the ipp collection defined as the IPP test/integration 
- 
+1. runs the activator with the Opioid KOs
+1. runs the Opioid collection defined as the Opioid test/integration
+
 ```
 npm run test:integration
 ```
 
 **Tricks**
 
-You can start a local activator pointing to the IPP collection 
+You can start a local activator pointing to the Opioid collection
 ```
 npm run start
 ```
