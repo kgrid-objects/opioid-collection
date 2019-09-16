@@ -2,45 +2,60 @@ function mrci(inputs){
   var totalMRCI = 0
   var output = {}
   output.prescriptions = []
+  output.excludedprescriptions =[]
   var list=masterlisting()
   for(var i=0; i<inputs.prescriptions.length;i++) {
     var prescription = {}
     for(var key in inputs.prescriptions[i]){
       prescription[key]=inputs.prescriptions[i][key]
     }
-    var sig = prescription.sig.replace(inputs.prescriptions[i].medicationname)
-    var key_A = routeformkeylookup(prescription.route.toLowerCase(),prescription.form.toLowerCase())
     var obj=rxprocess(prescription)
+    var key_A = routeformkeylookup(obj.route,obj.form)
     var key_B = freqkeylookup(obj.dosage)
     var key_C = additionaldirkey(obj)
+    var includeInCalc = key_A != 'na'
+    key_B.forEach(function(e){
+      includeInCalc = includeInCalc && (e!='na')
+    })
+    key_B.forEach(function(e){
+      includeInCalc = includeInCalc && (e!='na')
+    })
     var prescription = {}
     prescription.rxnorm=inputs.prescriptions[i].rxnorm
     prescription.medicationname = inputs.prescriptions[i].medicationname
     prescription.sig = inputs.prescriptions[i].sig
-    var mrciWeighting = {}
-
-    if(list[key_A]) {
-      list[key_A].count ++
-      mrciWeighting[key_A]= list[key_A].weighting
-    }else{
-      mrciWeighting[key_A]=''
-    }
-    key_B.forEach(function(e){
-      if(list[e]){
-        list[e].count ++
-        mrciWeighting[e]=list[e].weighting
-      }
-    })
-    key_C.forEach(function(e){
-      if(list[e]){
-        list[e].count ++
-        mrciWeighting[e]=list[e].weighting
+    if(includeInCalc){
+      var mrciWeighting = {}
+      if(list[key_A]) {
+        list[key_A].count ++
+        mrciWeighting[key_A]= list[key_A].weighting
       }else{
-        mrciWeighting[e]=''
+        mrciWeighting[key_A]=''
       }
-    })
-    prescription.mrciWeighting=mrciWeighting
-    output.prescriptions.push(prescription)
+      key_B.forEach(function(e){
+        if(list[e]){
+          list[e].count ++
+          mrciWeighting[e]=list[e].weighting
+        }
+      })
+      key_C.forEach(function(e){
+        if(list[e]){
+          list[e].count ++
+          mrciWeighting[e]=list[e].weighting
+        }else{
+          mrciWeighting[e]=''
+        }
+      })
+      prescription.mrciWeighting=mrciWeighting
+      output.prescriptions.push(prescription)
+    } else {
+      if(key_A=='na'){
+        prescription.mrciWeighting='NA - Unknown route and/or form'
+      } else {
+        prescription.mrciWeighting='NA - Cannot process dosage information'
+      }
+      output.excludedprescriptions.push(prescription)
+    }
   }
   for(var key in list){
     if(list[key]){
@@ -149,7 +164,11 @@ function routeformkeylookup(route, form) {
       "vaginal cream":"vcream"
     }
   }
-  return route_dict[stroute]+'-'+form_dict[stroute][form]
+  if(route_dict[stroute] && form_dict[stroute][form]) {
+    return route_dict[stroute]+'-'+form_dict[stroute][form]
+  } else {
+    return 'na'
+  }
 }
 
 //**  Keys for Section B
@@ -207,8 +226,13 @@ function freqkeylookup(dosage){
     "as needed":"prn"
   }
   dosage.forEach(function(d){
-    // console.log(d.frequency.toLowerCase())
-    keys.push(dict[d.frequency.toLowerCase()] || 'na')
+    if(dict[d.frequency]){
+      keys.push(dict[d.frequency])
+    } else {
+      if(d.frequency!='' | d.value!=''){
+        keys.push('na')
+      }
+    }
   })
   return keys
 }
@@ -237,32 +261,32 @@ function additionaldirkey(p) {
     if(( parseFloat(dose) / p.strength.value ) > 1) {
       keys.push('multiple_unit')
     }
-    if(( parseFloat(dose) / p.strength.value ) !=  Math.round( parseFloat(dose) / p.strength.value ) && includes(p.form.toLowerCase(),'tablet')) {
+    if(( parseFloat(dose) / p.strength.value ) !=  Math.round( parseFloat(dose) / p.strength.value ) && includes(p.form,'tablet')) {
       keys.push('brk_crsh_tab')
     }
 
-    if( includes(p.sig.toLowerCase(), 'morning')
-      | includes(p.sig.toLowerCase(), 'night')
-      | includes(p.sig.toLowerCase(), 'breakfast')
-      | includes(p.sig.toLowerCase(), 'lunch')
-      | includes(p.sig.toLowerCase(), 'midday')
-      | includes(p.sig.toLowerCase(), 'evening')
-      | includes(p.sig.toLowerCase(), "at bedtime")
+    if( includes(p.sig, 'morning')
+      | includes(p.sig, 'night')
+      | includes(p.sig, 'breakfast')
+      | includes(p.sig, 'lunch')
+      | includes(p.sig, 'midday')
+      | includes(p.sig, 'evening')
+      | includes(p.sig, "at bedtime")
     ){
       keys.push('spcf_time')
     }
-    if( includes(p.sig.toLowerCase(), 'use as directed')
-      | includes(p.sig.toLowerCase(), 'take as directed')
+    if( includes(p.sig, 'use as directed')
+      | includes(p.sig, 'take as directed')
     ){
       keys.push('as_directed')
     }
-    if( includes(p.sig.toLowerCase(), 'food')
-      | includes(p.sig.toLowerCase(), 'meal')
-      | includes(p.sig.toLowerCase(), 'breakfast')
+    if( includes(p.sig, 'food')
+      | includes(p.sig, 'meal')
+      | includes(p.sig, 'breakfast')
     ){
       keys.push('rel_food')
     }
-    if( includes(p.sig.toLowerCase(), 'milk')
+    if( includes(p.sig, 'milk')
     ){
       keys.push('spcf_fluid')
     }
@@ -351,23 +375,25 @@ function includes(s, ss){
 
 
 function rxprocess(prescription) {
-  // console.log(prescription)
   var sig = prescription.sig.replace(prescription.medicationname+' ','').replace(prescription.medicationname,'').toLowerCase()
   var processed = {}
   processed.sig=sig
-  processed.form=prescription.form
+  processed.route=prescription.route.toLowerCase()
+  processed.form=prescription.form.toLowerCase()
   processed.dosage =[]
   processed.strength = {}
   if(prescription.strength!=''){
     processed.strength.value = parseFloat(prescription.strength.split(' ')[0])
-    processed.strength.unit = prescription.strength.split(' ')[1]
+    processed.strength.unit = prescription.strength.split(' ')[1].toLowerCase()
   } else {
     processed.strength.value = 1
     processed.strength.unit = ''
   }
   var spInstructions = [
     'after food',
+    ', use as directed',
     'use as directed',
+    'take as directed',
     'before meals',
     'with breakfast',
     'with milk',
@@ -378,14 +404,13 @@ function rxprocess(prescription) {
     sig = sig.replace(' '+e,'').replace(e+' ','').replace(e,'')
   })
 
-  var unit = processed.strength.unit.toLowerCase()
+  var unit = processed.strength.unit
   var unitSeparator = unit.split('/')[0]
   if(unit!=''){
     if(includes(sig, unit+'s')) {
       unitSeparator = unit+'s'
     }
   }
-  // console.log(sig)
   var sig_unit_Arr = []
   var sig0 = sig.split(' ')[0]
   if(unit!='' && includes(sig, unitSeparator)){
@@ -398,8 +423,6 @@ function rxprocess(prescription) {
     }
     sig_unit_Arr.push(sig.replace(sig0+' ',''))
   }
-  // console.log(sig_unit_Arr)
-
   var obj= {}
   obj.value = sig_unit_Arr[0]
   obj.unit = unit

@@ -591,7 +591,7 @@ module.exports =
         "strength": "1 tablet",
         "form": "tablet",
         "route": "Oral",
-        "sig": "warfarin tablets, use as directed",
+        "sig": "warfarin tablets, use as directed"
       }
     ]
     },

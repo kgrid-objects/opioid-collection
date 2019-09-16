@@ -288,7 +288,7 @@ module.exports =
         }
       ]
     },
-    output: 23.5
+    output: 17
   },
   {
     input: {
