@@ -68,8 +68,8 @@ function mrci(inputs){
       }
     }
   }
-  output.totalMedication = output.prescriptions.length
-  output.totalMRCI=totalMRCI
+  output.MedicationCount = output.prescriptions.length
+  output.MRCI=totalMRCI
   return output;
 }
 

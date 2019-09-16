@@ -6,7 +6,7 @@ var rxprocess = javascript.__get__("rxprocess")
 data.forEach(function(pt){
   test(pt.input.id, () => {
     var result = mrci(pt.input)
-    expect(result.totalMRCI)
+    expect(result.MRCI)
       .toBeGreaterThan(1)
   })
 })
@@ -22,9 +22,9 @@ data.forEach(function(pt){
 //   // result.excludedprescriptions.forEach(function(p){
 //   //   console.log(p.mrciWeighting)
 //   // })
-//   console.log('Total Medications: '+result.totalMedication+'\n============================================')
-//   console.log('Medication Regimen Complexity Index: '+result.totalMRCI+'\n============================================')
-//   expect(result.totalMRCI)
+//   console.log('Total Medications: '+result.MedicationCount+'\n============================================')
+//   console.log('Medication Regimen Complexity Index: '+result.MRCI+'\n============================================')
+//   expect(result.MRCI)
 //     // .toBeGreaterThan(1)
 //     .toBe(pt.output)
 // })
