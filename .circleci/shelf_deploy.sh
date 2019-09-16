@@ -5,7 +5,7 @@ zipLocation=$2
 
 cd $zipLocation
 
-for zipFile in *.zip
+for zipFile in 99999-*.zip
 do
   echo -e "Processing $zipFile"
   fileName=${zipFile%%.*}
