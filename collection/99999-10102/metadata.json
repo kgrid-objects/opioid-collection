@@ -4,11 +4,11 @@
   "identifier": "ark:/99999/10102",
   "title": "Opioid and Benzodiazepine Detector",
   "contributors": "KGRID TEAM",
-  "desription": "This object scans a list of a patient's prescriptions and determines if they are at risk being exposed simultaneously to a known dangerous combination of an opioid and a benzodiazepine.",
+  "description": "This object scans a list of a patient's prescriptions and determines if they are at risk being exposed simultaneously to a known dangerous combination of an opioid and a benzodiazepine.",
   "citations": [
     "https://link"
   ],
-  "keywords": "Keywords",
+  "keywords": "opioid benzodiazepine",
   "hasImplementation": [
     "99999-10102/v0.0.2"
   ],

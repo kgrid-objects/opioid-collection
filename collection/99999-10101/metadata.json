@@ -4,11 +4,11 @@
   "identifier": "ark:/99999/10101",
   "title": "Opioid Use Detector",
   "contributors": "KGRID TEAM",
-  "desription": "A knowledge object that scans a medication regimen for the presence of an opioid.  This object has many potential uses, including one use as a filtering/screening mechanism when applied in the context of messaging and health information exchange at Transitions of Care. ",
+  "description": "A knowledge object that scans a medication regimen for the presence of an opioid.  This object has many potential uses, including one use as a filtering/screening mechanism when applied in the context of messaging and health information exchange at Transitions of Care. ",
   "citations": [
     "https://link"
   ],
-  "keywords": "Keywords",
+  "keywords": "opioid",
   "hasImplementation": [
     "99999-10101/v0.0.2"
   ],
