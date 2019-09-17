@@ -19,7 +19,7 @@ Table of Contents
 
 
 ### Getting Started
-These instructions will allow you to test drive one or more of the KOs in the MOpen Opioid-related Knowledge Object Collection on our sandbox at Herokuapp.com here.  To check if the sandbox is working, you can click here: [Heroku KGrid Activator](https://kgrid-activator.herokuapp.com/).  
+These instructions will allow you to test drive one or more of the KOs in the MOpen Opioid-related Knowledge Object Collection on our sandbox at Herokuapp.com here.  To check if the sandbox is working, you can click here: [Heroku KGrid Activator](https://activator.kgrid.org/).  
 
 Below in this documentation, find each KO's API documentation in the OpenAPI 3.0 specification format. By clicking on the API Documentation link for each KO, the API documentation will be displayed in a Swagger UI tool.  Utilizing the example curl or the Swagger UI tool you can test out the interation using each KO.
 
@@ -31,7 +31,7 @@ This KO scans a patient's medication regimen, which is presented to the KO as a 
 **Example API Usage with curl**
 ```
 curl -X POST \
-  https://activator.kgrid.org/99999/10101/v0.0.2/opioidDetector \
+  http://kgrid-activator.herokuapp.com/99999/10101/v0.0.2/opioidDetector \
   -H 'Content-Type: application/json' \
   -d '{"rxcuis":"106500,200240,856917,994226,197446,801958"}'
 ```  
@@ -72,7 +72,7 @@ curl -X POST \
     }
 }
 ```
-Additional API documentation can be found in the [Swagger UI](hhttps://editor.swagger.io/?url=https://kgrid-activator.herokuapp.com/kos/99999/10101/v0.0.2/service) visualisation of the OpenAPI specification.
+Additional API documentation can be found in the [Swagger UI](https://editor.swagger.io/?url=https://activator.kgrid.org/kos/99999/10101/v0.0.2/service) visualisation of the OpenAPI specification.
 
 ####  :two: Opioid and Benzodiazepine Detector
 This KO  scans a list of a patient's prescriptions, which are presented to the KO as a list of RxNorm Semantic Clinical Drug codes, and determines if they are being exposed simultaneously to a known risky combination of an opioid and a benzodiazepine.
@@ -80,13 +80,13 @@ This KO  scans a list of a patient's prescriptions, which are presented to the K
 **Example API Usage with curl**
 ```json
 curl -X POST \
-  https://activator.kgrid.org/99999/10102/v0.0.2/opioidbzdDetector \
+  http://kgrid-activator.herokuapp.com/99999/10102/v0.0.2/opioidbzdDetector \
   -H 'Cache-Control: no-cache' \
   -H 'Content-Type: application/json' \
   -d '{"rxcuis":"106500,200240,856917,994226,197446,801958"}'
 ```
 
-Additional API documentation can be found in the [Swagger UI](https://editor.swagger.io/?url=https://kgrid-activator.herokuapp.com/kos/99999/10102/v0.0.2/servicel) visualisation of the OpenAPI specification.
+Additional API documentation can be found in the [Swagger UI](https://editor.swagger.io/?url=https://activator.kgrid.org/kos/99999/10102/v0.0.2/servicel) visualisation of the OpenAPI specification.
 
 ####  :three: Respiratory Depression Risk Indicator
 This KO scans a list of a patient's prescriptions, which are presented to the KO as a list or RxNorm Semantic Clinical Drug Codes, and determines if they are at higher risk for drug-induced respiratory depression because of being exposed simultaneously to a combination of an opioid, a benzodiazepine, and a muscle relaxant.
@@ -94,11 +94,11 @@ This KO scans a list of a patient's prescriptions, which are presented to the KO
 **Example API Usage with curl**
 ```json
 curl -X POST \
-  https://activator.kgrid.org/99999/10103/v0.0.2/tripleThreatDetector \
+  http://kgrid-activator.herokuapp.com/99999/10103/v0.0.2/tripleThreatDetector \
   -H 'Content-Type: application/json' \
   -d '{"rxcuis":"106500,200240,856917,994226,197446,801958"}'
  ```
-Additional API documentation can be found in the [Swagger UI](https://editor.swagger.io/?url=https://kgrid-activator.herokuapp.com/kos/99999/10103/v0.0.2/service) visualisation of the OpenAPI specification.
+Additional API documentation can be found in the [Swagger UI](https://editor.swagger.io/?url=https://activator.kgrid.org/kos/99999/10103/v0.0.2/service) visualisation of the OpenAPI specification.
 
 ####  :four: MHA Opioid Detector
 
@@ -107,11 +107,11 @@ This  KO  scans a patient's medication regimen, which is presented to the KO as 
 **Example API Usage with curl**
 ```
 curl -X POST \
-  https://activator.kgrid.org/99999/10104/v0.0.1/mhaOpiateDetector \
+  http://kgrid-activator.herokuapp.com/99999/10104/v0.0.1/mhaOpiateDetector \
   -H 'Content-Type: application/json' \
   -d '{"rxcuis":"106500,200240,856917,994226,197446,801958"}'
  ```
-Additional API documentation can be found in the [Swagger UI](hhttps://editor.swagger.io/?url=https://kgrid-activator.herokuapp.com/kos/99999/10104/v0.0.1/service) visualisation of the OpenAPI specification.
+Additional API documentation can be found in the [Swagger UI](https://editor.swagger.io/?url=https://activator.kgrid.org/kos/99999/10104/v0.0.1/service) visualisation of the OpenAPI specification.
 
 ####  :six: Opioid Advisor
 
@@ -120,7 +120,7 @@ Evaluates a list of a patient's prescriptions and determines Opioid risk. This K
 **Example API Usage with curl**
 ```
 curl -X POST \
-  https://activator.kgrid.org/99999/10106/impl/opioidadvisor \
+  http://kgrid-activator.herokuapp.com/99999/10106/impl/opioidadvisor \
   -H 'Content-Type: application/json' \
   -d ' {
       "id": "PA-01011",
@@ -137,7 +137,7 @@ curl -X POST \
       ]
    }'
  ```
-Additional API documentation can be found in the [Swagger UI](https://editor.swagger.io/?url=https://kgrid-activator.herokuapp.com/kos/99999/10106/impl/service) visualization of the OpenAPI specification.
+Additional API documentation can be found in the [Swagger UI](https://editor.swagger.io/?url=https://activator.kgrid.org/kos/99999/10106/impl/service) visualization of the OpenAPI specification.
 
 ####  :seven: Medication Regimen Complexity Index Calculator
 
@@ -146,7 +146,7 @@ Calculates Medication Regimen Complexity Index (MRCI) of a patient's prescriptio
 **Example API Usage with curl**
 ```
 curl -X POST \
-  https://activator.kgrid.org/99999/mrci/impl/mrci \
+  http://kgrid-activator.herokuapp.com/99999/mrci/impl/mrci \
   -H 'Content-Type: application/json' \
   -d ' {
     "id": "MRCI-0C",
@@ -163,7 +163,7 @@ curl -X POST \
   ]
   }'
  ```
-Additional API documentation can be found in the [Swagger UI](https://editor.swagger.io/?url=https://kgrid-activator.herokuapp.com/kos/99999/mrci/impl/service) visualization of the OpenAPI specification.
+Additional API documentation can be found in the [Swagger UI](https://editor.swagger.io/?url=https://activator.kgrid.org/kos/99999/mrci/impl/service) visualization of the OpenAPI specification.
 
 
 
