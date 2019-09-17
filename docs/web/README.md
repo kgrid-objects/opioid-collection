@@ -170,8 +170,9 @@ Additional API documentation can be found in the [Swagger UI](https://editor.swa
 ### Install KOs on KGrid Activator
 In order to use the MOpen Opioid Knowledge Object Collection you need to have an instance of the KGrid Activator up and running. To do this, refer to [KGrid Activator](http://kgrid.org/kgrid-activator/) deployment details.  Once you have [KGrid Activator](http://kgrid.org/kgrid-activator/) up and running you will need to add the [MOpen Opioid](https://github.com/kgrid-objects/opioid-collection/releases/latest) KOs to the existing shelf.
 
- 1. Download the released MOpen Opiod KOs self (opioid_all.zip) from github [MOpen-Opioid Collection](https://github.com/kgrid-objects/opioid-collection/releases/latest)
- 1. Place the opioid-all.zip into the directory where the activator jar is located and unzip. This will place the KOs into existing shelf directory
+ 1. Download the released MOpen Opiod KOs from github [MOpen-Opioid Collection](https://github.com/kgrid-objects/opioid-collection/releases/latest)
+ 1. Place the zip files into the shelf directory unzip. 
+ 1. You must activate those KOs in the activator running the activate endpoint.
 
 Directory structure should look similar to the following
 ```json
