@@ -19,7 +19,7 @@ Table of Contents
 
 
 ### Getting Started
-These instructions will allow you to test drive one or more of the KOs in the MOpen Opioid-related Knowledge Object Collection on our sandbox at Herokuapp.com here.  To check if the sandbox is working, you can click here: [Heroku KGrid Activator](https://activator.kgrid.org/).  
+These instructions will allow you to test drive one or more of the KOs in the MOpen Opioid-related Knowledge Object Collection on our sandbox at Herokuapp.com here.  To check if the sandbox is working, you can click here:  [KGrid Activator](https://activator.kgrid.org/).  
 
 Below in this documentation, find each KO's API documentation in the OpenAPI 3.0 specification format. By clicking on the API Documentation link for each KO, the API documentation will be displayed in a Swagger UI tool.  Utilizing the example curl or the Swagger UI tool you can test out the interation using each KO.
 
