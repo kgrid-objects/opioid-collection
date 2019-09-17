@@ -31,7 +31,7 @@ This KO scans a patient's medication regimen, which is presented to the KO as a 
 **Example API Usage with curl**
 ```
 curl -X POST \
-  http://kgrid-activator.herokuapp.com/99999/10101/v0.0.2/opioidDetector \
+  https://activator.kgrid.org/99999/10101/v0.0.2/opioidDetector \
   -H 'Content-Type: application/json' \
   -d '{"rxcuis":"106500,200240,856917,994226,197446,801958"}'
 ```  
@@ -80,7 +80,7 @@ This KO  scans a list of a patient's prescriptions, which are presented to the K
 **Example API Usage with curl**
 ```json
 curl -X POST \
-  http://kgrid-activator.herokuapp.com/99999/10102/v0.0.2/opioidbzdDetector \
+  https://activator.kgrid.org/99999/10102/v0.0.2/opioidbzdDetector \
   -H 'Cache-Control: no-cache' \
   -H 'Content-Type: application/json' \
   -d '{"rxcuis":"106500,200240,856917,994226,197446,801958"}'
@@ -94,7 +94,7 @@ This KO scans a list of a patient's prescriptions, which are presented to the KO
 **Example API Usage with curl**
 ```json
 curl -X POST \
-  http://kgrid-activator.herokuapp.com/99999/10103/v0.0.2/tripleThreatDetector \
+  https://activator.kgrid.org/99999/10103/v0.0.2/tripleThreatDetector \
   -H 'Content-Type: application/json' \
   -d '{"rxcuis":"106500,200240,856917,994226,197446,801958"}'
  ```
@@ -107,7 +107,7 @@ This  KO  scans a patient's medication regimen, which is presented to the KO as 
 **Example API Usage with curl**
 ```
 curl -X POST \
-  http://kgrid-activator.herokuapp.com/99999/10104/v0.0.1/mhaOpiateDetector \
+  https://activator.kgrid.org/99999/10104/v0.0.1/mhaOpiateDetector \
   -H 'Content-Type: application/json' \
   -d '{"rxcuis":"106500,200240,856917,994226,197446,801958"}'
  ```
@@ -120,7 +120,7 @@ Evaluates a list of a patient's prescriptions and determines Opioid risk. This K
 **Example API Usage with curl**
 ```
 curl -X POST \
-  http://kgrid-activator.herokuapp.com/99999/10106/impl/opioidadvisor \
+  https://activator.kgrid.org/99999/10106/impl/opioidadvisor \
   -H 'Content-Type: application/json' \
   -d ' {
       "id": "PA-01011",
@@ -146,7 +146,7 @@ Calculates Medication Regimen Complexity Index (MRCI) of a patient's prescriptio
 **Example API Usage with curl**
 ```
 curl -X POST \
-  http://kgrid-activator.herokuapp.com/99999/mrci/impl/mrci \
+  https://activator.kgrid.org/99999/mrci/impl/mrci \
   -H 'Content-Type: application/json' \
   -d ' {
     "id": "MRCI-0C",
