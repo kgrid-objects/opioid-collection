@@ -85,12 +85,13 @@ function routeformkeylookup(route, form) {
   var route_dict={
     "oral":"oral",
     "topical":"topical",
-    "eye":"ear_eye_nose",
-    "ear":"ear_eye_nose",
-    "nose":"ear_eye_nose",
+    "eye":"eye",
+    "ear":"ear",
+    "nose":"nose",
     "injection":"injection",
     "inhalation":"inhalation",
-    "rectal":"rectal"
+    "rectal":"rectal",
+    "others":"others"
   }
   var form_dict = {
     "oral":{
