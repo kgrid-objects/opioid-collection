@@ -1,0 +1,44 @@
+openapi: 3.0.2
+info:
+  version: impl
+  title: Myasthenia Gravis Medication Check
+  description: Checks for medications which should not be given to patients with myasthenia gravis
+servers:
+  - url: /99999/icdscreen/impl
+paths:
+  /icdscreen:
+    post:
+      description: Myasthenia Gravis Medication Check
+      operationId: icdscreen
+      requestBody:
+        description: inputs
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: 'https://demo.kgrid.org/schemas/patientwithrx.yaml#/patientwithprescriptionlist'
+      responses:
+        '200':
+          description: response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/output'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: 'https://demo.kgrid.org/schemas/basicerror.yaml'
+      x-kgrid-activation:
+        artifact: src/index.js
+        adapter: JAVASCRIPT
+        entry: icdscreen
+components:
+  schemas:
+    output:
+      required:
+        - result
+      properties:
+        result:
+          type: object

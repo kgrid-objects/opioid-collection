@@ -1,0 +1,10 @@
+{
+    "@id": "impl",
+    "@type": "koio:Implementation",
+    "identifier": "ark:/99999/icdscreen/impl",
+    "title": "Myasthenia Gravis Medication Check",
+    "hasServiceSpecification": "impl/service.yaml",
+    "@context": [
+        "http://kgrid.org/koio/contexts/implementation.jsonld"
+    ]
+}
