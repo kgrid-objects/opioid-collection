@@ -16,7 +16,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: 'https://demo.kgrid.org/schemas/patientwithrx.yaml#/patientwithprescriptionlist'
+              $ref: '#/components/schemas/druglist'
       responses:
         '200':
           description: response
@@ -36,9 +36,26 @@ paths:
         entry: icdscreen
 components:
   schemas:
+    druglist:
+      required:
+      - rxcuis
+      - icd10
+      properties:
+        rxcuis:
+          type: string
+          example: "141963,856917,994226,197446,801958"
+        icd10:
+          type: string
+          example: "G70.00,G10.00"
     output:
       required:
-        - result
+      - result
       properties:
         result:
-          type: object
+          type: string
+          example: >-
+            {"result": {"conflict": true,"rxcuis": {"0": "141963"}},"info": {"ko": {"@id": "impl","@type": "koio:Implementation","identifier": "ark:/99999/icdscreen/impl","title": "Myasthenia Gravis Medication Check","hasServiceSpecification": "impl/service.yaml","@context": ["http://kgrid.org/koio/contexts/implementation.jsonld"]},"inputs": {"rxcuis": "141963,856917,994226,197446,801958","icd10": "G70.00,G10.00"}}}
+    Error:
+      required:
+      - code
+      - message
