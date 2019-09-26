@@ -8,10 +8,11 @@ info:
   contact:
     name: KGrid Team
     email: kgrid-developers@umich.edu
-    url: http://kgrid.org
+    url: 'http://kgrid.org'
   license:
     name: GNU General Public License v3 (GPL-3)
-    url: https://tldrlegal.com/license/gnu-general-public-license-v3-(gpl-3)#fulltext
+    url: >-
+      https://tldrlegal.com/license/gnu-general-public-license-v3-(gpl-3)#fulltext
 tags:
   - name: KO Endpoints
     description: ALTO Endpoints
@@ -23,7 +24,8 @@ paths:
       tags:
         - KO Endpoints
       description: >-
-        This object scans a list of prescriptions and determines if the patient is
+        This object scans a list of prescriptions and determines if the patient
+        is
             taking an ALTO
       operationId: mhaALTODetector
       requestBody:
@@ -62,7 +64,11 @@ components:
         result:
           type: object
           example: >-
-            {"condition_satisfied" : true, "summary" : { "mhaALTO" : true }, "detail" : { "106500" : { "mhaALTO" : false }, "197446" : { "mhaALTO" : false }, "200240" : { "mhaALTO" : false }, "801958" : { "mhaALTO" : false }, "856917" : { "mhaALTO" : false }, "994226" : { "mhaALTO" : false }, "1733892" : { "mhaALTO" : true }}
+            {"condition_satisfied" : true, "summary" : { "mhaALTO" : true },
+            "detail" : { "106500" : { "mhaALTO" : false }, "197446" : {
+            "mhaALTO" : false }, "200240" : { "mhaALTO" : false }, "801958" : {
+            "mhaALTO" : false }, "856917" : { "mhaALTO" : false }, "994226" : {
+            "mhaALTO" : false }, "1733892" : { "mhaALTO" : true }}
     Error:
       required:
         - code

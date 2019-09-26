@@ -1,29 +1,37 @@
 openapi: 3.0.2
 info:
   version: '1'
-  title: 'Opioid Advisor'
-  description: Evaluates list of a patient's prescriptions and determines Opioid risk. KO is a mashup of three existing KOs Opioid Use Detector, Opioid and Benzodiazepine Detector and Respiratory Depression Risk Detector
+  title: Opioid Advisor
+  description: >-
+    Evaluates list of a patient's prescriptions and determines Opioid risk. KO
+    is a mashup of three existing KOs Opioid Use Detector, Opioid and
+    Benzodiazepine Detector and Respiratory Depression Risk Detector
   contact:
     name: KGrid Team
     email: kgrid-developers@umich.edu
-    url: http://kgrid.org
+    url: 'http://kgrid.org'
   license:
     name: GNU General Public License v3 (GPL-3)
-    url: https://tldrlegal.com/license/gnu-general-public-license-v3-(gpl-3)#fulltext
+    url: >-
+      https://tldrlegal.com/license/gnu-general-public-license-v3-(gpl-3)#fulltext
 servers:
   - url: /99999/10106/impl
 paths:
   /opioidadvisor:
     post:
-      description: Evaluates list of a patient's prescriptions and determines Opioid risk. KO is a mashup of three existing KOs Opioid Use Detector, Opioid and Benzodiazepine Detector and Respiratory Depression Risk Detector
+      description: >-
+        Evaluates list of a patient's prescriptions and determines Opioid risk.
+        KO is a mashup of three existing KOs Opioid Use Detector, Opioid and
+        Benzodiazepine Detector and Respiratory Depression Risk Detector
       operationId: opioid-advisor
       requestBody:
-        description: 'prescriptionlist'
+        description: prescriptionlist
         required: true
         content:
           application/json:
             schema:
-              $ref: 'https://demo.kgrid.org/schemas/patientwithrx.yaml#/patientwithprescriptionlist'
+              $ref: >-
+                https://demo.kgrid.org/schemas/patientwithrx.yaml#/patientwithprescriptionlist
       responses:
         '200':
           description: response
@@ -47,19 +55,19 @@ components:
       type: object
       properties:
         result:
-           type: object
-           properties:
-              patient_id:
-                type: string
-                example: "PA-01011"
-              opioid_detected:
-                type: boolean
-                example: false
-              benzo_detected:
-                type: boolean
-                example: false
-              muscle_relaxant_detected:
-                type: boolean
-                example: false
+          type: object
+          properties:
+            patient_id:
+              type: string
+              example: PA-01011
+            opioid_detected:
+              type: boolean
+              example: false
+            benzo_detected:
+              type: boolean
+              example: false
+            muscle_relaxant_detected:
+              type: boolean
+              example: false
         info:
           type: object

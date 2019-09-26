@@ -8,10 +8,11 @@ info:
   contact:
     name: KGrid Team
     email: kgrid-developers@umich.edu
-    url: http://kgrid.org
+    url: 'http://kgrid.org'
   license:
     name: GNU General Public License v3 (GPL-3)
-    url: https://tldrlegal.com/license/gnu-general-public-license-v3-(gpl-3)#fulltext
+    url: >-
+      https://tldrlegal.com/license/gnu-general-public-license-v3-(gpl-3)#fulltext
 tags:
   - name: KO Endpoints
     description: Opioid Endpoints
@@ -23,7 +24,8 @@ paths:
       tags:
         - KO Endpoints
       description: >-
-        This object scans a list of prescriptions and determines if the patient is
+        This object scans a list of prescriptions and determines if the patient
+        is
             taking an opiate
       operationId: mhaOpiateDetector
       requestBody:
@@ -62,7 +64,11 @@ components:
         result:
           type: object
           example: >-
-            {"condition_satisfied" : true, "summary" : { "mhaOpiate" : true }, "detail" : { "106500" : { "mhaOpiate" : false }, "197446" : { "mhaOpiate" : false }, "200240" : { "mhaOpiate" : false }, "801958" : { "mhaOpiate" : false }, "856917" : { "mhaOpiate" : false }, "994226" : { "mhaOpiate" : true }}}
+            {"condition_satisfied" : true, "summary" : { "mhaOpiate" : true },
+            "detail" : { "106500" : { "mhaOpiate" : false }, "197446" : {
+            "mhaOpiate" : false }, "200240" : { "mhaOpiate" : false }, "801958"
+            : { "mhaOpiate" : false }, "856917" : { "mhaOpiate" : false },
+            "994226" : { "mhaOpiate" : true }}}
     Error:
       required:
         - code

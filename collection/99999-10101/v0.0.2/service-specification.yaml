@@ -10,10 +10,11 @@ info:
   contact:
     name: KGrid Team
     email: kgrid-developers@umich.edu
-    url: http://kgrid.org
+    url: 'http://kgrid.org'
   license:
     name: GNU General Public License v3 (GPL-3)
-    url: https://tldrlegal.com/license/gnu-general-public-license-v3-(gpl-3)#fulltext
+    url: >-
+      https://tldrlegal.com/license/gnu-general-public-license-v3-(gpl-3)#fulltext
 tags:
   - name: KO Endpoints
     description: Opioid Use Detector Endpoints

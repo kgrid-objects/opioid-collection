@@ -2,7 +2,17 @@ openapi: 3.0.2
 info:
   version: impl
   title: Myasthenia Gravis Medication Check
-  description: Checks for medications which should not be given to patients with myasthenia gravis
+  description: >-
+    Checks for medications which should not be given to patients with myasthenia
+    gravis
+  license:
+    name: GNU General Public License v3 (GPL-3)
+    url: >-
+      https://tldrlegal.com/license/gnu-general-public-license-v3-(gpl-3)#fulltext
+  contact:
+    name: KGrid Team
+    email: kgrid-developers@umich.edu
+    url: 'http://kgrid.org'
 servers:
   - url: /99999/icdscreen/impl
 paths:
@@ -38,24 +48,30 @@ components:
   schemas:
     druglist:
       required:
-      - rxcuis
-      - icd10
+        - rxcuis
+        - icd10
       properties:
         rxcuis:
           type: string
-          example: "141963,856917,994226,197446,801958"
+          example: '141963,856917,994226,197446,801958'
         icd10:
           type: string
-          example: "G70.00,G10.00"
+          example: 'G70.00,G10.00'
     output:
       required:
-      - result
+        - result
       properties:
         result:
           type: string
           example: >-
-            {"result": {"conflict": true,"rxcuis": {"0": "141963"}},"info": {"ko": {"@id": "impl","@type": "koio:Implementation","identifier": "ark:/99999/icdscreen/impl","title": "Myasthenia Gravis Medication Check","hasServiceSpecification": "impl/service.yaml","@context": ["http://kgrid.org/koio/contexts/implementation.jsonld"]},"inputs": {"rxcuis": "141963,856917,994226,197446,801958","icd10": "G70.00,G10.00"}}}
+            {"result": {"conflict": true,"rxcuis": {"0": "141963"}},"info":
+            {"ko": {"@id": "impl","@type": "koio:Implementation","identifier":
+            "ark:/99999/icdscreen/impl","title": "Myasthenia Gravis Medication
+            Check","hasServiceSpecification": "impl/service.yaml","@context":
+            ["http://kgrid.org/koio/contexts/implementation.jsonld"]},"inputs":
+            {"rxcuis": "141963,856917,994226,197446,801958","icd10":
+            "G70.00,G10.00"}}}
     Error:
       required:
-      - code
-      - message
+        - code
+        - message

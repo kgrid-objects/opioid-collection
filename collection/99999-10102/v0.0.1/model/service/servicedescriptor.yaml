@@ -1,19 +1,34 @@
 openapi: 3.0.0
 info:
   version: 1.0.0
-  title: 'Opioid and Benzodiazepine Detector'
-  description: 'This object scans a list of prescriptions and determines if the patient is at risk greater for drug-induced respiratory depression because of being exposed simultaneously to a known dangerous combination of an opioid, a benzodiazepine, and a muscle relaxant.'
+  title: Opioid and Benzodiazepine Detector
+  description: >-
+    This object scans a list of prescriptions and determines if the patient is
+    at risk greater for drug-induced respiratory depression because of being
+    exposed simultaneously to a known dangerous combination of an opioid, a
+    benzodiazepine, and a muscle relaxant.
+  license:
+    name: GNU General Public License v3 (GPL-3)
+    url: >-
+      https://tldrlegal.com/license/gnu-general-public-license-v3-(gpl-3)#fulltext
+  contact:
+    name: KGrid Team
+    email: kgrid-developers@umich.edu
+    url: 'http://kgrid.org'
 servers:
-  - url: '/99999/10102/v0.0.1'
+  - url: /99999/10102/v0.0.1
 tags:
   - name: KO Endpoints
-    description:  Opioid and Benzodiazepine Detector Endpoints
+    description: Opioid and Benzodiazepine Detector Endpoints
 paths:
   /opioidbzdDetector:
     post:
       tags:
         - KO Endpoints
-      description: scans a list of a patient's prescriptions and determines if they are being exposed simultaneously to a known risky combination of an opioid and a benzodiazepine.
+      description: >-
+        scans a list of a patient's prescriptions and determines if they are
+        being exposed simultaneously to a known risky combination of an opioid
+        and a benzodiazepine.
       operationId: opioidbzdDetector
       requestBody:
         description: RxNorm Semantic Clinical Drug codes for a paitent
@@ -24,7 +39,9 @@ paths:
               $ref: '#/components/schemas/druglist'
       responses:
         '200':
-          description: identifies if an opioid and benzodiazepine was found, list of rxcui and inputs
+          description: >-
+            identifies if an opioid and benzodiazepine was found, list of rxcui
+            and inputs
           content:
             application/json:
               schema:
@@ -50,7 +67,8 @@ components:
       properties:
         result:
           type: string
-          example: '{condition_satisfied:false,summary:{opioid:false,bzd:false},detail:{}}'
+          example: >-
+            {condition_satisfied:false,summary:{opioid:false,bzd:false},detail:{}}
     Error:
       required:
         - code
