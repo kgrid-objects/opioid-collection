@@ -40,7 +40,7 @@
     "fs-extra": "^7.0.1",
     "jest-junit": "^6.2.1",
     "jsonpath": "^1.0.2",
-    "newman": "^4.5.4",
+    "newman": "^4.5.7",
     "request": "^2.88.0",
     "shelljs": "^0.8.3",
     "start-server-and-test": "^1.7.11"
