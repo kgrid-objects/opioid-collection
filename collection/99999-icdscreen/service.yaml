@@ -14,7 +14,7 @@ info:
     email: kgrid-developers@umich.edu
     url: 'http://kgrid.org'
 servers:
-  - url: /99999/icdscreen/impl
+  - url: /99999/icdscreen
 paths:
   /icdscreen:
     post:

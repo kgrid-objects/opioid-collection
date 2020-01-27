@@ -2,11 +2,14 @@
   "@id" : "99999-10106",
   "@type" : "koio:KnowledgeObject",
   "identifier" : "ark:/99999/10106",
+  "version":"v0.0.3",
   "title" : "Opioid Advisor",
   "contributors" : "KGRID TEAM",
   "description" : "Evaluates list of a patient's prescriptions and determines Opioid risk. KO is a mashup of three existing KOs Opioid Use Detector, Opioid and Benzodiazepine Detector and Respiratory Depression Risk Detector",
-  "citations" : [ "https://link" ],
-  "keywords" : "opioid advisor bebnzodiazepine",
-  "hasImplementation" : [ "99999-10106/impl" ],
+  "citations" : [ "" ],
+  "keywords" : ["opioid advisor", "bebnzodiazepine"],
+  "hasServiceSpecification": "openapi.yaml",
+  "hasDeploymentSpecification": "openapi.yaml",
+  "hasPayload": "index.js",
   "@context" : [ "http://kgrid.org/koio/contexts/knowledgeobject.jsonld" ]
 }

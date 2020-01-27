@@ -2,16 +2,17 @@
   "@id": "99999-10101",
   "@type": "koio:KnowledgeObject",
   "identifier": "ark:/99999/10101",
+  "version":"v0.0.3",
   "title": "Opioid Use Detector",
   "contributors": "KGRID TEAM",
   "description": "A knowledge object that scans a medication regimen for the presence of an opioid.  This object has many potential uses, including one use as a filtering/screening mechanism when applied in the context of messaging and health information exchange at Transitions of Care. ",
   "citations": [
-    "https://link"
+    ""
   ],
-  "keywords": "opioid",
-  "hasImplementation": [
-    "99999-10101/v0.0.2"
-  ],
+  "keywords": ["opioid"],
+  "hasServiceSpecification": "service.yaml",
+  "hasDeploymentSpecification": "deployment.yaml",
+  "hasPayload": "opioidDetector.js",
   "@context": [
     "http://kgrid.org/koio/contexts/knowledgeobject.jsonld"
   ]

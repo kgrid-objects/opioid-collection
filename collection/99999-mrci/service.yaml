@@ -14,7 +14,7 @@ info:
     email: kgrid-developers@umich.edu
     url: 'http://kgrid.org'
 servers:
-  - url: /99999/mrci/impl
+  - url: /99999/mrci
 paths:
   /mrci:
     post:

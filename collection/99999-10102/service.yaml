@@ -1,10 +1,12 @@
 openapi: 3.0.0
 info:
   version: 1.0.0
-  title: Michigan Hospital Association ALTO of Interest Detector
+  title: Opioid and Benzodiazepine Detector
   description: >-
     This object scans a list of prescriptions and determines if the patient is
-    taking an ALT
+    at risk greater for drug-induced respiratory depression because of being
+    exposed simultaneously to a known dangerous combination of an opioid, a
+    benzodiazepine, and a muscle relaxant.
   contact:
     name: KGrid Team
     email: kgrid-developers@umich.edu
@@ -13,21 +15,21 @@ info:
     name: GNU General Public License v3 (GPL-3)
     url: >-
       https://tldrlegal.com/license/gnu-general-public-license-v3-(gpl-3)#fulltext
+servers:
+  - url: /99999/10102
 tags:
   - name: KO Endpoints
-    description: ALTO Endpoints
-servers:
-  - url: /99999/10105/v0.0.1
+    description: Opioid and Benzodiazepine Detector Endpoints
 paths:
-  /mhaALTODetector:
+  /opioidbzdDetector:
     post:
       tags:
         - KO Endpoints
       description: >-
-        This object scans a list of prescriptions and determines if the patient
-        is
-            taking an ALTO
-      operationId: mhaALTODetector
+        scans a list of a patient's prescriptions and determines if they are
+        being exposed simultaneously to a known risky combination of an opioid
+        and a benzodiazepine.
+      operationId: opioidbzdDetector
       requestBody:
         description: RxNorm Semantic Clinical Drug codes for a paitent
         required: true
@@ -37,7 +39,9 @@ paths:
               $ref: '#/components/schemas/druglist'
       responses:
         '200':
-          description: response
+          description: >-
+            identifies if an opioid and benzodiazepine was found, list of rxcui
+            and inputs
           content:
             application/json:
               schema:
@@ -56,19 +60,15 @@ components:
       properties:
         rxcuis:
           type: string
-          example: '106500,200240,856917,994226,197446,801958,1733892'
+          example: '106500,200240,856917,994226,197446,801958'
     output:
       required:
         - result
       properties:
         result:
-          type: object
+          type: string
           example: >-
-            {"condition_satisfied" : true, "summary" : { "mhaALTO" : true },
-            "detail" : { "106500" : { "mhaALTO" : false }, "197446" : {
-            "mhaALTO" : false }, "200240" : { "mhaALTO" : false }, "801958" : {
-            "mhaALTO" : false }, "856917" : { "mhaALTO" : false }, "994226" : {
-            "mhaALTO" : false }, "1733892" : { "mhaALTO" : true }}
+            {condition_satisfied:false,summary:{opioid:false,bzd:false},detail:{}}
     Error:
       required:
         - code

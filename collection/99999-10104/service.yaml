@@ -17,7 +17,7 @@ tags:
   - name: KO Endpoints
     description: Opioid Endpoints
 servers:
-  - url: /99999/10104/v0.0.1
+  - url: /99999/10104
 paths:
   /mhaOpiateDetector:
     post:
