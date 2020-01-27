@@ -41,14 +41,13 @@
 					"raw": "{\"rxcuis\":\"106500,200240,856917,994226,197446,801958\"}"
 				},
 				"url": {
-					"raw": "{{url}}/99999/10101/v0.0.2/opioidDetector",
+					"raw": "{{url}}/99999/10101/opioidDetector",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"99999",
 						"10101",
-						"v0.0.2",
 						"opioidDetector"
 					]
 				}
@@ -95,14 +94,13 @@
 					"raw": "{\"rxcuis\":\"106500,200240,856917,994226,197446,801958\"}"
 				},
 				"url": {
-					"raw": "{{url}}/99999/10102/v0.0.2/opioidbzdDetector",
+					"raw": "{{url}}/99999/10102/opioidbzdDetector",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"99999",
 						"10102",
-						"v0.0.2",
 						"opioidbzdDetector"
 					]
 				}
@@ -152,14 +150,13 @@
 					"raw": "{\"rxcuis\":\"106500,200240,856917,994226,197446,801958\"}"
 				},
 				"url": {
-					"raw": "{{url}}/99999/10103/v0.0.2/tripleThreatDetector",
+					"raw": "{{url}}/99999/10103/tripleThreatDetector",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"99999",
 						"10103",
-						"v0.0.2",
 						"tripleThreatDetector"
 					]
 				}
@@ -211,14 +208,13 @@
 					"raw": "{\"rxcuis\":\"106500,200240,856917,833709,197446,801958\"}"
 				},
 				"url": {
-					"raw": "{{url}}/99999/10104/v0.0.1/mhaOpiateDetector",
+					"raw": "{{url}}/99999/10104/mhaOpiateDetector",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"99999",
 						"10104",
-						"v0.0.1",
 						"mhaOpiateDetector"
 					]
 				}
@@ -270,14 +266,13 @@
 					"raw": "{\"rxcuis\":\"106500,200240,856917,1089968,197446,801958\"}"
 				},
 				"url": {
-					"raw": "{{url}}/99999/10105/v0.0.1/mhaALTODetector",
+					"raw": "{{url}}/99999/10105/mhaALTODetector",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"99999",
 						"10105",
-						"v0.0.1",
 						"mhaALTODetector"
 					]
 				}
@@ -333,14 +328,13 @@
 					"raw": " {\n      \"id\": \"PA-01011\",\n      \"prescriptions\": [\n        {\n          \"rxnorm\": \"106500\"\n        },\n        {\n          \"rxnorm\": \"197446\"\n        },\n        {\n          \"rxnorm\": \"801958\"\n        }\n      ]\n   }"
 				},
 				"url": {
-					"raw": "{{url}}/99999/10106/impl/opioidadvisor",
+					"raw": "{{url}}/99999/10106/opioidadvisor",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"99999",
 						"10106",
-						"impl",
 						"opioidadvisor"
 					]
 				}

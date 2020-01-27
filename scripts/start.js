@@ -8,7 +8,7 @@ let asset = {
   url: "https://api.github.com/repos/kgrid/kgrid-activator",
   filename: "",
   destination: "grid",
-  tag_name: "1.1.2",
+  tag_name: "1.1.5",
 };
 
 /**
