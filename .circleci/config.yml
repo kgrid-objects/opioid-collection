@@ -30,9 +30,9 @@ jobs:
     - run:
         name: Deploy KOs to Chipmunk intgration server on heroku
         command: |
-          .circleci/shelf_deploy.sh https://kgrid-activator.herokuapp.com/kos dist
+          .circleci/shelf_deploy.sh https://kgrid-activator.herokuapp.com/kos collection
           curl --write-out '%{http_code}' --silent --output /dev/null  https://kgrid-activator.herokuapp.com/activate
-          .circleci/shelf_deploy.sh https://kgrid-library.herokuapp.com/kos dist
+          .circleci/shelf_deploy.sh https://kgrid-library.herokuapp.com/kos collection
 
     - run:
         name: Create Release
