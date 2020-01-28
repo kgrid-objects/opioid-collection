@@ -31,7 +31,7 @@ This KO scans a patient's medication regimen, which is presented to the KO as a 
 **Example API Usage with curl**
 ```
 curl -X POST \
-  http://kgrid-activator.herokuapp.com/99999/10101/v0.0.2/opioidDetector \
+  http://kgrid-activator.herokuapp.com/99999/10101/opioidDetector \
   -H 'Content-Type: application/json' \
   -d '{"rxcuis":"106500,200240,856917,994226,197446,801958"}'
 ```  
@@ -65,14 +65,14 @@ curl -X POST \
         }
     },
     "info": {
-        "ko": "99999/10101/v0.0.1",
+        "ko": "99999/10101",
         "inputs": {
             "rxcuis": "106500,200240,856917,994226,197446,801958"
         }
     }
 }
 ```
-Additional API documentation can be found in the [Swagger UI](https://editor.swagger.io/?url=https://activator.kgrid.org/kos/99999/10101/v0.0.2/service) visualisation of the OpenAPI specification.
+Additional API documentation can be found in the [Swagger UI](https://editor.swagger.io/?url=https://activator.kgrid.org/kos/99999/10101/service) visualisation of the OpenAPI specification.
 
 ####  :two: Opioid and Benzodiazepine Detector
 This KO  scans a list of a patient's prescriptions, which are presented to the KO as a list of RxNorm Semantic Clinical Drug codes, and determines if they are being exposed simultaneously to a known risky combination of an opioid and a benzodiazepine.
@@ -80,13 +80,13 @@ This KO  scans a list of a patient's prescriptions, which are presented to the K
 **Example API Usage with curl**
 ```json
 curl -X POST \
-  http://kgrid-activator.herokuapp.com/99999/10102/v0.0.2/opioidbzdDetector \
+  http://kgrid-activator.herokuapp.com/99999/10102/opioidbzdDetector \
   -H 'Cache-Control: no-cache' \
   -H 'Content-Type: application/json' \
   -d '{"rxcuis":"106500,200240,856917,994226,197446,801958"}'
 ```
 
-Additional API documentation can be found in the [Swagger UI](https://editor.swagger.io/?url=https://activator.kgrid.org/kos/99999/10102/v0.0.2/servicel) visualisation of the OpenAPI specification.
+Additional API documentation can be found in the [Swagger UI](https://editor.swagger.io/?url=https://activator.kgrid.org/kos/99999/10102/servicel) visualisation of the OpenAPI specification.
 
 ####  :three: Respiratory Depression Risk Indicator
 This KO scans a list of a patient's prescriptions, which are presented to the KO as a list or RxNorm Semantic Clinical Drug Codes, and determines if they are at higher risk for drug-induced respiratory depression because of being exposed simultaneously to a combination of an opioid, a benzodiazepine, and a muscle relaxant.
@@ -94,11 +94,11 @@ This KO scans a list of a patient's prescriptions, which are presented to the KO
 **Example API Usage with curl**
 ```json
 curl -X POST \
-  http://kgrid-activator.herokuapp.com/99999/10103/v0.0.2/tripleThreatDetector \
+  http://kgrid-activator.herokuapp.com/99999/10103/tripleThreatDetector \
   -H 'Content-Type: application/json' \
   -d '{"rxcuis":"106500,200240,856917,994226,197446,801958"}'
  ```
-Additional API documentation can be found in the [Swagger UI](https://editor.swagger.io/?url=https://activator.kgrid.org/kos/99999/10103/v0.0.2/service) visualisation of the OpenAPI specification.
+Additional API documentation can be found in the [Swagger UI](https://editor.swagger.io/?url=https://activator.kgrid.org/kos/99999/10103/service) visualisation of the OpenAPI specification.
 
 ####  :four: MHA Opioid Detector
 
@@ -107,11 +107,11 @@ This  KO  scans a patient's medication regimen, which is presented to the KO as 
 **Example API Usage with curl**
 ```
 curl -X POST \
-  http://kgrid-activator.herokuapp.com/99999/10104/v0.0.1/mhaOpiateDetector \
+  http://kgrid-activator.herokuapp.com/99999/10104/mhaOpiateDetector \
   -H 'Content-Type: application/json' \
   -d '{"rxcuis":"106500,200240,856917,994226,197446,801958"}'
  ```
-Additional API documentation can be found in the [Swagger UI](https://editor.swagger.io/?url=https://activator.kgrid.org/kos/99999/10104/v0.0.1/service) visualisation of the OpenAPI specification.
+Additional API documentation can be found in the [Swagger UI](https://editor.swagger.io/?url=https://activator.kgrid.org/kos/99999/10104/service) visualisation of the OpenAPI specification.
 
 ####  :six: Opioid Advisor
 
@@ -120,7 +120,7 @@ Evaluates a list of a patient's prescriptions and determines Opioid risk. This K
 **Example API Usage with curl**
 ```
 curl -X POST \
-  http://kgrid-activator.herokuapp.com/99999/10106/impl/opioidadvisor \
+  http://kgrid-activator.herokuapp.com/99999/10106/opioidadvisor \
   -H 'Content-Type: application/json' \
   -d ' {
       "id": "PA-01011",
@@ -137,7 +137,7 @@ curl -X POST \
       ]
    }'
  ```
-Additional API documentation can be found in the [Swagger UI](https://editor.swagger.io/?url=https://activator.kgrid.org/kos/99999/10106/impl/service) visualization of the OpenAPI specification.
+Additional API documentation can be found in the [Swagger UI](https://editor.swagger.io/?url=https://activator.kgrid.org/kos/99999/10106/service) visualization of the OpenAPI specification.
 
 ####  :seven: Medication Regimen Complexity Index Calculator
 
@@ -146,7 +146,7 @@ Calculates Medication Regimen Complexity Index (MRCI) of a patient's prescriptio
 **Example API Usage with curl**
 ```
 curl -X POST \
-  http://kgrid-activator.herokuapp.com/99999/mrci/impl/mrci \
+  http://kgrid-activator.herokuapp.com/99999/mrci/mrci \
   -H 'Content-Type: application/json' \
   -d ' {
     "id": "MRCI-0C",
@@ -163,7 +163,7 @@ curl -X POST \
   ]
   }'
  ```
-Additional API documentation can be found in the [Swagger UI](https://editor.swagger.io/?url=https://activator.kgrid.org/kos/99999/mrci/impl/service) visualization of the OpenAPI specification.
+Additional API documentation can be found in the [Swagger UI](https://editor.swagger.io/?url=https://activator.kgrid.org/kos/99999/mrci/service) visualization of the OpenAPI specification.
 
 
 
@@ -171,26 +171,19 @@ Additional API documentation can be found in the [Swagger UI](https://editor.swa
 In order to use the MOpen Opioid Knowledge Object Collection you need to have an instance of the KGrid Activator up and running. To do this, refer to [KGrid Activator](http://kgrid.org/kgrid-activator/) deployment details.  Once you have [KGrid Activator](http://kgrid.org/kgrid-activator/) up and running you will need to add the [MOpen Opioid](https://github.com/kgrid-objects/opioid-collection/releases/latest) KOs to the existing shelf.
 
  1. Download the released MOpen Opiod KOs from github [MOpen-Opioid Collection](https://github.com/kgrid-objects/opioid-collection/releases/latest)
- 1. Place the zip files into the shelf directory unzip. 
+ 1. Place the zip files into the shelf directory unzip.
  1. You must activate those KOs in the activator running the activate endpoint.
 
 Directory structure should look similar to the following
 ```json
  ├── shelf
- │   └── 99999-10103
- │       └── v0.0.1   
- │       └── v0.0.2
- │   └── 99999-10102
- │       └── v0.0.1
- │       └── v0.0.2    
- │   └── 99999-10101
- │       └── v0.0.1
- │       └── v0.0.2
- │   └── 99999-10104
- │       └── v0.0.1
- │   └── 99999-10105
- │       └── v0.0.1   
- └── kgrid-activator-0.6.2.jar
+     └── 99999-10103
+     └── 99999-10102
+     └── 99999-10101
+     └── 99999-10104
+     └── 99999-10105
+     └── .kgrid
+         └── kgrid-activator-1.1.5.jar
 ```
 
 Go to the /health endpoint to see that the KOs are activated
@@ -207,11 +200,11 @@ You should receive a list of the activated endpoints similar to the following
                     "JAVASCRIPT"
                 ],
                 "Endpoints loaded": [
-                    "99999-10101/v0.0.2/opioidDetector",
-                    "99999-10103/v0.0.2/tripleThreatDetector",
-                    "99999-10104/v0.0.1/mhaOpiateDetector",
-                    "99999-10105/v0.0.1/mhaALTODetector",
-                    "99999-10102/v0.0.2/opioidbzdDetector"
+                    "99999-10101/opioidDetector",
+                    "99999-10103/tripleThreatDetector",
+                    "99999-10104/mhaOpiateDetector",
+                    "99999-10105/mhaALTODetector",
+                    "99999-10102/opioidbzdDetector"
                 ]
             }
         },

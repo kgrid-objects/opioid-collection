@@ -9,7 +9,7 @@
   },
   "scripts": {
     "package": "scripty",
-    "start": "node scripts/start.js",
+    "start": "cd collection && kgrid setup && kgrid start:activator",
     "test:unit": "jest --passWithNoTests --ci --reporters=default --reporters=jest-junit",
     "test:integration": "server-test :8080 postman",
     "postman": "newman run tests/integration/opioid.postman_collection.json -e tests/integration/activator.postman_environment.json --reporters  cli,junit --reporter-junit-export test_results ",
