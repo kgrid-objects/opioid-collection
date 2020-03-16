@@ -6,7 +6,7 @@
     "jest": "^24.9.0",
     "rewire": "^4.0.1",
     "scripty": "1.7.2",
-    "@kgrid/cli":"^0.4.3"
+    "@kgrid/cli": "^0.4.3"
   },
   "scripts": {
     "package": "scripty",
