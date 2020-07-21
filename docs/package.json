@@ -12,6 +12,6 @@
   "license": "ISC",
   "dependencies": {
     "scripty": "^1.9.1",
-    "vuepress": "^1.0.3"
+    "vuepress": "^1.5.2"
   }
 }
