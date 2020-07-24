@@ -1,0 +1,5 @@
+endpoints:
+  /opioidadvisor:
+    adapter: JAVASCRIPT
+    artifact: index.js
+    function: opioidadvisor

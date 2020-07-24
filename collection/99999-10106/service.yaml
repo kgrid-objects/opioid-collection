@@ -45,10 +45,6 @@ paths:
             application/json:
               schema:
                 $ref: 'https://demo.kgrid.org/schemas/basicerror.yaml'
-      x-kgrid-activation:
-        artifact: index.js
-        adapter: JAVASCRIPT
-        entry: opioidadvisor
 components:
   schemas:
     opioid-advisor-report:

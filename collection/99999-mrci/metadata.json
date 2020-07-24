@@ -11,7 +11,7 @@
       "https://journals.sagepub.com/doi/full/10.1345/aph.1D479"
     ],
     "hasServiceSpecification": "service.yaml",
-    "hasDeploymentSpecification": "service.yaml",
+    "hasDeploymentSpecification": "deployment.yaml",
     "hasPayload": "src/index.js",
     "@context": [
         "http://kgrid.org/koio/contexts/knowledgeobject.jsonld"

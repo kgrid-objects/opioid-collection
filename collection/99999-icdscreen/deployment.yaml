@@ -1,0 +1,5 @@
+endpoints:
+  /icdscreen:
+    artifact: src/index.js
+    adapter: JAVASCRIPT
+    function: icdscreen
