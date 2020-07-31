@@ -11,11 +11,11 @@ function opioidadvisor(inputs) {
 
     informessages.push("list of prescriptions " + JSON.stringify(prescriptions));
 
-    var opioidDetectorResponse =  context.getExecutor("99999-10101/v0.0.3/opioidDetector").execute(prescriptions);
+    var opioidDetectorResponse =  context.getExecutor("99999-10101/v0.1.0/opioidDetector").execute(prescriptions);
     informessages.push("opioidDetectorResponse " + JSON.stringify(opioidDetectorResponse));
-    var opioidbzdDetectorResponse = context.getExecutor("99999-10102/v0.0.3/opioidbzdDetector").execute(prescriptions);
+    var opioidbzdDetectorResponse = context.getExecutor("99999-10102/v0.1.0/opioidbzdDetector").execute(prescriptions);
     informessages.push(" opioidbzdDetectorResponse " + JSON.stringify(opioidbzdDetectorResponse));
-    var tripleThreatDetectorResponse = context.getExecutor("99999-10103/v0.0.3/tripleThreatDetector").execute(prescriptions);
+    var tripleThreatDetectorResponse = context.getExecutor("99999-10103/v0.1.0/tripleThreatDetector").execute(prescriptions);
     informessages.push(" tripleThreatDetectorResponse " + JSON.stringify(tripleThreatDetectorResponse));
 
     var report = {};

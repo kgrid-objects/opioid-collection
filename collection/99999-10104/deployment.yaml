@@ -1,5 +1,5 @@
 endpoints:
   /mhaOpiateDetector:
-    adapterType: JAVASCRIPT
+    adapter: JAVASCRIPT
     artifact: mhaOpiateDetector.js
     entry: mhaOpiateDetector

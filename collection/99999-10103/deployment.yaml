@@ -1,5 +1,5 @@
 endpoints:
   /tripleThreatDetector:
-    adapterType: JAVASCRIPT
+    adapter: JAVASCRIPT
     artifact: tripleThreatDetector.js
     entry: tripleThreatDetector

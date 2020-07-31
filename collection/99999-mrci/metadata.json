@@ -2,7 +2,7 @@
     "@id": "99999-mrci",
     "@type": "koio:KnowledgeObject",
     "identifier": "ark:/99999/mrci",
-    "version":"v0.0.3",
+    "version":"v0.1.0",
     "title": "Computation of Medication Regimen Complexity Index",
     "contributors": "Kgrid Team",
     "description": "Computing Patient's Medication Regimen Complexity Index based on the patient's prescription list",

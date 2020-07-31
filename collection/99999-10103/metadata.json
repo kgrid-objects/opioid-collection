@@ -2,7 +2,7 @@
   "@id": "99999-10103",
   "@type": "koio:KnowledgeObject",
   "identifier": "ark:/99999/10103",
-  "version":"v0.0.3",
+  "version":"v0.1.0",
   "title": "Respiratory Depression Risk Indicator",
   "contributors": "KGRID TEAM",
   "description": "This object scans a list of a patient's prescriptions and determines if they are at risk greater for drug-induced respiratory depression because of being exposed simultaneously to a known dangerous combination of an opioid, a benzodiazepine, and a muscle relaxant.",

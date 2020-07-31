@@ -2,7 +2,7 @@
   "@id": "99999-10105",
   "@type": "koio:KnowledgeObject",
   "identifier": "ark:/99999/10105",
-  "version":"v0.0.3",
+  "version":"v0.1.0",
   "title": "Michigan Hospital Association ALTO Detector",
   "contributors": "KGRID TEAM",
   "desription": "This object scans a list of a patient's prescriptions and determines if it contains an ALTO (alternative to opioid)",
