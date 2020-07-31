@@ -9,7 +9,7 @@ git config --global user.name "circleci"
 cd docs
 
 npm install
-npm run build
+npm run docs:build
 # copy web docs to github pages dist
 mkdir -p .vuepress/dist/.circleci
 cp -a ../.circleci/. .vuepress/dist/.circleci/.
