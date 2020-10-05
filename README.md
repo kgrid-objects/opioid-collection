@@ -5,3 +5,5 @@
 This is a collection of KOs for KGrid that can be used to identify and report on certain features of opioid prescribing. Each KO in this collection uses patient prescription data for its input and provides information about patient prescriptions as its output. 
 
 [More details](https://kgrid-objects.github.io/opioid-collection/).
+
+Note: Integration tests ore disabled until we can specify kgrid component versions with the kgrid CLI.
