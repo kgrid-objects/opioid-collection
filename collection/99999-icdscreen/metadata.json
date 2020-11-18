@@ -1,14 +1,17 @@
 {
-    "@id": "99999-icdscreen",
+    "@id": "99999/icdscreen/v1.0",
     "@type": "koio:KnowledgeObject",
-    "identifier": "ark:/99999/icdscreen",
+    "identifier": "ark:/99999/icdscreen/v1.0",
     "title": "Myasthenia Gravis Medication Check",
-    "version":"v0.1.0",
+    "version": "v1.0",
     "contributors": "Kgrid Team",
     "description": "Checks for medications which should not be given to patients with myasthenia gravis",
-    "keywords": ["icd", "rxnorm", "myasthenia gravis"],
-    "citations":[
+    "keywords": [
+        "icd",
+        "rxnorm",
+        "myasthenia gravis"
     ],
+    "citations": [],
     "hasServiceSpecification": "service.yaml",
     "hasDeploymentSpecification": "deployment.yaml",
     "hasPayload": "src/index.js",

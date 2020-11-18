@@ -1,19 +1,22 @@
 {
-  "@id": "99999-10102",
-  "@type": "koio:KnowledgeObject",
-  "identifier": "ark:/99999/10102",
-  "version":"v0.1.0",
-  "title": "Opioid and Benzodiazepine Detector",
-  "contributors": "KGRID TEAM",
-  "description": "This object scans a list of a patient's prescriptions and determines if they are at risk being exposed simultaneously to a known dangerous combination of an opioid and a benzodiazepine.",
-  "citations": [
-    ""
-  ],
-  "keywords": ["opioid","benzodiazepine"],
-  "hasServiceSpecification": "service.yaml",
-  "hasDeploymentSpecification": "deployment.yaml",
-  "hasPayload": "opioidbzdDetector.js",
-  "@context": [
-    "http://kgrid.org/koio/contexts/knowledgeobject.jsonld"
-  ]
+    "@id": "99999/10102/v1.0",
+    "@type": "koio:KnowledgeObject",
+    "identifier": "ark:/99999/10102/v1.0",
+    "version": "v1.0",
+    "title": "Opioid and Benzodiazepine Detector",
+    "contributors": "KGRID TEAM",
+    "description": "This object scans a list of a patient's prescriptions and determines if they are at risk being exposed simultaneously to a known dangerous combination of an opioid and a benzodiazepine.",
+    "citations": [
+        ""
+    ],
+    "keywords": [
+        "opioid",
+        "benzodiazepine"
+    ],
+    "hasServiceSpecification": "service.yaml",
+    "hasDeploymentSpecification": "deployment.yaml",
+    "hasPayload": "opioidbzdDetector.js",
+    "@context": [
+        "http://kgrid.org/koio/contexts/knowledgeobject.jsonld"
+    ]
 }

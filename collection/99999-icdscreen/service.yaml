@@ -1,6 +1,6 @@
 openapi: 3.0.2
 info:
-  version: impl
+  version: '1.0'
   title: Myasthenia Gravis Medication Check
   description: >-
     Checks for medications which should not be given to patients with myasthenia
@@ -14,7 +14,7 @@ info:
     email: kgrid-developers@umich.edu
     url: 'http://kgrid.org'
 servers:
-  - url: /99999/icdscreen
+  - url: /99999/icdscreen/1.0
 paths:
   /icdscreen:
     post:

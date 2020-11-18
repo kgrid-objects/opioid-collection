@@ -1,5 +1,5 @@
-endpoints:
-  /mhaOpiateDetector:
-    adapter: JAVASCRIPT
+/mhaOpiateDetector:
+  post:
+    engine: javascript
     artifact: mhaOpiateDetector.js
-    entry: mhaOpiateDetector
+    function: mhaOpiateDetector

@@ -1,5 +1,5 @@
-endpoints:
-  /icdscreen:
+/icdscreen:
+  post:
+    engine: javascript
     artifact: src/index.js
-    adapter: JAVASCRIPT
     function: icdscreen

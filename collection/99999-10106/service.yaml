@@ -1,6 +1,6 @@
 openapi: 3.0.2
 info:
-  version: '1'
+  version: '1.0'
   title: Opioid Advisor
   description: >-
     Evaluates list of a patient's prescriptions and determines Opioid risk. KO
@@ -15,7 +15,7 @@ info:
     url: >-
       https://tldrlegal.com/license/gnu-general-public-license-v3-(gpl-3)#fulltext
 servers:
-  - url: /99999/10106
+  - url: /99999/10106/1.0
 paths:
   /opioidadvisor:
     post:

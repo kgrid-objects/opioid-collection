@@ -1,5 +1,5 @@
-endpoints:
-  /opioidadvisor:
-    adapter: JAVASCRIPT
+/opioidadvisor:
+  post:
+    engine: javascript
     artifact: index.js
     function: opioidadvisor

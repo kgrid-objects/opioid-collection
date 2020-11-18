@@ -20,5 +20,5 @@ function mhaOpiateDetector(inputs){
   jsonoutput.detail=detail
   jsonoutput.summary=summaryentry
   jsonoutput.condition_satisfied = summaryentry.mhaOpiate
-  return jsonoutput
+  return JSON.stringify(jsonoutput)
  }

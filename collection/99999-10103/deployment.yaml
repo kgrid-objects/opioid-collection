@@ -1,5 +1,5 @@
-endpoints:
-  /tripleThreatDetector:
-    adapter: JAVASCRIPT
+/tripleThreatDetector:
+  post:
+    engine: javascript
     artifact: tripleThreatDetector.js
-    entry: tripleThreatDetector
+    function: tripleThreatDetector

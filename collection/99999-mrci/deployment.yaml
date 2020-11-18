@@ -1,5 +1,5 @@
-endpoints:
-  /mrci:
-    adapter: JAVASCRIPT
+/mrci:
+  post:
+    engine: javascript
     artifact: src/index.js
-    entry: mrci
+    function: mrci

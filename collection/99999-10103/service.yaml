@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  version: 1.0.0
+  version: '1.0'
   title: Respiratory Depression Risk Indicator
   description: >-
     This object scans a list of prescriptions and determines if the patient is
@@ -19,7 +19,7 @@ tags:
   - name: KO Endpoints
     description: Respiratory Depression Risk Indicator Endpoints
 servers:
-  - url: /99999/10103
+  - url: /99999/10103/1.0
 paths:
   /tripleThreatDetector:
     post:

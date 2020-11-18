@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  version: 1.0.0
+  version: '1.0'
   title: Michigan Hospital Association ALTO of Interest Detector
   description: >-
     This object scans a list of prescriptions and determines if the patient is
@@ -17,7 +17,7 @@ tags:
   - name: KO Endpoints
     description: ALTO Endpoints
 servers:
-  - url: /99999/10105
+  - url: /99999/10105/1.0
 paths:
   /mhaALTODetector:
     post:

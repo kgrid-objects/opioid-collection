@@ -20,5 +20,5 @@ function opioidDetector(inputs){
   jsonoutput.detail=detail
   jsonoutput.summary=summaryentry
   jsonoutput.condition_satisfied = summaryentry.opioid
-  return jsonoutput
+  return JSON.stringify(jsonoutput)
  }

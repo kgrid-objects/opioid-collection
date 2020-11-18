@@ -20,5 +20,5 @@ function mhaALTODetector(inputs){
   jsonoutput.detail=detail
   jsonoutput.summary=summaryentry
   jsonoutput.condition_satisfied = summaryentry.mhaALTO
-  return jsonoutput
+  return JSON.stringify(jsonoutput)
  }

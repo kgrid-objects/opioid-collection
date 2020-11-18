@@ -1,6 +1,6 @@
 openapi: 3.0.2
 info:
-  version: impl
+  version: '1.0'
   title: Computation of Medication Regimen Complexity Index
   description: >-
     Computing Patient's Medication Regimen Complexity Index based on the
@@ -14,7 +14,7 @@ info:
     email: kgrid-developers@umich.edu
     url: 'http://kgrid.org'
 servers:
-  - url: /99999/mrci
+  - url: /99999/mrci/1.0
 paths:
   /mrci:
     post:

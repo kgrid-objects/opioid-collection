@@ -32,5 +32,5 @@ function tripleThreatDetector(inputs){
   jsonoutput.detail=detail
   jsonoutput.summary=summaryentry
   jsonoutput.condition_satisfied = summaryentry.opioid && summaryentry.bzd && summaryentry.mr
-  return jsonoutput
+  return JSON.stringify(jsonoutput)
  }

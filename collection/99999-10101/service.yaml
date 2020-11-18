@@ -1,8 +1,8 @@
 openapi: 3.0.0
 servers:
-  - url: /99999/10101
+  - url: /99999/10101/1.0
 info:
-  version: 1.0.0
+  version: '1.0'
   title: Opioid Use Detector
   description: >-
     This object scans a list of prescriptions and determines if the patient is
