@@ -6,5 +6,5 @@ var opioidDetector = opioidJS.__get__("opioidDetector");
 
 test('nothing', () => {
   var payload = opioidDetector({rxcuis:"106500,200240,856917,994226,197446,801958"});
-  expect(payload.summary.opioid).toBe(true);
+  expect(JSON.parse(payload).summary.opioid).toBe(true);
 });
