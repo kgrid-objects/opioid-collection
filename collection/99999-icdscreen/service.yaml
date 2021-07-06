@@ -39,7 +39,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: 'https://demo.kgrid.org/schemas/basicerror.yaml'
+                $ref: 'https://demo.kgrid.org/schemas/openapischemas.yaml#/components/schemas/genericerror'
 components:
   schemas:
     druglist:
@@ -67,7 +67,3 @@ components:
             ["http://kgrid.org/koio/contexts/implementation.jsonld"]},"inputs":
             {"rxcuis": "141963,856917,994226,197446,801958","icd10":
             "G70.00,G10.00"}}}
-    Error:
-      required:
-        - code
-        - message

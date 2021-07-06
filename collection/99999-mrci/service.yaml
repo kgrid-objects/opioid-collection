@@ -34,18 +34,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/output'
+                $ref: 'https://demo.kgrid.org/schemas/openapischemas.yaml#/components/schemas/genericresponse'
         default:
           description: unexpected error
           content:
             application/json:
               schema:
-                $ref: 'https://demo.kgrid.org/schemas/basicerror.yaml'
-components:
-  schemas:
-    output:
-      required:
-        - result
-      properties:
-        result:
-          type: object
+                $ref: 'https://demo.kgrid.org/schemas/openapischemas.yaml#/components/schemas/genericerror'

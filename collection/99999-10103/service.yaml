@@ -32,7 +32,7 @@ paths:
         and a muscle relaxant.
       operationId: tripleThreatDetector
       requestBody:
-        description: RxNorm Semantic Clinical Drug codes for a paitent
+        description: RxNorm Semantic Clinical Drug codes for a patient
         required: true
         content:
           application/json:
@@ -50,7 +50,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: 'https://demo.kgrid.org/schemas/openapischemas.yaml#/components/schemas/genericerror'
 components:
   schemas:
     druglist:
@@ -68,13 +68,3 @@ components:
           type: string
           example: >-
             {condition_satisfied:false,summary:{opioid:false,bzd:false,mr:false},detail:{}}
-    Error:
-      required:
-        - code
-        - message
-      properties:
-        code:
-          type: integer
-          format: int32
-        message:
-          type: string

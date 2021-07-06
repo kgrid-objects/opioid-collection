@@ -29,7 +29,7 @@ paths:
             taking an opiate
       operationId: mhaOpiateDetector
       requestBody:
-        description: RxNorm Semantic Clinical Drug codes for a paitent
+        description: RxNorm Semantic Clinical Drug codes for a patient
         required: true
         content:
           application/json:
@@ -47,7 +47,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: 'https://demo.kgrid.org/schemas/openapischemas.yaml#/components/schemas/genericerror'
 components:
   schemas:
     druglist:
@@ -69,13 +69,3 @@ components:
             "mhaOpiate" : false }, "200240" : { "mhaOpiate" : false }, "801958"
             : { "mhaOpiate" : false }, "856917" : { "mhaOpiate" : false },
             "994226" : { "mhaOpiate" : true }}}
-    Error:
-      required:
-        - code
-        - message
-      properties:
-        code:
-          type: integer
-          format: int32
-        message:
-          type: string
