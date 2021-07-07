@@ -1,0 +1,69 @@
+{
+	"info": {
+		"_postman_id": "f440d988-f245-44c9-abe8-3634ddbd3e7c",
+		"name": "Opioid Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Medication Regimen Complexity Index - ACETAMINOPHEN 325 MG TABLET",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": \"PA-01011\",\r\n  \"prescriptions\": [\r\n    {\r\n      \"rxnorm\": \"313782\",\r\n      \"medicationname\": \"ACETAMINOPHEN 325 MG TABLET\",\r\n      \"genericname\": \"ACETAMINOPHEN\",\r\n      \"strength\": \"325 mg\",\r\n      \"form\": \"Tablet\",\r\n      \"route\": \"Oral\",\r\n      \"sig\": \"650 mg EVERY 6 HOURS\"\r\n    }\r\n  ]\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}/99999/mrci/1.0/mrci",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"99999",
+						"mrci",
+						"1.0",
+						"mrci"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Medication Regimen Complexity Index -  Multiple",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": \"PA-01011\",\r\n  \"prescriptions\": [\r\n    {\r\n      \"rxnorm\": \"197391\",\r\n      \"medicationname\": \"BACLOFEN 10 MG TABLET\",\r\n      \"genericname\": \"BACLOFEN\",\r\n      \"strength\": \"10 mg\",\r\n      \"form\": \"Tablet\",\r\n      \"route\": \"Oral\",\r\n      \"sig\": \"10 MG EVERY 3 HOURS\"\r\n    },\r\n    {\r\n      \"rxnorm\": \"1360074\",\r\n      \"medicationname\": \"BECLOMETHASONE DIPROPIONATE 40 MCG/ACTUATION AEROSOL INHALER\",\r\n      \"genericname\": \"BECLOMETHASONE DIPROPIONATE\",\r\n      \"strength\": \"1 PUFF\",\r\n      \"form\": \"Aerolizer\",\r\n      \"route\": \"Inhalation\",\r\n      \"sig\": \"2 PUFF 2 TIMES DAILY AND PRN\"\r\n    },\r\n    {\r\n      \"rxnorm\": \"205121\",\r\n      \"medicationname\": \"MINERAL OIL ENEMA\",\r\n      \"genericname\": \"MINERAL OIL\",\r\n      \"strength\": \"1 ENEMA\",\r\n      \"form\": \"ENEMA\",\r\n      \"route\": \"Rectal\",\r\n      \"sig\": \"1 ENEMA ONCE DAILY PRN\"\r\n    },\r\n    {\r\n      \"rxnorm\": \"309367\",\r\n      \"medicationname\": \"CLOTRIMAZOLE 1 % TOPICAL CREAM\",\r\n      \"genericname\": \"CLOTRIMAZOLE\",\r\n      \"strength\": \"0.01\",\r\n      \"form\": \"CREAM\",\r\n      \"route\": \"TOPICAL\",\r\n      \"sig\": \"2 TIMES DAILY\"\r\n    },\r\n    {\r\n      \"rxnorm\": \"311892\",\r\n      \"medicationname\": \"NABUMETONE 500 MG TABLET\",\r\n      \"genericname\": \"NABUMETONE\",\r\n      \"strength\": \"500 mg\",\r\n      \"form\": \"TABLET\",\r\n      \"route\": \"ORAL\",\r\n      \"sig\": \"TAKE AS DIRECTED\"\r\n    }           \r\n  ]\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}/99999/mrci/1.0/mrci",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"99999",
+						"mrci",
+						"1.0",
+						"mrci"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
